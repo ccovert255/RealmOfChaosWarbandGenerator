@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Warband, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
 
 @Component({
@@ -9,5 +9,5 @@ import { Warband, Profile, Weapon, Armor, ChaosAttribute } from '../shared/model
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  profile: Profile = new Profile;
+  @Input() profile?: Profile;
 }

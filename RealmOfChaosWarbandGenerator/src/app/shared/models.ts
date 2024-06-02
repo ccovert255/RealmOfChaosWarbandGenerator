@@ -29,7 +29,6 @@ export class Champion {
   }
 }
 
-
 export class Profile {
   rollNumber: number = 0;
   description: string = "Human"

@@ -1,17 +1,49 @@
+<form class="example-form">
+
+  <mat-form-field>
+    <mat-label>Champion Name</mat-label>
+    <input matInput required [(ngModel)]="createWarbandRequest.championName" name="championName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Chaos Patron</mat-label>
+    <select matNativeControl required [(ngModel)]="createWarbandRequest.chaosPatron" name="chaos-patron">
+      <option value="0">Undivided</option>
+      <option value="1">Khorne</option>
+      <option value="2">Slaneesh</option>
+      <option value="3">Nurgle</option>
+      <option value="4">Tzeentch</option>
+    </select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Seed</mat-label>
+    <input matInput required [(ngModel)]="createWarbandRequest.seed" name="seed">
+  </mat-form-field>
+
+  <button mat-flat-button (click)="onCreateWarband()">
+    <mat-icon>bolt</mat-icon>
+    Generate
+  </button>
+
+</form>
+
+<mat-divider></mat-divider>
+
 <div class="warband-container">
 
   <div>
     <div>
       <span class="warband-label">Champion</span>
-      <span class="warband-value">{{warband.champion.name}}</span>
+      <span class="warband-value">{{warband?.champion?.name}}</span>
     </div>
     <div>
       <span class="warband-label">Chaos Patron</span>
-      <span class="warband-value">{{ warband.champion.chaosPatronDisplayName() }}</span>
+      <span class="warband-value">{{ warband?.champion?.chaosPatronDisplayName() }}</span>
     </div>
     <div>
       <span class="warband-label">Race</span>
-      <span class="warband-value">{{ warband.champion.raceDisplayName() }}</span>
+      <span class="warband-value">{{ warband?.champion?.raceDisplayName() }}</span>
     </div>
   </div>
 
@@ -19,7 +51,7 @@
     <div>
       <span class="warband-label">Rewards/Attributes</span>
       <span class="warband-value">
-        {{warband.champion.rewardToAttributeRatio()}}
+        {{warband?.champion?.rewardToAttributeRatio()}}
       </span>
     </div>
     <div>
@@ -37,7 +69,7 @@
   <div>
     <span class="warband-label">Armor</span>
   </div>
-  <app-profile></app-profile>
+  <app-profile [profile]="warband?.champion?.profile"></app-profile>
 </div>
 
 

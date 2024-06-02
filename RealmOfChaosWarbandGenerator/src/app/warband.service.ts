@@ -17,10 +17,12 @@ export class WarbandService {
     result.name = request.championName;
     result.seed = request.seed;
     result.champion = new Champion();
+    result.champion.name = request.championName;
     result.champion.chaosPatron = request.chaosPatron;
 
     result.champion.race = getRandomRace(request.seed);
     result.champion.profile = getStartingProfile(request.seed, request.race);
+    console.log(result.champion.profile);
 
     result.champion.equipmentPoints = getRandomIntInclusive(1, 6, `${request.seed}-equipRoll1`);
     result.champion.equipmentPoints += result.champion.profile.heroLevel;
@@ -37,7 +39,7 @@ export class WarbandService {
 function getRandomRace(seed: string): Race {
 
   let raceRoll1 = getRandomIntInclusive(1, 100, `${seed}-raceRoll1`);
-
+  console.log(`rolled ${raceRoll1} for race`);
   if (raceRoll1 <= 20) {
     return Race.Dwarf;
   }
@@ -51,6 +53,7 @@ function getRandomRace(seed: string): Race {
   }
 
   let raceRoll2 = getRandomIntInclusive(1, 100, `${seed}-raceRoll2`);
+  console.log(`rolled ${raceRoll2} for race`);
   if (raceRoll1 <= 15) {
     return Race.Beastman;
   }
@@ -98,7 +101,7 @@ function getStartingProfile(seed: string, race: Race): Profile {
 
   //TODO: let users cap min/max hero levels...
   let profileRoll1 = getRandomIntInclusive(1, 100, `${seed}-profileRoll1`);
-
+  console.log(`rolled ${profileRoll1} for profile`);
   switch (race) {
     case Race.WereMan:
     case Race.Human: {

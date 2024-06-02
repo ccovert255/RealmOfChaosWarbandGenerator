@@ -12,17 +12,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDivider, MatDividerModule } from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { CreateWarbandRequest, WarbandService } from '../warband.service';
 
 @Component({
   selector: 'app-warbands',
   standalone: true,
-  imports: [ProfileComponent, FormsModule, MatInputModule, MatFormFieldModule],
+  imports: [ProfileComponent, FormsModule, MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatSelectModule, MatDividerModule ],
   templateUrl: './warbands.component.html',
   styleUrl: './warbands.component.scss'
 })
 export class WarbandsComponent {
-  warband: Warband = new Warband();
+  createWarbandRequest: CreateWarbandRequest = new CreateWarbandRequest();
+  warband?: Warband;
+  onCreateWarband(): void {
+    console.log(this.createWarbandRequest.championName);
+    this.warband = this.warbandService.createWarband(this.createWarbandRequest);
+  }
+  constructor(private warbandService: WarbandService) { }
 }
 
 
