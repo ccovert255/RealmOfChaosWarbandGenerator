@@ -1,0 +1,16 @@
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+.profile-header {
+    border:1px solid black;
+    text-align:center;
+    font-weight:bold;
+    padding: 4px;
+}
+.profile-row {
+  border: 1px solid black;
+  text-align: center;
+  padding: 4px;
+}

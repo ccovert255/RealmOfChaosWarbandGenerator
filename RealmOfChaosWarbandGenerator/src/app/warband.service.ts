@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Profile, Weapon, Armor, ChaosAttribute } from './shared/models';
+import { Profile, Weapon, Armor, ChaosAttribute, Warband } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
 import { PERSONAL_ATTRIBUTES } from './shared/constants';
+import { ChaosGod } from './shared/enums';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class WarbandService {
 
   constructor() { }
 
-  createWarband(request: CreateWarbandRequest): CreateWarbandResult {
-    let result: CreateWarbandResult = new CreateWarbandResult();
+  createWarband(request: CreateWarbandRequest): Warband {
+    let result: Warband = new Warband();
 
     result.championName = request.championName;
     result.seed = request.seed;
@@ -36,14 +37,6 @@ function getRandomAttribute(seed:string):ChaosAttribute {
   }
 
   return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length -1];
-}
-
-export class CreateWarbandResult {
-  championName: string = "";
-  chaosGod: ChaosGod = ChaosGod.Undivided;
-  profile: Profile = new Profile();
-  equipmentPoints: number = 0;
-  seed: string = "";
 }
 
 export class CreateWarbandRequest {

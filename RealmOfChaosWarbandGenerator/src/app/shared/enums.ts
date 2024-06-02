@@ -1,4 +1,4 @@
-enum ChaosGod {
+export enum ChaosGod {
   Undivided = 0,
   Khorne = 1,
   Slaneesh = 2,

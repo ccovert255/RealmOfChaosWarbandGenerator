@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 
-
 @Component({
   selector: 'app-generator',
   standalone: true,

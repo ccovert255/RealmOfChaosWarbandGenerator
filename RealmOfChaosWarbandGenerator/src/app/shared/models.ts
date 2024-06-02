@@ -1,3 +1,13 @@
+import { ChaosGod } from '../shared/enums';
+
+export class Warband {
+  championName: string = "";
+  chaosGod: ChaosGod = ChaosGod.Undivided;
+  profile: Profile = new Profile();
+  equipmentPoints: number = 0;
+  seed: string = "";
+}
+
 export class Profile {
   movement: number = 4;
   weaponSkill: number = 3;
