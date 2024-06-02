@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Profile, Weapon, Armor, ChaosAttribute, Warband } from './shared/models';
+import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
-import { HUMAN_PROFILES, PERSONAL_ATTRIBUTES } from './shared/constants';
+import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, OTHER_PROFILES, PERSONAL_ATTRIBUTES } from './shared/constants';
 import { ChaosPatron, Race } from './shared/enums';
 
 @Injectable({
@@ -14,19 +14,22 @@ export class WarbandService {
   createWarband(request: CreateWarbandRequest): Warband {
     let result: Warband = new Warband();
 
-    result.championName = request.championName;
+    result.name = request.championName;
     result.seed = request.seed;
-    result.chaosPatron = request.chaosPatron;
+    result.champion = new Champion();
+    result.champion.chaosPatron = request.chaosPatron;
 
-    result.race = getRandomRace(request.seed);
-    result.profile = getStartingProfile(request.seed, result.race);
+    result.champion.race = getRandomRace(request.seed);
+    result.champion.profile = getStartingProfile(request.seed, request.race);
 
-    //todo: include extra points based on hero level...
-    result.equipmentPoints = getRandomIntInclusive(1, 6, `${request.seed}-equipRoll1`);
-    
+    result.champion.equipmentPoints = getRandomIntInclusive(1, 6, `${request.seed}-equipRoll1`);
+    result.champion.equipmentPoints += result.champion.profile.heroLevel;
 
-    //let firstAttribute = getRandomAttribute(request.seed);
-    //result.profile.attributes.push(firstAttribute);
+    let firstAttribute = getRandomAttribute(request.seed);
+    result.champion.attributes.push(firstAttribute);
+
+    applyMarkOfChaos(request.seed, result.champion);
+
     return result;
   }
 }
@@ -91,24 +94,77 @@ function getRandomRace(seed: string): Race {
   return Race.Zoat;
 }
 
-function getStartingProfile(seed: string, race: Race):Profile {
-
-
-  let profileRoll1 = getRandomIntInclusive(1, 100, `${seed}-profileRoll1`);
+function getStartingProfile(seed: string, race: Race): Profile {
 
   //TODO: let users cap min/max hero levels...
+  let profileRoll1 = getRandomIntInclusive(1, 100, `${seed}-profileRoll1`);
 
-  if (race == Race.Human) {
-    for (var i = 0; i < PERSONAL_ATTRIBUTES.length; i++) {
-      if (HUMAN_PROFILES[i].rollNumber <= profileRoll1) {
-        return HUMAN_PROFILES[i];
+  switch (race) {
+    case Race.WereMan:
+    case Race.Human: {
+      for (var i = 0; i < HUMAN_PROFILES.length; i++) {
+        if (HUMAN_PROFILES[i].rollNumber <= profileRoll1) {
+          return HUMAN_PROFILES[i];
+        }
       }
+      return HUMAN_PROFILES[0];
+    }
+    case Race.Dwarf: {
+      for (var i = 0; i < DWARF_PROFILES.length; i++) {
+        if (DWARF_PROFILES[i].rollNumber <= profileRoll1) {
+          return DWARF_PROFILES[i];
+        }
+      }
+      return DWARF_PROFILES[0];
+    }
+    case Race.DarkElf: {
+      for (var i = 0; i < DARKELF_PROFILES.length; i++) {
+        if (DARKELF_PROFILES[i].rollNumber <= profileRoll1) {
+          return DARKELF_PROFILES[i];
+        }
+      }
+      return DARKELF_PROFILES[0]
+    }
+    case Race.Beastman: {
+      return OTHER_PROFILES[0];
+    }
+    case Race.Centaur: {
+      return OTHER_PROFILES[1];
+    }
+    case Race.Fimir_Fimmaur: {
+      return OTHER_PROFILES[2];
+    }
+    case Race.Fimir_Shearl: {
+      return OTHER_PROFILES[3];
+    }
+    case Race.Goblin: {
+      return OTHER_PROFILES[4];
+    }
+    case Race.DragonOgre: {
+      return OTHER_PROFILES[5];
+    }
+    case Race.Hobgoblin: {
+      return OTHER_PROFILES[6];
+    }
+    case Race.Lizardman: {
+      return OTHER_PROFILES[7];
+    }
+    case Race.Minotaur: {
+      return OTHER_PROFILES[8];
+    }
+    case Race.Orc: {
+      return OTHER_PROFILES[9];
+    }
+    case Race.Skaven: {
+      return OTHER_PROFILES[10];
+    }
+    case Race.Slann: {
+      return OTHER_PROFILES[11];
+    }
+    case Race.Zoat: {
+      return OTHER_PROFILES[12];
     }
   }
-
-
-
-  return HUMAN_PROFILES[0];
 }
 
 function getRandomAttribute(seed:string):ChaosAttribute {
@@ -120,13 +176,14 @@ function getRandomAttribute(seed:string):ChaosAttribute {
       return PERSONAL_ATTRIBUTES[i];
     }
   }
-
   return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length -1];
 }
 
+function applyMarkOfChaos(seed: string, champion:Champion) {
 
+    //TODO: apply mark of chaos...
 
-
+}
 
 export class CreateWarbandRequest {
   championName: string = "";

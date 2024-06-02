@@ -1,12 +1,22 @@
 import { ChaosPatron, Race } from '../shared/enums';
 
 export class Warband {
-  championName: string = "Name";
+  name: string = "Name";
+  seed: string = "";
+  champion: Champion = new Champion();
+}
+
+export class Champion {
+  name: string = "Name";
   chaosPatron: ChaosPatron = ChaosPatron.Undivided;
   race: Race = Race.Human;
   profile: Profile = new Profile();
   equipmentPoints: number = 0;
   seed: string = "";
+  weapons: Weapon[] = [];
+  armor: Armor[] = [];
+  attributes: ChaosAttribute[] = [];
+  rewards: ChaosReward[] = [];
 
   chaosPatronDisplayName() {
     return ChaosPatron[this.chaosPatron];
@@ -18,6 +28,7 @@ export class Warband {
     return `${0}\\${0}`;
   }
 }
+
 
 export class Profile {
   rollNumber: number = 0;
@@ -59,6 +70,11 @@ export class ChaosAttribute {
   fearPoints: number = 0;
 }
 
-
+export class ChaosReward {
+  name: string = "Frenzy";
+  rollNumber: number = 43;
+  description: string = "The Champion and all the current members of his Warband become subject to frenzy. Second and subsequent figts of frenzy reduce cool by -1 to a minimum of 2.";
+  tags: string[] = ["Frenzy"];
+}
 
 

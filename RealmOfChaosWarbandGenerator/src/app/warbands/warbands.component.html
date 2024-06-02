@@ -3,15 +3,15 @@
   <div>
     <div>
       <span class="warband-label">Champion</span>
-      <span class="warband-value">{{warband.championName}}</span>
+      <span class="warband-value">{{warband.champion.name}}</span>
     </div>
     <div>
       <span class="warband-label">Chaos Patron</span>
-      <span class="warband-value">{{ warband.chaosPatronDisplayName() }}</span>
+      <span class="warband-value">{{ warband.champion.chaosPatronDisplayName() }}</span>
     </div>
     <div>
       <span class="warband-label">Race</span>
-      <span class="warband-value">{{ warband.raceDisplayName() }}</span>
+      <span class="warband-value">{{ warband.champion.raceDisplayName() }}</span>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     <div>
       <span class="warband-label">Rewards/Attributes</span>
       <span class="warband-value">
-        {{warband.rewardToAttributeRatio()}}
+        {{warband.champion.rewardToAttributeRatio()}}
       </span>
     </div>
     <div>

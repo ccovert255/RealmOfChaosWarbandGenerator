@@ -22,7 +22,7 @@ describe('WarbandService', () => {
     request.seed = "test";
 
     let result = service.createWarband(request);
-    expect(result.championName).toBe(request.championName);
+    expect(result.name).toBe(request.championName);
     expect(result.chaosPatron).toBe(request.chaosPatron);
     expect(result.seed).toBe(request.seed);
     expect(result.equipmentPoints).toBeGreaterThan(0);
