@@ -1,14 +1,29 @@
-import { ChaosGod } from '../shared/enums';
+import { ChaosPatron, Race } from '../shared/enums';
 
 export class Warband {
-  championName: string = "";
-  chaosGod: ChaosGod = ChaosGod.Undivided;
+  championName: string = "Name";
+  chaosPatron: ChaosPatron = ChaosPatron.Undivided;
+  race: Race = Race.Human;
   profile: Profile = new Profile();
   equipmentPoints: number = 0;
   seed: string = "";
+
+  chaosPatronDisplayName() {
+    return ChaosPatron[this.chaosPatron];
+  }
+  raceDisplayName() {
+    return Race[this.race];
+  }
+  rewardToAttributeRatio() {
+    return `${0}\\${0}`;
+  }
 }
 
 export class Profile {
+  rollNumber: number = 0;
+  description: string = "Human"
+  heroLevel: number = 0;
+  wizardLevel: number = 0;
   movement: number = 4;
   weaponSkill: number = 3;
   ballisticSkill: number = 3;
@@ -21,10 +36,6 @@ export class Profile {
   intelligence: number = 7;
   cool: number = 7;
   willPower: number = 7;
-  weapons: Weapon[] = [];
-  armor: Armor[] = []
-  heroLevel: number = 0;
-  attributes: ChaosAttribute[] = [];
 }
 
 export class Weapon {

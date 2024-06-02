@@ -1,16 +1,26 @@
-.profile-container {
+.warband-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "profile profile"
+    "equip armor"
+    "followers followers";
 }
-.profile-header {
-    border:1px solid black;
-    text-align:center;
-    font-weight:bold;
-    padding: 4px;
+
+app-profile {
+  grid-area: profile;
 }
-.profile-row {
-  border: 1px solid black;
-  text-align: center;
-  padding: 4px;
+
+.warband-label {
+    font-size: 0.8rem;
+    display:block;
 }
+
+.warband-value {
+  font-size: 1.5rem;
+  padding: 4px 0 8px 0;
+  display:block;
+}
+

@@ -1,7 +1,42 @@
 <div class="warband-container">
-  <h2>{{warband.championName}}</h2>
-  <div><span>Chaos God: </span>{{warband.chaosGod}}</div>
-  <div><span>Equipment Points: </span>{{warband.equipmentPoints}}</div>
+
+  <div>
+    <div>
+      <span class="warband-label">Champion</span>
+      <span class="warband-value">{{warband.championName}}</span>
+    </div>
+    <div>
+      <span class="warband-label">Chaos Patron</span>
+      <span class="warband-value">{{ warband.chaosPatronDisplayName() }}</span>
+    </div>
+    <div>
+      <span class="warband-label">Race</span>
+      <span class="warband-value">{{ warband.raceDisplayName() }}</span>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <span class="warband-label">Rewards/Attributes</span>
+      <span class="warband-value">
+        {{warband.rewardToAttributeRatio()}}
+      </span>
+    </div>
+    <div>
+      <span class="warband-label">Equipment Pts</span>
+      <span class="warband-value">0</span>
+    </div>
+    <div>
+      <span class="warband-label">Fear Pts</span>
+      <span class="warband-value">0</span>
+    </div>
+  </div>
+  <div>
+    <span class="warband-label">Weapons</span>
+  </div>
+  <div>
+    <span class="warband-label">Armor</span>
+  </div>
   <app-profile></app-profile>
 </div>
 
