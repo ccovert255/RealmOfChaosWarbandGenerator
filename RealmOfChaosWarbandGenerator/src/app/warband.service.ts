@@ -21,7 +21,7 @@ export class WarbandService {
     result.champion.chaosPatron = request.chaosPatron;
 
     result.champion.race = getRandomRace(request.seed);
-    result.champion.profile = getStartingProfile(request.seed, request.race);
+    result.champion.profile = getStartingProfile(request.seed, result.champion.race);
     console.log(result.champion.profile);
 
     result.champion.equipmentPoints = getRandomIntInclusive(1, 6, `${request.seed}-equipRoll1`);
@@ -106,7 +106,8 @@ function getStartingProfile(seed: string, race: Race): Profile {
     case Race.WereMan:
     case Race.Human: {
       for (var i = 0; i < HUMAN_PROFILES.length; i++) {
-        if (HUMAN_PROFILES[i].rollNumber <= profileRoll1) {
+        console.log(` ${HUMAN_PROFILES[i].rollNumber} vs ${profileRoll1}`);
+        if (profileRoll1 <= HUMAN_PROFILES[i].rollNumber) {
           return HUMAN_PROFILES[i];
         }
       }
@@ -114,7 +115,7 @@ function getStartingProfile(seed: string, race: Race): Profile {
     }
     case Race.Dwarf: {
       for (var i = 0; i < DWARF_PROFILES.length; i++) {
-        if (DWARF_PROFILES[i].rollNumber <= profileRoll1) {
+        if (profileRoll1 <= DWARF_PROFILES[i].rollNumber) {
           return DWARF_PROFILES[i];
         }
       }
@@ -122,7 +123,7 @@ function getStartingProfile(seed: string, race: Race): Profile {
     }
     case Race.DarkElf: {
       for (var i = 0; i < DARKELF_PROFILES.length; i++) {
-        if (DARKELF_PROFILES[i].rollNumber <= profileRoll1) {
+        if (profileRoll1 <= DARKELF_PROFILES[i].rollNumber) {
           return DARKELF_PROFILES[i];
         }
       }
@@ -175,7 +176,7 @@ function getRandomAttribute(seed:string):ChaosAttribute {
   var rand = getRandomIntInclusive(1, 1000, `${seed}-attributeRoll1`);
 
   for (var i = 0; i < PERSONAL_ATTRIBUTES.length; i++) {
-    if (PERSONAL_ATTRIBUTES[i].rollNumber <= rand) {
+    if (rand <= PERSONAL_ATTRIBUTES[i].rollNumber) {
       return PERSONAL_ATTRIBUTES[i];
     }
   }
