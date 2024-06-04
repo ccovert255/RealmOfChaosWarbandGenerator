@@ -27,6 +27,45 @@ export class Champion {
   rewardToAttributeRatio() {
     return `${0}\\${0}`;
   }
+
+  fearPoints() {
+    let fearPoints = 0;
+    this.attributes.forEach(a => fearPoints += a.fearPoints);
+    return fearPoints;
+  }
+
+  profileWithBonuses() {
+    let bonusProfile = new Profile();
+    bonusProfile.movement = this.profile.movement;
+    bonusProfile.weaponSkill = this.profile.weaponSkill;
+    bonusProfile.ballisticSkill = this.profile.ballisticSkill;
+    bonusProfile.strength = this.profile.strength;
+    bonusProfile.toughness = this.profile.toughness;
+    bonusProfile.wounds = this.profile.wounds;
+    bonusProfile.initiative = this.profile.initiative;
+    bonusProfile.attacks = this.profile.attacks;
+    bonusProfile.leadership = this.profile.leadership;
+    bonusProfile.cool = this.profile.cool;
+    bonusProfile.intelligence = this.profile.intelligence;
+    bonusProfile.willPower = this.profile.willPower;
+
+    this.rewards.forEach(function (r) {
+      bonusProfile.movement += r.profileBonus.movement;
+      bonusProfile.weaponSkill += r.profileBonus.weaponSkill;
+      bonusProfile.ballisticSkill += r.profileBonus.ballisticSkill;
+      bonusProfile.strength += r.profileBonus.strength;
+      bonusProfile.toughness += r.profileBonus.toughness;
+      bonusProfile.wounds += r.profileBonus.wounds;
+      bonusProfile.initiative += r.profileBonus.initiative;
+      bonusProfile.attacks += r.profileBonus.attacks;
+      bonusProfile.leadership += r.profileBonus.leadership;
+      bonusProfile.cool += r.profileBonus.cool;
+      bonusProfile.intelligence += r.profileBonus.intelligence;
+      bonusProfile.willPower += r.profileBonus.willPower;
+    });
+    return bonusProfile;
+  }
+
 }
 
 export class Profile {
@@ -64,16 +103,39 @@ export class Armor {
 }
 
 export class ChaosAttribute {
-  name: string = "Acid Excretion";
+  name: string = "";
   rollNumber: number = 5;
+  description: string = "";
   fearPoints: number = 0;
 }
 
 export class ChaosReward {
-  name: string = "Frenzy";
+  name: string = "";
   rollNumber: number = 43;
-  description: string = "The Champion and all the current members of his Warband become subject to frenzy. Second and subsequent figts of frenzy reduce cool by -1 to a minimum of 2.";
-  tags: string[] = ["Frenzy"];
+  description: string = "";
+  specialRules: RuleDescription[] = [];
+  profileBonus: ProfileBonus = new ProfileBonus();
+}
+
+export class RuleDescription {
+  code: number = 0;
+  name: string = "";
+  description: string = "";
+}
+
+export class ProfileBonus {
+  movement: number = 0;
+  weaponSkill: number = 0;
+  ballisticSkill: number = 0;
+  strength: number = 0;
+  toughness: number = 0;
+  wounds: number = 0;
+  initiative: number = 0;
+  attacks: number = 0;
+  leadership: number = 0;
+  intelligence: number = 0;
+  cool: number = 0;
+  willPower: number = 0;
 }
 
 

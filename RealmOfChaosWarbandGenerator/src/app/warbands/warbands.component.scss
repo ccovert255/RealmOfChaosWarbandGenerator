@@ -18,10 +18,19 @@ app-profile {
     display:block;
 }
 
+.warband-list-label {
+  font-size: 0.8rem;
+  position: absolute;
+}
+
 .warband-value {
   font-size: 1.5rem;
   padding: 4px 0 8px 0;
   display:block;
+}
+
+.warband-section {
+    margin:8px 8px 0px 8px;
 }
 
 .mat-icon {

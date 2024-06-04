@@ -13,12 +13,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { CreateWarbandRequest, WarbandService } from '../warband.service';
 
 @Component({
   selector: 'app-warbands',
   standalone: true,
-  imports: [ProfileComponent, FormsModule, MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatSelectModule, MatDividerModule ],
+  imports: [ProfileComponent, FormsModule, MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatSelectModule, MatDividerModule, MatListModule],
   templateUrl: './warbands.component.html',
   styleUrl: './warbands.component.scss'
 })

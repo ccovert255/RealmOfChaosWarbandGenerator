@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
-import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, OTHER_PROFILES, PERSONAL_ATTRIBUTES } from './shared/constants';
+import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLANEESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES } from './shared/constants';
 import { ChaosPatron, Race } from './shared/enums';
 
 @Injectable({
@@ -22,16 +22,13 @@ export class WarbandService {
 
     result.champion.race = getRandomRace(request.seed);
     result.champion.profile = getStartingProfile(request.seed, result.champion.race);
-    console.log(result.champion.profile);
 
     result.champion.equipmentPoints = getRandomIntInclusive(1, 6, `${request.seed}-equipRoll1`);
     result.champion.equipmentPoints += result.champion.profile.heroLevel;
 
-    let firstAttribute = getRandomAttribute(request.seed);
-    result.champion.attributes.push(firstAttribute);
-
     applyMarkOfChaos(request.seed, result.champion);
 
+    console.log(result.champion);
     return result;
   }
 }
@@ -171,7 +168,7 @@ function getStartingProfile(seed: string, race: Race): Profile {
   }
 }
 
-function getRandomAttribute(seed:string):ChaosAttribute {
+function getRandomAttribute(seed: string): ChaosAttribute {
 
   var rand = getRandomIntInclusive(1, 1000, `${seed}-attributeRoll1`);
 
@@ -180,12 +177,36 @@ function getRandomAttribute(seed:string):ChaosAttribute {
       return PERSONAL_ATTRIBUTES[i];
     }
   }
-  return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length -1];
+  return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length - 1];
 }
 
-function applyMarkOfChaos(seed: string, champion:Champion) {
+function applyMarkOfChaos(seed: string, champion: Champion) {
 
-    //TODO: apply mark of chaos...
+  let firstAttribute = getRandomAttribute(seed);
+  champion.attributes.push(firstAttribute);
+
+  switch (+champion.chaosPatron) {
+    case ChaosPatron.Khorne:
+      champion.rewards.push(MARK_OF_KHORNE);
+      champion.armor.push({ armorSaveModifier: +3, name: "Chaos Armor", movementModifier: 0 });
+      break;
+    case ChaosPatron.Slaneesh:
+      champion.rewards.push(MARK_OF_SLANEESH);
+      break;
+    case ChaosPatron.Nurgle:
+      champion.rewards.push(MARK_OF_NURGLE);
+      break;
+    case ChaosPatron.Tzeentch:
+      champion.rewards.push(MARK_OF_TZEENTCH);
+      //add d3 total attributes
+
+      //add magic item
+
+      break;
+    default:
+    //add random reward
+
+  }
 
 }
 
