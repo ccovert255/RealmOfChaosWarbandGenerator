@@ -25,7 +25,7 @@ export class Champion {
     return Race[this.race];
   }
   rewardToAttributeRatio() {
-    return `${0}\\${0}`;
+    return `${this.rewards.length}\\${this.attributes.length}`;
   }
 
   fearPoints() {
