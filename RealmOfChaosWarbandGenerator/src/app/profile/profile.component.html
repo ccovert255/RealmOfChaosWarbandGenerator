@@ -13,17 +13,17 @@
   <div class="profile-header">Cl</div>
   <div class="profile-header">Wp</div>
 
-  <div class="profile-row">{{profile?.description}}</div>
-  <div class="profile-row">{{profile?.movement}}</div>
-  <div class="profile-row">{{profile?.weaponSkill}}</div>
-  <div class="profile-row">{{profile?.ballisticSkill}}</div>
-  <div class="profile-row">{{profile?.strength}}</div>
-  <div class="profile-row">{{profile?.toughness}}</div>
-  <div class="profile-row">{{profile?.wounds}}</div>
-  <div class="profile-row">{{profile?.initiative}}</div>
-  <div class="profile-row">{{profile?.attacks}}</div>
-  <div class="profile-row">{{profile?.leadership}}</div>
-  <div class="profile-row">{{profile?.cool}}</div>
-  <div class="profile-row">{{profile?.intelligence}}</div>
-  <div class="profile-row">{{profile?.willPower}}</div>
+  <div class="profile-row">{{champion?.profileWithBonuses()?.description}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('M')}">{{champion?.profileWithBonuses()?.movement}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('WS')}">{{champion?.profileWithBonuses()?.weaponSkill}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('BS')}">{{champion?.profileWithBonuses()?.ballisticSkill}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('S')}">{{champion?.profileWithBonuses()?.strength}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('T')}">{{champion?.profileWithBonuses()?.toughness}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('W')}">{{champion?.profileWithBonuses()?.wounds}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('I')}">{{champion?.profileWithBonuses()?.initiative}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('A')}">{{champion?.profileWithBonuses()?.attacks}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Ld')}">{{champion?.profileWithBonuses()?.leadership}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Cl')}">{{champion?.profileWithBonuses()?.cool}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Int')}">{{champion?.profileWithBonuses()?.intelligence}}</div>
+  <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Wp')}">{{champion?.profileWithBonuses()?.willPower}}</div>
 </div>

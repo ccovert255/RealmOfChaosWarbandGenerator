@@ -18,6 +18,8 @@ export class Champion {
   attributes: ChaosAttribute[] = [];
   rewards: ChaosReward[] = [];
 
+  refusedRewards: ChaosReward[] = [];
+
   chaosPatronDisplayName() {
     return ChaosPatron[this.chaosPatron];
   }
@@ -34,8 +36,133 @@ export class Champion {
     return fearPoints;
   }
 
+  profileStatBonus(stat: string): number {
+    let bonus = 0;
+    switch (stat) {
+      case ("M"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.movement;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.movement;
+        });
+        break;
+      case ("WS"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.weaponSkill;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.weaponSkill;
+        });
+        break;
+      case ("BS"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.ballisticSkill;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.ballisticSkill;
+        });
+        break;
+      case ("S"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.strength;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.strength;
+        });
+        break;
+      case ("T"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.toughness;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.toughness;
+        });
+        break;
+      case ("W"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.wounds;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.wounds;
+        });
+        break;
+      case ("I"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.initiative;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.initiative;
+        });
+        break;
+      case ("A"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.attacks;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.attacks;
+        });
+        break;
+      case ("Ld"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.leadership;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.leadership;
+        });
+        break;
+      case ("Int"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.intelligence;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.intelligence;
+        });
+        break;
+      case ("Cl"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.cool;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.cool;
+        });
+        break;
+      case ("Wp"):
+        this.rewards.forEach(function (r) {
+          bonus += r.profileBonus.willPower;
+        });
+
+        this.attributes.forEach(function (r) {
+          bonus += r.profileBonus.willPower;
+        });
+        break;
+    }
+    return bonus;
+  }
+
+  profileStatHasBonus(stat: string): boolean {
+    let bonus = this.profileStatBonus(stat);
+    if (bonus == 0) {
+      return false;
+    }
+    else { return true; }
+  }
+
+
   profileWithBonuses() {
     let bonusProfile = new Profile();
+    bonusProfile.description = this.profile.description;
     bonusProfile.movement = this.profile.movement;
     bonusProfile.weaponSkill = this.profile.weaponSkill;
     bonusProfile.ballisticSkill = this.profile.ballisticSkill;
@@ -63,6 +190,22 @@ export class Champion {
       bonusProfile.intelligence += r.profileBonus.intelligence;
       bonusProfile.willPower += r.profileBonus.willPower;
     });
+
+    this.attributes.forEach(function (r) {
+      bonusProfile.movement += r.profileBonus.movement;
+      bonusProfile.weaponSkill += r.profileBonus.weaponSkill;
+      bonusProfile.ballisticSkill += r.profileBonus.ballisticSkill;
+      bonusProfile.strength += r.profileBonus.strength;
+      bonusProfile.toughness += r.profileBonus.toughness;
+      bonusProfile.wounds += r.profileBonus.wounds;
+      bonusProfile.initiative += r.profileBonus.initiative;
+      bonusProfile.attacks += r.profileBonus.attacks;
+      bonusProfile.leadership += r.profileBonus.leadership;
+      bonusProfile.cool += r.profileBonus.cool;
+      bonusProfile.intelligence += r.profileBonus.intelligence;
+      bonusProfile.willPower += r.profileBonus.willPower;
+    });
+
     return bonusProfile;
   }
 
@@ -107,6 +250,7 @@ export class ChaosAttribute {
   rollNumber: number = 5;
   description: string = "";
   fearPoints: number = 0;
+  profileBonus: ProfileBonus = new ProfileBonus();
 }
 
 export class ChaosReward {

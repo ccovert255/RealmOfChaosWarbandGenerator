@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { Warband, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
+import { NgIf, NgClass } from '@angular/common';
+import { Warband, Profile, Weapon, Armor, ChaosAttribute, Champion } from '../shared/models';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [NgIf, NgClass],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  @Input() profile?: Profile;
+  @Input() champion?: Champion;
 }

@@ -18,3 +18,11 @@
   text-align: center;
   padding: 4px;
 }
+
+.bonus-stat {
+  font-weight: bold;
+}
+.bonus-stat:after {
+  content: " *";
+}
+
