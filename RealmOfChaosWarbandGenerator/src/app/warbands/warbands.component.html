@@ -22,7 +22,7 @@
   </mat-form-field>
 
   <button mat-flat-button (click)="onCreateWarband()">
-    <mat-icon>bolt</mat-icon>Generate
+    <mat-icon>bolt</mat-icon> Generate
   </button>
 
 </form>
@@ -67,11 +67,11 @@
 
   <div class="warband-section">
     <span class="warband-list-label">Rewards</span>
-    <mat-list>
+    <mat-list class="mat-list-wrapping">
       @for (reward of warband?.champion?.rewards; track reward.name) {
       <mat-list-item>
-        <span class="warband-value" matListItemTitle>{{reward.name}}</span>
-        <p matListItemLine>{{reward.description}}</p>
+        <span class="mat-list-title">{{reward.name}}</span>
+        <p class="warband-list-text">{{reward.description}}</p>
       </mat-list-item>
       }
     </mat-list>
@@ -81,8 +81,8 @@
     <mat-list>
       @for (attribute of warband?.champion?.attributes; track attribute) {
       <mat-list-item>
-        <span class="warband-value" matListItemTitle>{{attribute.name}} (<small>{{attribute.fearPoints}}fp</small>)</span>
-        <p matListItemLine>{{attribute.description}}</p>
+        <span class="mat-list-title">{{attribute.name}} (<small>{{attribute.fearPoints}}fp</small>)</span>
+        <p class="warband-list-text">{{attribute.description}}</p>
       </mat-list-item>
       }
     </mat-list>

@@ -1,4 +1,4 @@
-import { ChaosPatron, Race } from '../shared/enums';
+import { ChaosPatron, Race, SpellTpe } from '../shared/enums';
 
 export class Warband {
   name: string = "Name";
@@ -118,7 +118,7 @@ export class ChaosReward {
 }
 
 export class RuleDescription {
-  code: number = 0;
+  id: number = 0;
   name: string = "";
   description: string = "";
 }
@@ -137,5 +137,16 @@ export class ProfileBonus {
   cool: number = 0;
   willPower: number = 0;
 }
+
+export class Spell {
+  id: number = 1;
+  level: number = 1;
+  SpellTpe: SpellTpe = 1;
+  magicPoints: number = 1;
+  range: number = 0;
+  description: string = "";
+}
+
+
 
 

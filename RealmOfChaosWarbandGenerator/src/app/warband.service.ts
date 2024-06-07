@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
-import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLANEESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES } from './shared/constants';
+import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLANEESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES, STANDARD_REWARDS } from './shared/constants';
 import { ChaosPatron, Race } from './shared/enums';
 
 @Injectable({
@@ -168,9 +168,10 @@ function getStartingProfile(seed: string, race: Race): Profile {
   }
 }
 
-function getRandomAttribute(seed: string): ChaosAttribute {
+function getRandomAttribute(seed: string, rollName: string): ChaosAttribute {
 
-  var rand = getRandomIntInclusive(1, 1000, `${seed}-attributeRoll1`);
+  //TODO: guard against invalid initial attributes (chaos spawn, mindless, etc.)
+  var rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}`);
 
   for (var i = 0; i < PERSONAL_ATTRIBUTES.length; i++) {
     if (rand <= PERSONAL_ATTRIBUTES[i].rollNumber) {
@@ -180,9 +181,35 @@ function getRandomAttribute(seed: string): ChaosAttribute {
   return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length - 1];
 }
 
+function applyRandomReward(seed: string, rollName: string, champion: Champion) {
+
+  var rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}`);
+  if (rand < 41) {
+    champion.attributes.push(getRandomAttribute(seed, rollName));
+    return;
+  }
+
+  for (var i = 0; i < STANDARD_REWARDS.length; i++) {
+    if (rand <= STANDARD_REWARDS[i].rollNumber) {
+      let reward = STANDARD_REWARDS[i];
+
+      //check for re-roll conditions
+      if (reward.name == "" && champion.chaosPatron == ChaosPatron.Undivided) {
+        //TODO: re-roll
+        //TODO: track for second roll of this result, which will automatically be a Chaos Attribute
+      }
+
+      champion.rewards.push(reward);
+      return;
+    }
+  }
+
+  return;
+}
+
 function applyMarkOfChaos(seed: string, champion: Champion) {
 
-  let firstAttribute = getRandomAttribute(seed);
+  let firstAttribute = getRandomAttribute(seed, 'attribute1');
   champion.attributes.push(firstAttribute);
 
   switch (+champion.chaosPatron) {
@@ -198,13 +225,20 @@ function applyMarkOfChaos(seed: string, champion: Champion) {
       break;
     case ChaosPatron.Tzeentch:
       champion.rewards.push(MARK_OF_TZEENTCH);
-      //add d3 total attributes
+
+      var tzeentchRoll = getRandomIntInclusive(1, 3, `${seed}-tzeentchRoll1`);
+      if (tzeentchRoll > 1) {
+        champion.attributes.push(getRandomAttribute(seed, 'attribute2'));
+      }
+      if (tzeentchRoll > 2) {
+        champion.attributes.push(getRandomAttribute(seed, 'attribute3'));
+      }
 
       //add magic item
 
       break;
     default:
-    //add random reward
+      applyRandomReward(seed, 'reward1', champion);
 
   }
 

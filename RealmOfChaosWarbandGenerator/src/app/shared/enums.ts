@@ -25,3 +25,15 @@ export enum Race {
   Slann = 15,
   Zoat = 16,
 }
+
+export enum SpellTpe{
+  BattleMagic = 0,
+  Demonic = 1,
+  Elemental = 2,
+  Illusionist = 3,
+  Necromantic = 4,
+  Slaneesh = 5,
+  Nurgle = 6,
+  Tzeentch = 7
+}
+

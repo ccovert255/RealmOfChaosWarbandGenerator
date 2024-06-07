@@ -329,40 +329,18 @@ export const OTHER_PROFILES: Profile[] = [
   },
 ];
 
-export const FEAR_LEVELS: RuleDescription[] = [
-  {
-    code: -1,
-    name: "Reduced Fear",
-    description: "Reduce any fear effects caused by the mutant by one increment. Lose all 'plusses' and ranges of fear effects due to the ridiculous and unthreatening appearance of the mutant. 'Ordinary' fear becomes 'fear-1' (with a -1 bonus to the tester's dice roll)."
-  },
-  {
-    code: 4,
-    name: "No Fear Effect",
-    description: "The mutant does not cause fear."
-  },
-  {
-    code: 10,
-    name: "Causes Fear",
-    description: "The mutant causes fear in all living creatures. The mutant itself is immune to fear, except when cauased by Demons or deities."
-  },
-  {
-    code: 15,
-    name: "Causes Terror",
-    description: `The mutant causes fear 6"+1/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Demons or deities.`
-  },
-  {
-    code: 100,
-    name: "Causes Terror",
-    description: `The mutant causes fear 6"+2/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Greater Demons or deities.`
-  },
-];
-
-export const WEAPON_RULES: RuleDescription[] = [
-  { code: 0, name: "Double-Handed", description: "Double-handed weapons need both hands, making it impossible to use a shield. Double-handed weapons are treated as improvised if used one-handed." },
-  { code: 1, name: "Difficult To Use", description: "Must have a WS of at least 3 to use. If WS is lower the weapon counts as improvised." },
-  { code: 2, name: "Mounted Troop Defense", description: "Add +1 initiative against mounted opponents, provided the unit has not been pushed back." },
-  { code: 3, name: "Air Troop Defense", description: "Add +1 initiative against aerial opponents." },
-  { code: 3, name: "Multiple Ranks", description: "Half of models in the second rank may fight, if immediatly behind an enganged model in the front rank." },
+export const SPECIAL_RULES: RuleDescription[] = [
+  { id: 0, name: "Double-Handed", description: "Double-handed weapons need both hands, making it impossible to use a shield. Double-handed weapons are treated as improvised if used one-handed." },
+  { id: 1, name: "Difficult To Use", description: "Must have a WS of at least 3 to use. If WS is lower the weapon counts as improvised." },
+  { id: 2, name: "Mounted Troop Defense", description: "Add +1 initiative against mounted opponents, provided the unit has not been pushed back." },
+  { id: 3, name: "Air Troop Defense", description: "Add +1 initiative against aerial opponents." },
+  { id: 4, name: "Multiple Ranks", description: "Half of models in the second rank may fight, if immediatly behind an enganged model in the front rank." },
+  { id: 5, name: "Chaos Armor", description: "Effective against magical attacks. Can be worn by wizards without affecting casting abilities." },
+  { id: 6, name: "Reduced Fear", description: "Reduce any fear effects caused by the mutant by one increment. Lose all 'plusses' and ranges of fear effects due to the ridiculous and unthreatening appearance of the mutant. 'Ordinary' fear becomes 'fear-1' (with a -1 bonus to the tester's dice roll)."},
+  { id: 7, name: "No Fear Effect", description: "The mutant does not cause fear."},
+  { id: 8, name: "Causes Fear", description: "The mutant causes fear in all living creatures. The mutant itself is immune to fear, except when cauased by Demons or deities." },
+  { id: 9, name: "Causes Terror", description: `The mutant causes fear 6"+1/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Demons or deities.`},
+  { id: 10, name: "Causes Terror", description: `The mutant causes fear 6"+2/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Greater Demons or deities.`},
 ];
 
 export const MARK_OF_KHORNE: ChaosReward = { name: "Mark of Khorne", description: "Chaos Armor, Lose 1 magic level", rollNumber: 0, specialRules: [], profileBonus: new ProfileBonus() };
@@ -380,8 +358,7 @@ export const MARK_OF_SLANEESH: ChaosReward = {
     intelligence: 0,
     cool: 0,
     willPower:  1
-  }
-};
+  }};
 export const MARK_OF_NURGLE: ChaosReward = {
   name: "Mark of Nurgle", description: "+1 Toughness", rollNumber: 0, specialRules: [], profileBonus: {
     movement: 0,
@@ -399,3 +376,28 @@ export const MARK_OF_NURGLE: ChaosReward = {
   }
 };
 export const MARK_OF_TZEENTCH: ChaosReward = { name: "Mark of Tzeentch", description: "D3 Attributes, Magic Item", rollNumber: 0, specialRules: [], profileBonus: new ProfileBonus() };
+
+export const STANDARD_REWARDS: ChaosReward[] = [
+  { rollNumber: 43, name: "Frenzy", description: "Champion and all current members of his Warband becom subject to frenzy. Subsequent gifts of frenzy reduce cool by -1 to a minimum of 2", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 48, name: "Demon Weapon", description: "Champion is gifted with a deamon weapon. A Champion can be gifted up two demon weapons, but if he receives a 3rd then the two he already has merge into a single mighty blade. Unless the Champion is a follower of Khorne, he may forsake the Demon Weapon in favor of a randomly generated magic item.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 53, name: "Chaos Armor", description: "Champion is gifted with Chaos Armor 4+. Chaos Armor is effective against magical attacks and can be worn by a wizard without affecting his abilities in any way. If the Champion already has Chaos Armor it's saving throw is increased by +1. On a D6 roll of 4+ it fuses with the Champion's body increasing his toughness by +1.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 58, name: "Demonic Steed", description: "Champton recieves a Demonic Steed.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 63, name: "Chaos Spawn", description: "Champion is gifted with D6 Chaos Spawn to use in whatever manner he chooses, for example as mounts, fighters, or pull chariots.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 69, name: "Strength", description: "Champion is gifted with great strength. Add +3 to strength up to a maximum of 10.", specialRules: [], profileBonus: {
+    movement: 0,
+    weaponSkill: 0,
+    ballisticSkill: 0,
+    strength: 3,
+    toughness: 0,
+    wounds: 0,
+    initiative: 0,
+    attacks: 0,
+    leadership: 0,
+    intelligence: 0,
+    cool: 0,
+    willPower: 0}
+  },
+  { rollNumber: 85, name: "Gift of the Gods", description: "Roll from the Champion's Patron Gift Table. If the Champion has no Patron this result must be re-rolled. If same result is rolled a second time the champion is rewarded with a Chaos Attribute instead.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 90, name: "Demonic Creatures", description: "Champion is gifted with D6 Chaos Hounds. If the Champion has a Patron he can choose a single 'beast' creature of his Patron instead. (Fleshhound/Fiend/Beast of Nurgle/Flamer)", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 100, name: "Eye of God", description: "Champion is judged by the Chaos Gods. 1) If the champion has 6+ Rewards and less than 6 Attributes they become a Demon Prince. 2) If the champion has 6 or more attributes they become a Chaos Spawn. 3) Otherwise the Champion is given a chaos Weapon. Wizards recieve +1 attack and +1 wound. Non-Khorne or non-wizard Champions become lvl 1 wizards. Khorne champions are given a Collar of Khorne and a Fleshhound instead.", specialRules: [], profileBonus: new ProfileBonus() }
+]

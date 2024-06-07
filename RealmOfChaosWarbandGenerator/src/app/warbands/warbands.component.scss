@@ -1,12 +1,9 @@
 .warband-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   grid-template-rows: auto;
   grid-template-areas:
-    "header header"
-    "profile profile"
-    "equip armor"
-    "followers followers";
+    "header header" "profile profile" "equip armor" "followers followers";
 }
 
 app-profile {
@@ -16,11 +13,19 @@ app-profile {
 .warband-label {
     font-size: 0.8rem;
     display:block;
+    margin:0px;
 }
 
 .warband-list-label {
   font-size: 0.8rem;
   position: absolute;
+  white-space: break-spaces;
+}
+
+.warband-list-text {
+  font-size: 0.8rem;
+  white-space: break-spaces;
+  margin:0px 0px 0px 0px;
 }
 
 .warband-value {
@@ -45,7 +50,22 @@ mat-divider {
   margin: 12px 0px;
 }
 
+.example-list-wrapping {
+  max-width: 100px;
+}
+
 button {
     display:block;
+}
+
+mat-list-item {
+    display:inline-block;
+    overflow:visible;
+}
+
+.mat-list-title {
+  font-size: 1.5rem;
+display:inline-block;
+padding-top:8px;
 }
 
