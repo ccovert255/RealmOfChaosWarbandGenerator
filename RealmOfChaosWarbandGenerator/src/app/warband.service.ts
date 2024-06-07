@@ -84,13 +84,9 @@ function applyRandomReward(seed: string, rollName: string, champion: Champion) {
       applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
       return;
     }
-    else {
-
-      champion.rewards.push(reward);
-      return;
-    }
   }
 
+  champion.rewards.push(reward);
   return;
 }
 
