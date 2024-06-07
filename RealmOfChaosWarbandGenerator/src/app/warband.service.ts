@@ -33,6 +33,104 @@ export class WarbandService {
   }
 }
 
+
+
+function applyInitalAttribute(seed: string, rollName: string, champion: Champion) {
+
+  var rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}`);
+  var attribute = getChaosAttribute(rand);
+
+  //TODO: re-roll invalid intial attribute rolls like Chaos Spawn (optionally include total shit attributes like Mindeless, Pinhead, etc?)
+  let reroll = 0;
+  while (attribute.name == "Chaos Spawn") {
+    console.log(`Rolled ${rand} for "Chaos Spawn". Re-rolling...`);
+    rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}-${reroll}`);
+    attribute = getChaosAttribute(rand);
+  }
+
+  champion.attributes.push(attribute);
+  console.log(`Rolled ${rand} for attribute: ${attribute.name}`);
+  return;
+}
+
+function applyRandomReward(seed: string, rollName: string, champion: Champion) {
+
+  //TODO: allow user to refuse standard reward and take patron gift instead
+
+  var rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}`);
+  if (rand < 41) {
+    console.log(`Rolled ${rand} for reward: Chaos Attribute`);
+    applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
+    return;
+  }
+
+  let reward = getStandardReward(rand);
+  console.log(`Rolled ${rand} for reward: ${reward.name}`);
+
+  //check for re-roll conditions
+  if (reward.name == "Gift of the Gods" && champion.chaosPatron == ChaosPatron.Undivided) {
+
+    rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}-2`);
+    console.log(`Re-rolling Gift of the Gods for Undivided Champion, rolled ${rand}`);
+    if (rand < 41) {
+      applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
+      return;
+    }
+
+    reward = getStandardReward(rand);
+    if (reward.name == "Gift of the Gods") {
+      //second dupe results in chaos attribute
+      console.log(`Gift of the Gods rolled again, applying Chaos Attribute...`);
+      applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
+      return;
+    }
+    else {
+
+      champion.rewards.push(reward);
+      return;
+    }
+  }
+
+  return;
+}
+
+function applyMarkOfChaos(seed: string, champion: Champion) {
+
+  applyInitalAttribute(seed, `${seed}-attribute1`, champion);
+
+  switch (+champion.chaosPatron) {
+    case ChaosPatron.Khorne:
+      champion.rewards.push(MARK_OF_KHORNE);
+      champion.armor.push({ armorSaveModifier: +3, name: "Chaos Armor", movementModifier: 0 });
+      break;
+    case ChaosPatron.Slaneesh:
+      champion.rewards.push(MARK_OF_SLANEESH);
+      break;
+    case ChaosPatron.Nurgle:
+      champion.rewards.push(MARK_OF_NURGLE);
+      break;
+    case ChaosPatron.Tzeentch:
+      champion.rewards.push(MARK_OF_TZEENTCH);
+
+      var tzeentchRoll = getRandomIntInclusive(1, 3, `${seed}-tzeentchRoll1`);
+      if (tzeentchRoll > 1) {
+        applyInitalAttribute(seed, `${seed}-attribute2`, champion);
+      }
+      if (tzeentchRoll > 2) {
+        applyInitalAttribute(seed, `${seed}-attribute3`, champion);
+      }
+
+      //add magic item
+
+      break;
+    default:
+      applyRandomReward(seed, 'reward1', champion);
+
+  }
+
+}
+
+
 function getRandomRace(seed: string): Race {
 
   let raceRoll1 = getRandomIntInclusive(1, 100, `${seed}-raceRoll1`);
@@ -103,7 +201,6 @@ function getStartingProfile(seed: string, race: Race): Profile {
     case Race.WereMan:
     case Race.Human: {
       for (var i = 0; i < HUMAN_PROFILES.length; i++) {
-        console.log(` ${HUMAN_PROFILES[i].rollNumber} vs ${profileRoll1}`);
         if (profileRoll1 <= HUMAN_PROFILES[i].rollNumber) {
           return HUMAN_PROFILES[i];
         }
@@ -168,59 +265,6 @@ function getStartingProfile(seed: string, race: Race): Profile {
   }
 }
 
-function applyInitalAttribute(seed: string, rollName: string, champion: Champion) {
-
-  var rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}`);
-  var attribute = getChaosAttribute(rand);
-
-  //TODO: re-roll invalid intial attribute rolls like Chaos Spawn (optionally include total shit attributes like Mindeless, Pinhead, etc?)
-  let reroll = 0;
-  while (attribute.name == "Chaos Spawn") {
-    rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}-${reroll}`);
-    attribute = getChaosAttribute(rand);
-  }
-
-  champion.attributes.push(attribute);
-
-  return;
-}
-
-function applyRandomReward(seed: string, rollName: string, champion: Champion) {
-
-  //TODO: allow user to refuse standard reward and take patron gift instead
-
-  var rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}`);
-  if (rand < 41) {
-    applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
-    return;
-  }
-
-  let reward = getStandardReward(rand);
-
-  //check for re-roll conditions
-  if (reward.name == "Gift of the Gods" && champion.chaosPatron == ChaosPatron.Undivided) {
-    rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}-2`);
-
-    if (rand < 41) {
-      applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
-      return;
-    }
-
-    reward = getStandardReward(rand);
-    if (reward.name == "Gift of the Gods") {
-      //second dupe results in chaos attribute
-      applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
-      return;
-    }
-    else {
-      champion.rewards.push(reward);
-      return;
-    }
-  }
-
-  return;
-}
-
 function getChaosAttribute(rollNumber: number): ChaosAttribute {
   for (var i = 0; i < PERSONAL_ATTRIBUTES.length; i++) {
     if (rollNumber <= PERSONAL_ATTRIBUTES[i].rollNumber) {
@@ -239,41 +283,6 @@ function getStandardReward(rollNumber:number): ChaosReward {
   return STANDARD_REWARDS[STANDARD_REWARDS.length-1];
 }
 
-function applyMarkOfChaos(seed: string, champion: Champion) {
-
-  applyInitalAttribute(seed, `${seed}-attribute1`, champion);
-
-  switch (+champion.chaosPatron) {
-    case ChaosPatron.Khorne:
-      champion.rewards.push(MARK_OF_KHORNE);
-      champion.armor.push({ armorSaveModifier: +3, name: "Chaos Armor", movementModifier: 0 });
-      break;
-    case ChaosPatron.Slaneesh:
-      champion.rewards.push(MARK_OF_SLANEESH);
-      break;
-    case ChaosPatron.Nurgle:
-      champion.rewards.push(MARK_OF_NURGLE);
-      break;
-    case ChaosPatron.Tzeentch:
-      champion.rewards.push(MARK_OF_TZEENTCH);
-
-      var tzeentchRoll = getRandomIntInclusive(1, 3, `${seed}-tzeentchRoll1`);
-      if (tzeentchRoll > 1) {
-        applyInitalAttribute(seed, `${seed}-attribute2`, champion);
-      }
-      if (tzeentchRoll > 2) {
-        applyInitalAttribute(seed, `${seed}-attribute3`, champion);
-      }
-
-      //add magic item
-
-      break;
-    default:
-      applyRandomReward(seed, 'reward1', champion);
-
-  }
-
-}
 
 export class CreateWarbandRequest {
   championName: string = "";
