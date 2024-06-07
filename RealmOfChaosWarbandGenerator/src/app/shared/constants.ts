@@ -1,10 +1,10 @@
 import { ChaosAttribute, ChaosReward, Profile, ProfileBonus, RuleDescription } from "./models";
 
 export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
-  { rollNumber: 5, name: "Acid Excretion", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
+  { rollNumber: 5, name: "Acid Excretion", fearPoints: 1, description: "Any create in combat with the mutant suffers one S5 hit every turn it fails to hit the mutant. Non-magical weapons are destroyed on the first wounding blow. Non-magical armor and shields are destroyed after first armor save. The mutant may not wear non-magical armor or use non-magical weapons.", profileBonus: new ProfileBonus() },
   { rollNumber: 10, name: "Additional Eye", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
   {
-    rollNumber: 15, name: "Agility", fearPoints: 0, description: "", profileBonus: {
+    rollNumber: 15, name: "Agility", fearPoints: 0, description: "Initiative + 3", profileBonus: {
       movement: 0,
       weaponSkill: 0,
       ballisticSkill: 0,
@@ -19,14 +19,71 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       willPower: 0
     }
   },
-  { rollNumber: 20, name: "Albino", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
-  { rollNumber: 25, name: "Alcoholism", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
-  { rollNumber: 30, name: "Atrophy", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
-  { rollNumber: 40, name: "Beaked", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
-  { rollNumber: 175, name: "Bestial Face", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
-  { rollNumber: 180, name: "Beweaponed Extremities", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 20, name: "Albino", fearPoints: 0, description: "Reduce T by -0.5", profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: -0.5,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  {
+    rollNumber: 25, name: "Alcoholism", fearPoints: 0, description: "Reduce M by -1. Roll a D6 each full game turn, on a 6 the mutant is drunk. Each player rolls D6 at the start of their turn: 1: Mutant staggers in random direction. 2-4: Mutant stands still in drunken haze. 5/6: That player controls the mutant this turn.", profileBonus: {
+      movement: -1,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 30, name: "Atrophy", fearPoints: 0, description: "Roll D6 to determin how many parts are attrified: 1-3 = One, 4-5 = Two, 6 = Three. Reduce I and T by -0.5 per affected area. Roll D6 to determine area: 1 = Head (Int -2, Stupidity), 2-4 = Arm (A-1), 5-6 = Leg (M-2)", profileBonus: new ProfileBonus() },
+  { rollNumber: 40, name: "Beaked", fearPoints: 1, description: "+1 Bite Attack", profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 175, name: "Bestial Face", fearPoints: 1, description: "Roll D10 to determine face type: 1-2 = Face of beast of Patron (Khorne followers may choose Dog Face +1 Bite Attack), 3-9 = Goat face (+1 Gore Attack), 10 = Consult Extended Table (D20)", profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 180, name: "Beweaponed Extremities", fearPoints: 1, description: "Mutants without arms also suffer 'Quadruped/Biped' effects. Roll D6 to determine type: 1-3: Blades, 4-6 Maces. S+1, I-1, AP-1 for attacks with these weapons. Mutant cannot use other weapon types.", profileBonus: new ProfileBonus() },
   { rollNumber: 185, name: "Big Ears", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
-  { rollNumber: 190, name: "Bird's Feet", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 190, name: "Bird's Feet", fearPoints: 0, description: "T +0.5. If the mutant can fly, it also gains +2 Claw Attacks if flying above opponent.", profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0.5,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    }
+},
   { rollNumber: 195, name: "Black Skin", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
   { rollNumber: 200, name: "Blood Rage", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
   { rollNumber: 210, name: "Blood Substitution", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },

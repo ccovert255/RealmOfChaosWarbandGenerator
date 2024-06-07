@@ -48,6 +48,15 @@ function applyInitalAttribute(seed: string, rollName: string, champion: Champion
     attribute = getChaosAttribute(rand);
   }
 
+
+  //handle custom attributes the need further rolls
+  if (attribute.name == "Atrophy") {
+    //TODO: roll for affected areas and calc stat losses
+  }
+
+
+
+
   champion.attributes.push(attribute);
   console.log(`Rolled ${rand} for attribute: ${attribute.name}`);
   return;
