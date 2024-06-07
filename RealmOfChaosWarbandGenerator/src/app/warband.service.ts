@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband } from './shared/models';
+import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband, ChaosReward } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
 import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLANEESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES, STANDARD_REWARDS } from './shared/constants';
 import { ChaosPatron, Race } from './shared/enums';
@@ -168,37 +168,51 @@ function getStartingProfile(seed: string, race: Race): Profile {
   }
 }
 
-function getRandomAttribute(seed: string, rollName: string): ChaosAttribute {
+function applyInitalAttribute(seed: string, rollName: string, champion: Champion) {
 
-  //TODO: guard against invalid initial attributes (chaos spawn, mindless, etc.)
   var rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}`);
+  var attribute = getChaosAttribute(rand);
 
-  for (var i = 0; i < PERSONAL_ATTRIBUTES.length; i++) {
-    if (rand <= PERSONAL_ATTRIBUTES[i].rollNumber) {
-      return PERSONAL_ATTRIBUTES[i];
-    }
+  //TODO: re-roll invalid intial attribute rolls like Chaos Spawn (optionally include total shit attributes like Mindeless, Pinhead, etc?)
+  let reroll = 0;
+  while (attribute.name == "Chaos Spawn") {
+    rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}-${reroll}`);
+    attribute = getChaosAttribute(rand);
   }
-  return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length - 1];
+
+  champion.attributes.push(attribute);
+
+  return;
 }
 
 function applyRandomReward(seed: string, rollName: string, champion: Champion) {
 
+  //TODO: allow user to refuse standard reward and take patron gift instead
+
   var rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}`);
   if (rand < 41) {
-    champion.attributes.push(getRandomAttribute(seed, rollName));
+    applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
     return;
   }
 
-  for (var i = 0; i < STANDARD_REWARDS.length; i++) {
-    if (rand <= STANDARD_REWARDS[i].rollNumber) {
-      let reward = STANDARD_REWARDS[i];
+  let reward = getStandardReward(rand);
 
-      //check for re-roll conditions
-      if (reward.name == "" && champion.chaosPatron == ChaosPatron.Undivided) {
-        //TODO: re-roll
-        //TODO: track for second roll of this result, which will automatically be a Chaos Attribute
-      }
+  //check for re-roll conditions
+  if (reward.name == "Gift of the Gods" && champion.chaosPatron == ChaosPatron.Undivided) {
+    rand = getRandomIntInclusive(1, 100, `${seed}-${rollName}-2`);
 
+    if (rand < 41) {
+      applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
+      return;
+    }
+
+    reward = getStandardReward(rand);
+    if (reward.name == "Gift of the Gods") {
+      //second dupe results in chaos attribute
+      applyInitalAttribute(seed, `${seed}-${rollName}-attribute`, champion);
+      return;
+    }
+    else {
       champion.rewards.push(reward);
       return;
     }
@@ -207,10 +221,27 @@ function applyRandomReward(seed: string, rollName: string, champion: Champion) {
   return;
 }
 
+function getChaosAttribute(rollNumber: number): ChaosAttribute {
+  for (var i = 0; i < PERSONAL_ATTRIBUTES.length; i++) {
+    if (rollNumber <= PERSONAL_ATTRIBUTES[i].rollNumber) {
+      return PERSONAL_ATTRIBUTES[i];
+    }
+  }
+  return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length - 1];
+}
+
+function getStandardReward(rollNumber:number): ChaosReward {
+  for (var i = 0; i < STANDARD_REWARDS.length; i++) {
+    if (rollNumber <= STANDARD_REWARDS[i].rollNumber) {
+      return STANDARD_REWARDS[i];
+    }
+  }
+  return STANDARD_REWARDS[STANDARD_REWARDS.length-1];
+}
+
 function applyMarkOfChaos(seed: string, champion: Champion) {
 
-  let firstAttribute = getRandomAttribute(seed, 'attribute1');
-  champion.attributes.push(firstAttribute);
+  applyInitalAttribute(seed, `${seed}-attribute1`, champion);
 
   switch (+champion.chaosPatron) {
     case ChaosPatron.Khorne:
@@ -228,10 +259,10 @@ function applyMarkOfChaos(seed: string, champion: Champion) {
 
       var tzeentchRoll = getRandomIntInclusive(1, 3, `${seed}-tzeentchRoll1`);
       if (tzeentchRoll > 1) {
-        champion.attributes.push(getRandomAttribute(seed, 'attribute2'));
+        applyInitalAttribute(seed, `${seed}-attribute2`, champion);
       }
       if (tzeentchRoll > 2) {
-        champion.attributes.push(getRandomAttribute(seed, 'attribute3'));
+        applyInitalAttribute(seed, `${seed}-attribute3`, champion);
       }
 
       //add magic item
