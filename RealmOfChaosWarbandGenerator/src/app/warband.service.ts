@@ -42,8 +42,8 @@ function applyInitalAttribute(seed: string, rollName: string, champion: Champion
 
   //TODO: re-roll invalid intial attribute rolls like Chaos Spawn (optionally include total shit attributes like Mindeless, Pinhead, etc?)
   let reroll = 0;
-  while (attribute.name == "Chaos Spawn") {
-    console.log(`Rolled ${rand} for "Chaos Spawn". Re-rolling...`);
+  while (attribute.name == "Chaos Spawn" || attribute.name == "Mindless") {
+    console.log(`Rolled ${rand} for "Chaos Spawn" or "Mindless". Re-rolling...`);
     rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}-${reroll}`);
     attribute = getChaosAttribute(rand);
   }
