@@ -1,9 +1,19 @@
 import { ChaosPatron, Race, SpellTpe } from '../shared/enums';
+import { Guid } from 'guid-typescript';
 
 export class Warband {
+  id: Guid = Guid.create();
   name: string = "Name";
   seed: string = "";
   champion: Champion = new Champion();
+
+  copyValues(warband: Warband) {
+    this.id = warband.id;
+    this.name = warband.name;
+    this.seed = warband.seed;
+
+    this.champion.copyValues(warband.champion);
+  }
 }
 
 export class Champion {
@@ -12,7 +22,6 @@ export class Champion {
   race: Race = Race.Human;
   profile: Profile = new Profile();
   equipmentPoints: number = 0;
-  seed: string = "";
   weapons: Weapon[] = [];
   armor: Armor[] = [];
   attributes: ChaosAttribute[] = [];
@@ -164,7 +173,6 @@ export class Champion {
     else { return true; }
   }
 
-
   profileWithBonuses() {
     let bonusProfile = new Profile();
     bonusProfile.description = this.profile.description;
@@ -214,6 +222,21 @@ export class Champion {
     return bonusProfile;
   }
 
+  copyValues(champion: Champion) {
+    this.name = champion.name;
+    this.chaosPatron = champion.chaosPatron as ChaosPatron;
+    this.race = champion.race as Race;
+    this.equipmentPoints = champion.equipmentPoints;
+
+    this.profile = champion.profile as Profile;
+
+    this.weapons = champion.weapons as Weapon[];
+    this.armor = champion.armor as Armor[];
+    this.attributes = champion.attributes as ChaosAttribute[];
+    this.rewards = champion.rewards as ChaosReward[]; 
+    this.refusedRewards = champion.refusedRewards as ChaosReward[];
+  }
+
 }
 
 export class Profile {
@@ -233,6 +256,22 @@ export class Profile {
   intelligence: number = 7;
   cool: number = 7;
   willPower: number = 7;
+
+  //public copyValues(profile: Profile) {
+  //  this.description = profile.description;
+  //  this.movement = profile.movement;
+  //  this.weaponSkill = profile.weaponSkill;
+  //  this.ballisticSkill = profile.ballisticSkill;
+  //  this.strength = profile.strength;
+  //  this.toughness = profile.toughness;
+  //  this.wounds = profile.wounds;
+  //  this.initiative = profile.initiative;
+  //  this.attacks = profile.attacks;
+  //  this.leadership = profile.leadership;
+  //  this.cool = profile.cool;
+  //  this.intelligence = profile.intelligence;
+  //  this.willPower = profile.willPower;
+  //}
 }
 
 export class Weapon {

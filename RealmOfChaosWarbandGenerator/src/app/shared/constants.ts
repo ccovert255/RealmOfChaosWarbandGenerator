@@ -422,7 +422,7 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
 export const HUMAN_PROFILES: Profile[] = [
   {
     rollNumber: 35, heroLevel: 0, wizardLevel: 0, description: "Human",
-    movement: 4, weaponSkill: 3, ballisticSkill: 3, strength: 3, toughness: 3, wounds: 1, initiative: 3, attacks: 1, leadership: 7, intelligence: 7, cool: 7, willPower: 7
+    movement: 4, weaponSkill: 3, ballisticSkill: 3, strength: 3, toughness: 3, wounds: 1, initiative: 3, attacks: 1, leadership: 7, intelligence: 7, cool: 7, willPower: 7,
   },
   {
     rollNumber: 50, heroLevel: 1, wizardLevel: 0, description: "Human 5 Hero",
@@ -956,12 +956,15 @@ export const TZEENTCH_REWARDS: ChaosReward[] = [
   { rollNumber: 39, name: "Flaming Arm", description: `Arm can only be used to make a single Bite Attack. In addition the hand can shoot fire or burn an opponent in hand-to-hand. Shooting flame has D6" range, both attacks cause D6 S3 hits. Units wounded by flames must take rout test`, specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 44, name: "The Gift of Magic", description: "Champion gains 1 magic level (and associated spells) and 3D6 magic points.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 50, name: "Reckoning of Tzeentch", description: "For each stat, roll a D6: 1-3=subtract 1, 4-6=add 1. If wounds drop to zero the Champion is killed. If Ld/Cl/Int/Wp are reduced to 0 the Champion becomes a Chaos Spawn.", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 55, name: "Crossbreed with Flamer", description: "Merge champion's profile with a Flamer. (Add stats together and divide by 2, rounding to nearest whole/half number)", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 62, name: "Familiar", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 69, name: "Wings", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 77, name: "Changing of the Ways", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 84, name: "Withering Gaze", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 54, name: "Crossbreed with Flamer", description: "Merge champion's profile with a Flamer. (Add stats together and divide by 2, rounding to nearest whole/half number)", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 58, name: "Magic of Tzeentch", description: "Roll D100: 1-25: Globe of Change, 26-75: Cordial of Tzeentch, 76-90: Warpstone Charm, 91-100: Rod of Tzeenth. This magic item can only be used by the Champion, it cannot be passed on to a follower.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 62, name: "Familiar", description: "Familiar. Roll D100: 1-12: Combat, 12-34: Magic Focus, 35-56: Magic Power, 57-78: Magic Spell, 79-100: Magic Storage. Champion may be gifted with several familiars.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 69, name: "Wings", description: `Gains feathered wings. MinSpeed:0", MaxSpeed:32", Acc/Dec: 8"`, specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 77, name: "Changing of the Ways", description: "All current attributes are Re-Rolled. Current profile modifications are kept, but new attribute modifications are applied as well. Cannot be passed onto a follower.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 84, name: "Withering Gaze", description: "Opponents in hand-to-hand must pass a Cool test or suffer -1 to hit.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 93, name: "Rune of Tzeentch", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 97, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 100, name: "Chaos Attributes", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 100, name: "Chaos Attributes", description: "Champion is given D3 Chaos Attributes", specialRules: [], profileBonus: new ProfileBonus() },
 ];
+
+

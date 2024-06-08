@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { GeneratorComponent } from './generator/generator.component'
 import { WarbandsComponent } from './warbands/warbands.component'
 import { Warband } from './shared/models';
+import { WarbandsListComponent } from './warbands-list/warbands-list.component'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, GeneratorComponent, WarbandsComponent],
+  imports: [RouterOutlet, GeneratorComponent, WarbandsComponent, WarbandsListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
