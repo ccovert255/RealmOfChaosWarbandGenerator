@@ -1,7 +1,7 @@
 export enum ChaosPatron {
   Undivided = 0,
   Khorne = 1,
-  Slaneesh = 2,
+  Slaanesh = 2,
   Nurgle = 3,
   Tzeentch = 4,
 }
@@ -32,7 +32,7 @@ export enum SpellTpe{
   Elemental = 2,
   Illusionist = 3,
   Necromantic = 4,
-  Slaneesh = 5,
+  Slaanesh = 5,
   Nurgle = 6,
   Tzeentch = 7
 }

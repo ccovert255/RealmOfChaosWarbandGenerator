@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband, ChaosReward } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
-import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLANEESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES, STANDARD_REWARDS } from './shared/constants';
+import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLAANESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES, STANDARD_REWARDS } from './shared/constants';
 import { ChaosPatron, Race } from './shared/enums';
 
 @Injectable({
@@ -108,8 +108,8 @@ function applyMarkOfChaos(seed: string, champion: Champion) {
       champion.rewards.push(MARK_OF_KHORNE);
       champion.armor.push({ armorSaveModifier: +3, name: "Chaos Armor", movementModifier: 0 });
       break;
-    case ChaosPatron.Slaneesh:
-      champion.rewards.push(MARK_OF_SLANEESH);
+    case ChaosPatron.Slaanesh:
+      champion.rewards.push(MARK_OF_SLAANESH);
       break;
     case ChaosPatron.Nurgle:
       champion.rewards.push(MARK_OF_NURGLE);

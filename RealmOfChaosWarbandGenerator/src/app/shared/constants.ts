@@ -630,7 +630,7 @@ export const SPECIAL_RULES: RuleDescription[] = [
 ];
 
 export const MARK_OF_KHORNE: ChaosReward = { name: "Mark of Khorne", description: "Chaos Armor, Lose 1 magic level", rollNumber: 0, specialRules: [], profileBonus: new ProfileBonus() };
-export const MARK_OF_SLANEESH: ChaosReward = {
+export const MARK_OF_SLAANESH: ChaosReward = {
   name: "Mark of Slaneesh", description: "+1 Willpower", rollNumber: 0, specialRules: [], profileBonus: {
     movement:  0,
     weaponSkill:  0,
@@ -687,3 +687,167 @@ export const STANDARD_REWARDS: ChaosReward[] = [
   { rollNumber: 90, name: "Demonic Creatures", description: "Champion is gifted with D6 Chaos Hounds. If the Champion has a Patron he can choose a single 'beast' creature of his Patron instead. (Fleshhound/Fiend/Beast of Nurgle/Flamer)", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 100, name: "Eye of God", description: "Champion is judged by the Chaos Gods. 1) If the champion has 6+ Rewards and less than 6 Attributes they become a Demon Prince. 2) If the champion has 6 or more attributes they become a Chaos Spawn. 3) Otherwise the Champion is given a chaos Weapon. Wizards recieve +1 attack and +1 wound. Non-Khorne or non-wizard Champions become lvl 1 wizards. Khorne champions are given a Collar of Khorne and a Fleshhound instead.", specialRules: [], profileBonus: new ProfileBonus() }
 ]
+
+export const KHORNE_REWARDS: ChaosReward[] = [
+  { rollNumber: 3, name: "Face of Khorne", description: `Causes fear 6" +1/terror in living creatures. Further face changes are applied to followers.`, specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 6, name: "Face of a Bloodthirster", description: `Causes fear in living creatures.`, specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 10, name: "Face of a Bloodletter", description: `Gains a poisonous bite. Can spit poinson up to 5". Gains 1 Attack. Champion keeps poisonous attack even if subsequent attributes change face.`, specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  {
+    rollNumber: 15, name: "Face of a Fleshhound", description: "Gains a poinsonous bite attack.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  {
+    rollNumber: 20, name: "Face of a Juggernaught", description: "Can make a Gore Attack. Gains 1 Attack.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 25, name: "Skin of Khorne", description: "Roll D6: 1-3=Red, 4-5=Black, 6=Brass(T+1). T bonus is lost if skin changes color again.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 28, name: "Collar of Khorne", description: "Subsequent Collars of Khorne can received as Bloodstones or given to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 31, name: "The Hand of Khorne", description: "Weapon attacks by this hand cause D4 wounds. Subsequent rewards increase damage by +1.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 32, name: "Mark of Khorne", description: "Subsequent marks are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 36, name: "Technology", description: "Int+2 and WS/BS (as appropriate) are raised to one if zero. Roll to determine technology.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 2,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 40, name: "Poisonous Bite", description: "Champion can use a poisonous bite in place of another attack.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 45, name: "Regeneration", description: "Champion may regenerate at end of turn - even if dead. Roll D6, on 4+ all lost wounds are recovered. If roll fails, mutant cannot regenerate those wounds this battle.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 55, name: "Frenzy", description: "Champion and all current followers are subject to frenzy. Subsequent gifts reduce Cool by 1.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 70, name: "Crossbreed", description: "Merge champion's profile with a Fleshhound. (Add stats together and divide by 2, rounding to nearest whole/half number). Apply 'Face of Fleshhound'. Gains Fleshhound's Leapoing ability if move is 8 or more.", specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 80, name: "Personality Loss", description: "", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: -2,
+      cool: -2,
+      willPower: -2
+    } },
+  {
+    rollNumber: 90, name: "Aggression Bonus", description: "", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 1,
+      ballisticSkill: 1,
+      strength: 1,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: -2,
+      cool: -2,
+      willPower: -2
+    } },
+  { rollNumber: 97, name: "Weapon Hand", description: "One attack is always made with bonded weapon hand. Subsequent rolls grant I+1.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 99, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 100, name: "Chaos Attribute", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+];
+
+export const SLAANESH_REWARDS: ChaosReward[] = [
+  { rollNumber: 3, name: "Face of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 8, name: "Face of a Keeper of Secrets", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 14, name: "Face of a Demonette", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 20, name: "Face of a Fiend", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 25, name: "Face of a Mount of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 35, name: "Crablike Claw", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 50, name: "Hermaphrodite", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 55, name: "Ensnaring Tongue", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 65, name: "Characteristic Gain", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 73, name: "Familiar", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 81, name: "Crossbreed", description: "Merge champion's profile with a Mount of Slaanesh. (Add stats together and divide by 2, rounding to nearest whole/half number)", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 86, name: "Horns of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 91, name: "Musk", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 96, name: "Razor-edged Tail", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 97, name: "Mark of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 98, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 99, name: "Chaos Attribute", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+];
+
+export const NURGLE_REWARDS: ChaosReward[] = [
+  { rollNumber: 6, name: "Face of Nurgle", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 15, name: "Biting Tongue", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 20, name: "Face of a Plaguebearer", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 24, name: "Face of a Beast", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 30, name: "Immensity", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 38, name: "Nurgles Rot", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 44, name: "Horns of Nurgle", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 49, name: "Plague", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 57, name: "Hide of Nurgle", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 63, name: "Crossbreed with Beast", description: "Merge champion's profile with a Beast of Nurgle. (Add stats together and divide by 2, rounding to nearest whole/half number)", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 71, name: "Nurgling Infestation", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 78, name: "Familiar", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 84, name: "Trail of Slime", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 93, name: "Rune of Nurgle", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 97, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 100, name: "Chaos Attribute", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+];
+
+export const TZEENTCH_REWARDS: ChaosReward[] = [
+  { rollNumber: 6, name: "Face of Tzeentch", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 15, name: "Face of a Lord of Change", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 22, name: "Face of a Horror", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 27, name: "Elastic Duplication", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 33, name: "Hand of Tzeentch", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 39, name: "Flaming Arm", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 44, name: "The Gift of Magic", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 50, name: "Reckoning of Tzeentch", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 55, name: "Crossbreed with Flamer", description: "Merge champion's profile with a Flamer. (Add stats together and divide by 2, rounding to nearest whole/half number)", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 62, name: "Familiar", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 69, name: "Wings", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 77, name: "Changing of the Ways", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 84, name: "Withering Gaze", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 93, name: "Rune of Tzeentch", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 97, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 100, name: "Chaos Attributes", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+];

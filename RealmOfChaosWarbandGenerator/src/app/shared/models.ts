@@ -287,6 +287,16 @@ export class ProfileBonus {
   willPower: number = 0;
 }
 
+export class WizardProfile {
+  magicLevel: number = 1;
+  powerLevel: number = 10;
+  spells: Spell[] = [];
+  constructor(magicLevel: number) {
+    this.magicLevel = magicLevel;
+    this.powerLevel = magicLevel * 10;
+  }
+}
+
 export class Spell {
   id: number = 1;
   level: number = 1;
@@ -294,6 +304,12 @@ export class Spell {
   magicPoints: number = 1;
   range: number = 0;
   description: string = "";
+}
+
+export class FlightProfile {
+  minSpeed: number = 0;
+  maxSpeed: number = 0;
+  accDec: number = 0;
 }
 
 
