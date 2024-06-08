@@ -741,7 +741,7 @@ export const KHORNE_REWARDS: ChaosReward[] = [
   { rollNumber: 31, name: "The Hand of Khorne", description: "Weapon attacks by this hand cause D4 wounds. Subsequent rewards increase damage by +1.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 32, name: "Mark of Khorne", description: "Subsequent marks are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
   {
-    rollNumber: 36, name: "Technology", description: "Int+2 and WS/BS (as appropriate) are raised to one if zero. Roll to determine technology.", specialRules: [], profileBonus: {
+    rollNumber: 36, name: "Technology", description: "Int+2 and WS/BS (as appropriate) are raised to one if zero. Roll to determine technology. Subsequent rewards can be kept or gieven to followers.", specialRules: [], profileBonus: {
       movement: 0,
       weaponSkill: 0,
       ballisticSkill: 0,
@@ -790,27 +790,112 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       willPower: -2
     } },
   { rollNumber: 97, name: "Weapon Hand", description: "One attack is always made with bonded weapon hand. Subsequent rolls grant I+1.", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 99, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 99, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 100, name: "Chaos Attribute", description: "", specialRules: [], profileBonus: new ProfileBonus() },
 ];
 
 export const SLAANESH_REWARDS: ChaosReward[] = [
-  { rollNumber: 3, name: "Face of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 8, name: "Face of a Keeper of Secrets", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 3, name: "Face of Slaanesh", description: `Causes fear 6" +1/terror in living creatures. Further face changes are applied to followers.`, specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 8, name: "Face of a Keeper of Secrets", description: "Causes fear in living creates. Gains on bite or gore attack.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    }
+},
   { rollNumber: 14, name: "Face of a Demonette", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 20, name: "Face of a Fiend", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 25, name: "Face of a Mount of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 35, name: "Crablike Claw", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 50, name: "Hermaphrodite", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 55, name: "Ensnaring Tongue", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 65, name: "Characteristic Gain", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 73, name: "Familiar", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 81, name: "Crossbreed", description: "Merge champion's profile with a Mount of Slaanesh. (Add stats together and divide by 2, rounding to nearest whole/half number)", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 86, name: "Horns of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 91, name: "Musk", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 96, name: "Razor-edged Tail", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 97, name: "Mark of Slaanesh", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 98, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 20, name: "Face of a Fiend", description: "Gains Fiend's 'Lick' attack (causes no damage, but successful hit causes stupidity on failed WP test). Lick attack not lost if face is changed. Subsequent rewards are applied to followers.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  {
+    rollNumber: 25, name: "Face of a Mount of Slaanesh", description: "Gains Mount of Slaanesh 'Ensnaring' attack. Can be combined with Fiend's 'Lick' attack. Subsequent rewards are applied to followers.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 35, name: "Crablike Claw", description: "Champion must make Claw attacks with crab hands. Subsequent gifts apply to other limbs.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 50, name: "Hermaphrodite", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 55, name: "Ensnaring Tongue", description: "Gains Mount of Slaanesh 'Ensnaring' attack. Can be combined with Fiend's 'Lick' attack. Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 65, name: "Characteristic Gain", description: "WP+1", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 1
+    } },
+  { rollNumber: 73, name: "Familiar", description: "Champion is granted a permanent chaos familiar. May have up to two familiars if gifted by Slaanesh. Familiars can be given up to 3 Chaos Attributes.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 81, name: "Crossbreed", description: "Merge champion's profile with a Mount of Slaanesh. (Add stats together and divide by 2, rounding to nearest whole/half number). Also apply 'Face of Mount of Slaanesh' to champion", specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 86, name: "Horns of Slaanesh", description: "Gains an extra Gore Attack. Subsequent rewards grant another gore attack.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 91, name: "Musk", description: `Enemy models within 4" must take WP test or move adjacent to champion. Victims are unable to do anything other than stand still, and only one victim can be influenced at a time. Subsequent rewards increase the reant by 1".`, specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 96, name: "Razor-edged Tail", description: "Gains +1 Tail attack. Subsequent rewards are applied to followers.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 1,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0
+    } },
+  { rollNumber: 97, name: "Mark of Slaanesh", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 98, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 99, name: "Chaos Attribute", description: "", specialRules: [], profileBonus: new ProfileBonus() },
 ];
 
@@ -828,8 +913,8 @@ export const NURGLE_REWARDS: ChaosReward[] = [
   { rollNumber: 71, name: "Nurgling Infestation", description: "", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 78, name: "Familiar", description: "", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 84, name: "Trail of Slime", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 93, name: "Rune of Nurgle", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 97, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 93, name: "Rune of Nurgle", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 97, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 100, name: "Chaos Attribute", description: "", specialRules: [], profileBonus: new ProfileBonus() },
 ];
 
@@ -847,7 +932,7 @@ export const TZEENTCH_REWARDS: ChaosReward[] = [
   { rollNumber: 69, name: "Wings", description: "", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 77, name: "Changing of the Ways", description: "", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 84, name: "Withering Gaze", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 93, name: "Rune of Tzeentch", description: "", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 97, name: "Demonic Name", description: "", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 93, name: "Rune of Tzeentch", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
+  { rollNumber: 97, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 100, name: "Chaos Attributes", description: "", specialRules: [], profileBonus: new ProfileBonus() },
 ];
