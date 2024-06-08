@@ -20,6 +20,11 @@ export class Champion {
 
   refusedRewards: ChaosReward[] = [];
 
+  //TODO: track flight profiles
+  //TODO: track spells
+  //TODO: track Claw, Tail, Gore, Bite attacks and attack facings
+  //TODO: track number of Legs, Arms, and Heads
+
   chaosPatronDisplayName() {
     return ChaosPatron[this.chaosPatron];
   }
