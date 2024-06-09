@@ -1,24 +1,23 @@
 <mat-dialog-content>
 
-  <mat-form-field>
-    <mat-label>Warband Name</mat-label>
-    <input matInput [(ngModel)]="data.name">
-  </mat-form-field>
-
-
-
   <div mat-dialog-container class="warband-container">
 
     <div class="warband-section">
       <mat-form-field>
-        <mat-label>Warband Name</mat-label>
+        <mat-label>Champion Name</mat-label>
         <input matInput [(ngModel)]="data.champion.name">
       </mat-form-field>
 
-      <div>
-        <span class="warband-label">Chaos Patron</span>
-        <span class="warband-value">{{ data.champion.chaosPatronDisplayName() }}</span>
-      </div>
+      <mat-form-field>
+        <mat-label>Chaos Patron</mat-label>
+        <select matNativeControl required [(ngModel)]="data.champion.chaosPatron" name="chaos-patron">
+          <option value="0">Undivided</option>
+          <option value="1">Khorne</option>
+          <option value="2">Slaanesh</option>
+          <option value="3">Nurgle</option>
+          <option value="4">Tzeentch</option>
+        </select>
+      </mat-form-field>
 
       <div>
         <span class="warband-label">Race</span>

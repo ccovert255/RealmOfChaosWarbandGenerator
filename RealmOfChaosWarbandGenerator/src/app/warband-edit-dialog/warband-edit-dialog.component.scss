@@ -31,3 +31,77 @@
 .dialog-cancel-button{
     margin-right:22px;
 }
+
+
+.warband-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header" "profile profile" "equip armor" "followers followers";
+}
+
+app-profile {
+  grid-area: profile;
+}
+
+.warband-label {
+  font-size: 0.8rem;
+  display: block;
+  margin: 0px;
+}
+
+.warband-list-label {
+  font-size: 0.8rem;
+  position: absolute;
+  white-space: break-spaces;
+}
+
+.warband-list-text {
+  font-size: 0.8rem;
+  white-space: break-spaces;
+  margin: 0px 0px 0px 0px;
+}
+
+.warband-value {
+  font-size: 1.5rem;
+  padding: 4px 0 8px 0;
+  display: block;
+}
+
+.warband-section {
+  margin: 8px 8px 0px 8px;
+}
+
+.mat-icon {
+  margin-right: 0px !important;
+}
+
+mat-form-field {
+  margin: 8px;
+}
+
+mat-divider {
+  margin: 12px 0px;
+}
+
+.example-list-wrapping {
+  max-width: 100px;
+}
+
+button {
+  display: block;
+}
+
+mat-list-item {
+  display: inline-block;
+  overflow: visible;
+}
+
+.mat-list-title {
+  font-size: 1.5rem;
+  display: inline-block;
+  padding-top: 8px;
+}
+
+
