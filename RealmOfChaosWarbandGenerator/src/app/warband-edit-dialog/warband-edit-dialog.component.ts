@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
+import { WarbandsListService } from '../warbands-list.service';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-warband-edit-dialog',
@@ -29,12 +31,18 @@ import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../sh
   styleUrl: './warband-edit-dialog.component.scss'
 })
 export class WarbandEditDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<WarbandEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Warband,
-  ) { }
 
-  onNoClick(): void {
+  constructor(public dialogRef: MatDialogRef<WarbandEditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Warband,
+    public warbandsListService: WarbandsListService)
+  {
+  }
+
+  onDelete(): void {
+    this.dialogRef.close();
+  }
+
+  onSave(): void {
     this.dialogRef.close();
   }
 

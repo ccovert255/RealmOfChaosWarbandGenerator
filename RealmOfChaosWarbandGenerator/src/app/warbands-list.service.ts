@@ -35,16 +35,17 @@ export class WarbandsListService {
     return warbandsList;
   }
 
-  getWarband(id:Guid): Warband | null {
-    let result: Warband|null = null;
+  getWarband(id: Guid): Warband | void {
 
     let warbandsList = this.getWarbands();
-    warbandsList.forEach(warband => {
-      if (warband.id == id) 
-        result = warband;
-    });
 
-    return result;
+    for (let warband of warbandsList) {
+      if (warband.id.toString() == id.toString()) {
+        return warband;
+      }
+      console.log(`${warband.id.toString()} != ${id.toString() }`);
+    }
+    return;
   }
 
   addWarband(saveRequest: Warband): void {
@@ -57,7 +58,7 @@ export class WarbandsListService {
     let warbandsList = this.getWarbands();
 
     warbandsList.forEach(warband => {
-      if (warband.id == saveRequest.id)
+      if (warband.id.toString() == saveRequest.id.toString())
         warband.copyValues(saveRequest);
     });
 
@@ -68,7 +69,7 @@ export class WarbandsListService {
     let warbandsList = this.getWarbands();
 
     warbandsList.forEach((warband, index) => {
-      if (warband.id == id)
+      if (warband.id.toString() == id.toString())
         warbandsList.splice(index, 1);
     });
 

@@ -5,6 +5,7 @@ import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../sh
 import { MatIconModule } from '@angular/material/icon';
 import { WarbandEditDialogComponent } from '../warband-edit-dialog/warband-edit-dialog.component';
 import { WarbandsListService } from '../warbands-list.service';
+import { Guid } from 'guid-typescript';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -44,11 +45,16 @@ export class WarbandsListComponent {
     this.warbandsList = this.warbandsListService.getWarbands();
   }
 
-  editWarband(warband: Warband): void {
+  editWarband(id: Guid): void {
     //display a copy so they can cancel changes
-    let warbandCopy = new Warband();
-    warbandCopy.copyValues(warband);
-    this.dialog.open(WarbandEditDialogComponent, { data: warbandCopy });
+    let warband = this.warbandsListService.getWarband(id);
+    console.log(warband);
+    if (warband == null) {
+      //show 'not found' message
+      console.log(id);
+      return;
+    }
+    this.dialog.open(WarbandEditDialogComponent, { data: warband });
   }
 
 }
