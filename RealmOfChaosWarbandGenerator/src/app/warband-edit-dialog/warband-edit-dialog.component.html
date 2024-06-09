@@ -1,27 +1,30 @@
-<h2 mat-dialog-title>{{data.name}}</h2>
 <mat-dialog-content>
-  <p>{{data.champion.profile.description}}</p>
+
   <mat-form-field>
-    <mat-label>test</mat-label>
-    <input matInput [(ngModel)]="data.champion.name">
+    <mat-label>Warband Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
   </mat-form-field>
 
 
-  <div class="warband-container">
+
+  <div mat-dialog-container class="warband-container">
 
     <div class="warband-section">
-      <div>
-        <span class="warband-label">Champion</span>
-        <span class="warband-value">{{data.champion.name}}</span>
-      </div>
+      <mat-form-field>
+        <mat-label>Warband Name</mat-label>
+        <input matInput [(ngModel)]="data.champion.name">
+      </mat-form-field>
+
       <div>
         <span class="warband-label">Chaos Patron</span>
         <span class="warband-value">{{ data.champion.chaosPatronDisplayName() }}</span>
       </div>
+
       <div>
         <span class="warband-label">Race</span>
         <span class="warband-value">{{ data.champion.raceDisplayName() }}</span>
       </div>
+
     </div>
 
     <div class="warband-section">
@@ -88,12 +91,11 @@
 
   </div>
 
-
-
-
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Cancel</button>
-  <button mat-button (click)="onDelete()">Delete</button>
-  <button mat-button (click)="onSave()">Save</button>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="warn" (click)="onDelete()">Delete</button>
+  <span class="spacer"></span>
+  <button mat-button class="dialog-cancel-button" [mat-dialog-close]="0" cdkFocusInitial>Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave()">Save</button>
 </mat-dialog-actions>

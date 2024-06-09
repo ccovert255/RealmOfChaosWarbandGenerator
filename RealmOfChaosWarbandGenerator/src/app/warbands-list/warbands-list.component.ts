@@ -14,6 +14,7 @@ import {
   MatDialogContent,
   MatDialogActions,
   MatDialogClose,
+  MatDialogConfig,
 } from '@angular/material/dialog';
 
 const WARBANDS_LIST_KEY: string = "warbands-list";
@@ -54,7 +55,7 @@ export class WarbandsListComponent {
       return;
     }
 
-    const dialogRef = this.dialog.open(WarbandEditDialogComponent, { data: warband });
+    const dialogRef = this.dialog.open(WarbandEditDialogComponent, { data: warband, width: "90vw", maxWidth: "90vw", maxHeight: "90vh", });
     dialogRef.afterClosed().subscribe(result => {
       this.warbandsList = this.warbandsListService.getWarbands();
     });

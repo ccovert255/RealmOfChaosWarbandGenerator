@@ -1,13 +1,10 @@
+
 .warbands-table {
   width: 100%;
 }
 
 .warbands-list-button-container {
   padding-bottom: 16px;
-}
-
-.warbands-button + .warbands-button {
-  margin-left: 8px;
 }
 
 .mat-column-name {
@@ -24,4 +21,13 @@
 
 .mat-column-seed {
   width: 50%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.dialog-cancel-button{
+    margin-right:22px;
 }

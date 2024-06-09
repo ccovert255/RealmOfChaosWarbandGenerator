@@ -24,10 +24,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { CreateWarbandRequest, WarbandService } from '../warband.service';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-warband-edit-dialog',
   standalone: true,
+  providers: [AlertService],
   imports: [MatFormFieldModule,
     MatInputModule,
     FormsModule,
@@ -48,12 +50,17 @@ export class WarbandEditDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<WarbandEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Warband,
-    public warbandsListService: WarbandsListService)
+    public warbandsListService: WarbandsListService,
+    public alertService: AlertService)
   {
+    dialogRef.disableClose = true;
   }
 
   onDelete(): void {
-    //TODO: show confirmation message
+    this.alertService.confirm("You sure Bro?", this.onConfirmedDelete, function () { });
+  }
+
+  onConfirmedDelete(): void {
     this.warbandsListService.deleteWarband(this.data.id);
     this.dialogRef.close();
   }
