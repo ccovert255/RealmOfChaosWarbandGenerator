@@ -31,19 +31,17 @@ export class WarbandsListService {
       } catch (e) {
       }
     }
-
     return warbandsList;
   }
 
-  getWarband(id: Guid): Warband | void {
+  getWarband(id: string): Warband | void {
 
     let warbandsList = this.getWarbands();
 
     for (let warband of warbandsList) {
-      if (warband.id.toString() == id.toString()) {
+      if (warband.id===id) {
         return warband;
       }
-      console.log(`${warband.id.toString()} != ${id.toString() }`);
     }
     return;
   }
@@ -57,22 +55,24 @@ export class WarbandsListService {
   saveWarband(saveRequest: Warband): void {
     let warbandsList = this.getWarbands();
 
-    warbandsList.forEach(warband => {
-      if (warband.id.toString() == saveRequest.id.toString())
+    for (let warband of warbandsList) {
+      if (warband.id===saveRequest.id) {
         warband.copyValues(saveRequest);
-    });
-
-    localStorage.setItem(WARBANDS_LIST_KEY, JSON.stringify(warbandsList));
+        localStorage.setItem(WARBANDS_LIST_KEY, JSON.stringify(warbandsList));
+        return;
+      }
+    }
   }
 
-  deleteWarband(id: Guid): void {
+  deleteWarband(id: string): void {
     let warbandsList = this.getWarbands();
 
     warbandsList.forEach((warband, index) => {
-      if (warband.id.toString() == id.toString())
+      if (warband.id===id) {
         warbandsList.splice(index, 1);
+        localStorage.setItem(WARBANDS_LIST_KEY, JSON.stringify(warbandsList));
+        return;
+      }
     });
-
-    localStorage.setItem(WARBANDS_LIST_KEY, JSON.stringify(warbandsList));
   }
 }

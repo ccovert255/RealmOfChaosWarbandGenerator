@@ -45,16 +45,19 @@ export class WarbandsListComponent {
     this.warbandsList = this.warbandsListService.getWarbands();
   }
 
-  editWarband(id: Guid): void {
-    //display a copy so they can cancel changes
+  editWarband(id: string): void {
     let warband = this.warbandsListService.getWarband(id);
+
     console.log(warband);
     if (warband == null) {
-      //show 'not found' message
-      console.log(id);
+      //TODO: show 404 popup
       return;
     }
-    this.dialog.open(WarbandEditDialogComponent, { data: warband });
+
+    const dialogRef = this.dialog.open(WarbandEditDialogComponent, { data: warband });
+    dialogRef.afterClosed().subscribe(result => {
+      this.warbandsList = this.warbandsListService.getWarbands();
+    });
   }
 
 }

@@ -2,7 +2,7 @@ import { ChaosPatron, Race, SpellTpe } from '../shared/enums';
 import { Guid } from 'guid-typescript';
 
 export class Warband {
-  id: Guid = Guid.create();
+  id: string = Guid.raw();
   name: string = "Name";
   seed: string = "";
   champion: Champion = new Champion();
@@ -227,7 +227,6 @@ export class Champion {
     this.chaosPatron = champion.chaosPatron as ChaosPatron;
     this.race = champion.race as Race;
     this.equipmentPoints = champion.equipmentPoints;
-
     this.profile = champion.profile as Profile;
 
     this.weapons = champion.weapons as Weapon[];

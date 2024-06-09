@@ -5,6 +5,92 @@
     <mat-label>test</mat-label>
     <input matInput [(ngModel)]="data.champion.name">
   </mat-form-field>
+
+
+  <div class="warband-container">
+
+    <div class="warband-section">
+      <div>
+        <span class="warband-label">Champion</span>
+        <span class="warband-value">{{data.champion.name}}</span>
+      </div>
+      <div>
+        <span class="warband-label">Chaos Patron</span>
+        <span class="warband-value">{{ data.champion.chaosPatronDisplayName() }}</span>
+      </div>
+      <div>
+        <span class="warband-label">Race</span>
+        <span class="warband-value">{{ data.champion.raceDisplayName() }}</span>
+      </div>
+    </div>
+
+    <div class="warband-section">
+      <div>
+        <span class="warband-label">Rewards/Attributes</span>
+        <span class="warband-value">
+          {{data.champion.rewardToAttributeRatio()}}
+        </span>
+      </div>
+      <div>
+        <span class="warband-label">Equipment Pts</span>
+        <span class="warband-value">{{data.champion.equipmentPoints}}</span>
+      </div>
+      <div>
+        <span class="warband-label">Fear Pts</span>
+        <span class="warband-value">{{data.champion.fearPoints()}}</span>
+      </div>
+    </div>
+
+    <app-profile class="warband-section" [champion]="data.champion"></app-profile>
+
+    <div class="warband-section">
+      <span class="warband-list-label">Rewards</span>
+      <mat-list class="mat-list-wrapping">
+        @for (reward of data.champion.rewards; track reward.name) {
+        <mat-list-item>
+          <span class="mat-list-title">{{reward.name}}</span>
+          <p class="warband-list-text">{{reward.description}}</p>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+    <div class="warband-section">
+      <span class="warband-list-label">Attributes</span>
+      <mat-list>
+        @for (attribute of data.champion.attributes; track attribute) {
+        <mat-list-item>
+          <span class="mat-list-title">{{attribute.name}} (<small>{{attribute.fearPoints}}fp</small>)</span>
+          <p class="warband-list-text">{{attribute.description}}</p>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+    <div class="warband-section">
+      <span class="warband-list-label">Weapons</span>
+      <mat-list>
+        @for (weapon of data.champion.weapons; track weapon.name) {
+        <mat-list-item>
+          <span class="warband-value" matListItemTitle>{{weapon.name}}</span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+    <div class="warband-section">
+      <span class="warband-list-label">Armor</span>
+      <mat-list>
+        @for (armor of data.champion.armor; track armor.name) {
+        <mat-list-item>
+          <span class="warband-value" matListItemTitle>{{armor.name}}</span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+
+  </div>
+
+
+
+
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Cancel</button>

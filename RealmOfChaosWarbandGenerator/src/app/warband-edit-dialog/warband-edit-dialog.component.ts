@@ -15,6 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
 import { WarbandsListService } from '../warbands-list.service';
 import { Guid } from 'guid-typescript';
+import { getRandomIntInclusive } from '../shared/functions';
+import { PERSONAL_ATTRIBUTES } from '../shared/constants';
+import { ChaosPatron, Race } from '../shared/enums';
+import { ProfileComponent } from '../profile/profile.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { CreateWarbandRequest, WarbandService } from '../warband.service';
 
 @Component({
   selector: 'app-warband-edit-dialog',
@@ -26,7 +35,12 @@ import { Guid } from 'guid-typescript';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose,],
+    MatDialogClose,
+    ProfileComponent,
+    MatIconModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatListModule],
   templateUrl: './warband-edit-dialog.component.html',
   styleUrl: './warband-edit-dialog.component.scss'
 })
@@ -39,10 +53,13 @@ export class WarbandEditDialogComponent {
   }
 
   onDelete(): void {
+    //TODO: show confirmation message
+    this.warbandsListService.deleteWarband(this.data.id);
     this.dialogRef.close();
   }
 
   onSave(): void {
+    this.warbandsListService.saveWarband(this.data);
     this.dialogRef.close();
   }
 
