@@ -9,7 +9,7 @@
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let warband">
       <button mat-button (click)="editWarband(warband)">
-        <mat-icon>edit</mat-icon> {{warband.name}}
+        <mat-icon>edit</mat-icon> {{warband.champion.name}}
       </button>
     </td>
   </ng-container>

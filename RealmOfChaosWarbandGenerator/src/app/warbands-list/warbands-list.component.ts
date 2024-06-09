@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
 import { MatIconModule } from '@angular/material/icon';
 import { WarbandEditDialogComponent } from '../warband-edit-dialog/warband-edit-dialog.component';
+import { WarbandsListService } from '../warbands-list.service';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -24,63 +25,30 @@ const WARBANDS_LIST_KEY: string = "warbands-list";
   styleUrl: './warbands-list.component.scss'
 })
 export class WarbandsListComponent {
-  displayedColumns: string[] = ['name', 'patron', 'profile', 'seed'];
+  displayedColumns: string[] = ['name', 'profile', 'patron', 'seed'];
   warbandsList: Warband[] = [];
 
   @ViewChild(MatTable) table: MatTable<Warband> | undefined;
 
-  constructor(public dialog: MatDialog) {
-
-    //load data from local storage
-    let warbandListJson = localStorage.getItem(WARBANDS_LIST_KEY);
-
-    if (warbandListJson != null) {
-      try {
-        this.warbandsList = [];
-
-        let warbandListData = JSON.parse(warbandListJson);
-
-        warbandListData.forEach((json:any) => {
-
-          //TODO: cast json to Warband class
-          let castedWarband = json as Warband;
-          let castedChampion = json.champion as Champion;
-          let castedProfile = json.champion.profile as Profile;
-
-          let warband = new Warband();
-          warband.copyValues(castedWarband);
-
-          this.warbandsList.push(warband);
-
-        });
-
-        console.log(this.warbandsList);
-
-      } catch (e) {
-        this.warbandsList = [];
-      }
-    }
-
+  constructor(public dialog: MatDialog, public warbandsListService: WarbandsListService) {
+    this.warbandsList = warbandsListService.getWarbands();
   }
 
   addData() {
+    //TODO: user warband generator modal
     let warband = new Warband();
     warband.name = 'test';
     warband.seed = 'test';
-    this.warbandsList.push(warband);
 
-    localStorage.setItem(WARBANDS_LIST_KEY, JSON.stringify(this.warbandsList));
-
-    this.table?.renderRows();
+    this.warbandsListService.addWarband(warband);
+    this.warbandsList = this.warbandsListService.getWarbands();
   }
 
   editWarband(warband: Warband): void {
-    //TODO: show warband editor component in dialog
-    const dialogRef = this.dialog.open(WarbandEditDialogComponent, { data: warband});
-
-    dialogRef.afterClosed().subscribe(result => {
-      //TODO: reload grid rows necessary?
-    });
+    //display a copy so they can cancel changes
+    let warbandCopy = new Warband();
+    warbandCopy.copyValues(warband);
+    this.dialog.open(WarbandEditDialogComponent, { data: warbandCopy });
   }
 
 }

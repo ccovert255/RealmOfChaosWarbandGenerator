@@ -3,10 +3,11 @@
   <p>{{data.champion.profile.description}}</p>
   <mat-form-field>
     <mat-label>test</mat-label>
-    <input matInput [(ngModel)]="data.champion.attributes">
+    <input matInput [(ngModel)]="data.champion.name">
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
 </mat-dialog-actions>
