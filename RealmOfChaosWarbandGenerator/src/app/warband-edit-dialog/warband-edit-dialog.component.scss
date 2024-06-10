@@ -73,6 +73,12 @@ app-profile {
   margin: 8px 8px 0px 8px;
 }
 
+.warband-list-section {
+  padding: 0px 4px 4px 4px;
+  background-color: #e1e1e1;
+}
+
+
 .mat-icon {
   margin-right: 0px !important;
 }
@@ -104,4 +110,20 @@ mat-list-item {
   padding-top: 8px;
 }
 
+.warband-label-section {
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+}
 
+button.mdc-icon-button {
+  display: inline-block;
+  margin: -5px 0px 0px -5px;
+}
+
+.list-header-button {
+  display:inline-block;
+  padding-top: 6px;
+  vertical-align: top;
+  font-size:1.2em;
+}

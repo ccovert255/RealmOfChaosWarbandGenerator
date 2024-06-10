@@ -19,25 +19,44 @@
         </select>
       </mat-form-field>
 
-      <div>
-        <span class="warband-label">Race</span>
-        <span class="warband-value">{{ data.champion.raceDisplayName() }}</span>
-      </div>
-
+      <mat-form-field>
+        <mat-label>Race</mat-label>
+        <select matNativeControl required [(ngModel)]="data.champion.race" name="champion-race">
+          <option value="0">Human</option>
+          <option value="1">Dwarf</option>
+          <option value="2">DarkElf</option>
+          <option value="3">Beastman</option>
+          <option value="4">Centaur</option>
+          <option value="5">Fimir_Fimmaur</option>
+          <option value="6">Fimir_Shearl</option>
+          <option value="7">Goblin</option>
+          <option value="8">DragonOgre</option>
+          <option value="9">Hobgoblin</option>
+          <option value="10">WereMan</option>
+          <option value="11">Lizardman</option>
+          <option value="12">Minotaur</option>
+          <option value="13">Orc</option>
+          <option value="14">Skaven</option>
+          <option value="15">Slann</option>
+          <option value="16">Zoat</option>
+        </select>
+      </mat-form-field>
     </div>
 
     <div class="warband-section">
-      <div>
+      <mat-form-field>
+        <mat-label>Equipment Pts</mat-label>
+        <input matInput [(ngModel)]="data.champion.equipmentPoints">
+      </mat-form-field>
+
+      <div class="warband-label-section">
         <span class="warband-label">Rewards/Attributes</span>
         <span class="warband-value">
           {{data.champion.rewardToAttributeRatio()}}
         </span>
       </div>
-      <div>
-        <span class="warband-label">Equipment Pts</span>
-        <span class="warband-value">{{data.champion.equipmentPoints}}</span>
-      </div>
-      <div>
+
+      <div class="warband-label-section">
         <span class="warband-label">Fear Pts</span>
         <span class="warband-value">{{data.champion.fearPoints()}}</span>
       </div>
@@ -45,7 +64,7 @@
 
     <app-profile class="warband-section" [champion]="data.champion"></app-profile>
 
-    <div class="warband-section">
+    <div class="warband-section warband-list-section">
       <span class="warband-list-label">Rewards</span>
       <mat-list class="mat-list-wrapping">
         @for (reward of data.champion.rewards; track reward.name) {
@@ -56,7 +75,7 @@
         }
       </mat-list>
     </div>
-    <div class="warband-section">
+    <div class="warband-section warband-list-section">
       <span class="warband-list-label">Attributes</span>
       <mat-list>
         @for (attribute of data.champion.attributes; track attribute) {
@@ -67,7 +86,7 @@
         }
       </mat-list>
     </div>
-    <div class="warband-section">
+    <div class="warband-section warband-list-section">
       <span class="warband-list-label">Weapons</span>
       <mat-list>
         @for (weapon of data.champion.weapons; track weapon.name) {
@@ -77,8 +96,8 @@
         }
       </mat-list>
     </div>
-    <div class="warband-section">
-      <span class="warband-list-label">Armor</span>
+    <div class="warband-section warband-list-section">
+      <div><div class="list-header-button">Armor</div><button mat-icon-button color="primary"><mat-icon>add_circle</mat-icon></button></div>
       <mat-list>
         @for (armor of data.champion.armor; track armor.name) {
         <mat-list-item>
@@ -93,8 +112,8 @@
 </mat-dialog-content>
 <mat-divider></mat-divider>
 <mat-dialog-actions align="end">
-  <button mat-flat-button color="warn" (click)="onDelete()">Delete</button>
+  <button mat-flat-button color="warn" (click)="onDelete()"><mat-icon>clear</mat-icon> Delete</button>
   <span class="spacer"></span>
   <button mat-button class="dialog-cancel-button" [mat-dialog-close]="0" cdkFocusInitial>Cancel</button>
-  <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+  <button mat-flat-button color="primary" (click)="onSave()"><mat-icon>done</mat-icon> Save</button>
 </mat-dialog-actions>
