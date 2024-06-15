@@ -29,6 +29,8 @@ export class Champion {
 
   refusedRewards: ChaosReward[] = [];
 
+  characterBonus: Profile | null = null;
+
   //TODO: track flight profiles
   //TODO: track spells
   //TODO: track Claw, Tail, Gore, Bite attacks and attack facings
@@ -218,6 +220,22 @@ export class Champion {
       bonusProfile.intelligence += r.profileBonus.intelligence;
       bonusProfile.willPower += r.profileBonus.willPower;
     });
+
+    if (this.characterBonus != null) {
+      bonusProfile.description += this.characterBonus.description;
+      bonusProfile.movement += this.characterBonus.movement;
+      bonusProfile.weaponSkill += this.characterBonus.weaponSkill;
+      bonusProfile.ballisticSkill += this.characterBonus.ballisticSkill;
+      bonusProfile.strength += this.characterBonus.strength;
+      bonusProfile.toughness += this.characterBonus.toughness;
+      bonusProfile.wounds += this.characterBonus.wounds;
+      bonusProfile.initiative += this.characterBonus.initiative;
+      bonusProfile.attacks += this.characterBonus.attacks;
+      bonusProfile.leadership += this.characterBonus.leadership;
+      bonusProfile.cool += this.characterBonus.cool;
+      bonusProfile.intelligence += this.characterBonus.intelligence;
+      bonusProfile.willPower += this.characterBonus.willPower;
+    }
 
     return bonusProfile;
   }

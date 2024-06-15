@@ -16,6 +16,7 @@ import {
   MatDialogClose,
   MatDialogConfig,
 } from '@angular/material/dialog';
+import { WarbandGeneratorComponent } from '../warband-generator/warband-generator.component';
 
 const WARBANDS_LIST_KEY: string = "warbands-list";
 
@@ -36,14 +37,11 @@ export class WarbandsListComponent {
     this.warbandsList = warbandsListService.getWarbands();
   }
 
-  addData() {
-    //TODO: user warband generator modal
-    let warband = new Warband();
-    warband.name = 'test';
-    warband.seed = 'test';
-
-    this.warbandsListService.addWarband(warband);
-    this.warbandsList = this.warbandsListService.getWarbands();
+  createWarband() {
+    const dialogRef = this.dialog.open(WarbandGeneratorComponent, { width: "90vw", maxWidth: "90vw", maxHeight: "90vh", });
+    dialogRef.afterClosed().subscribe(result => {
+      this.warbandsList = this.warbandsListService.getWarbands();
+    });
   }
 
   editWarband(id: string): void {

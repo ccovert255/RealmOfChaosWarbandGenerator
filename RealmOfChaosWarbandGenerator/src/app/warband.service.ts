@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Champion, Profile, Weapon, Armor, ChaosAttribute, Warband, ChaosReward } from './shared/models';
 import { getRandomIntInclusive } from './shared/functions';
-import { DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLAANESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES, STANDARD_REWARDS } from './shared/constants';
+import { HERO_BONUS_PROFILES, DARKELF_PROFILES, DWARF_PROFILES, HUMAN_PROFILES, MARK_OF_KHORNE, MARK_OF_NURGLE, MARK_OF_SLAANESH, MARK_OF_TZEENTCH, OTHER_PROFILES, PERSONAL_ATTRIBUTES, STANDARD_REWARDS } from './shared/constants';
 import { ChaosPatron, Race } from './shared/enums';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class WarbandService {
     result.champion.chaosPatron = request.chaosPatron;
 
     result.champion.race = getRandomRace(request.seed);
-    result.champion.profile = getStartingProfile(request.seed, result.champion.race);
+    applyStartingProfile(request.seed, result.champion);
 
     result.champion.equipmentPoints = getRandomIntInclusive(1, 6, `${request.seed}-equipRoll1`);
     result.champion.equipmentPoints += result.champion.profile.heroLevel;
@@ -33,14 +33,12 @@ export class WarbandService {
   }
 }
 
-
-
 function applyInitalAttribute(seed: string, rollName: string, champion: Champion) {
 
   var rand = getRandomIntInclusive(1, 1000, `${seed}-${rollName}`);
   var attribute = getChaosAttribute(rand);
 
-  //TODO: re-roll invalid intial attribute rolls like Chaos Spawn (optionally include total shit attributes like Mindeless, Pinhead, etc?)
+  //re-roll invalid intial attribute rolls like Chaos Spawn or Mindeless
   let reroll = 0;
   while (attribute.name == "Chaos Spawn" || attribute.name == "Mindless") {
     console.log(`Rolled ${rand} for "Chaos Spawn" or "Mindless". Re-rolling...`);
@@ -48,14 +46,11 @@ function applyInitalAttribute(seed: string, rollName: string, champion: Champion
     attribute = getChaosAttribute(rand);
   }
 
-
   //handle custom attributes the need further rolls
   if (attribute.name == "Atrophy") {
     //TODO: roll for affected areas and calc stat losses
   }
-
-
-
+  //TODO: handle all the other custom attributes
 
   champion.attributes.push(attribute);
   console.log(`Rolled ${rand} for attribute: ${attribute.name}`);
@@ -135,7 +130,6 @@ function applyMarkOfChaos(seed: string, champion: Champion) {
 
 }
 
-
 function getRandomRace(seed: string): Race {
 
   let raceRoll1 = getRandomIntInclusive(1, 100, `${seed}-raceRoll1`);
@@ -197,77 +191,104 @@ function getRandomRace(seed: string): Race {
   return Race.Zoat;
 }
 
-function getStartingProfile(seed: string, race: Race): Profile {
+function applyStartingProfile(seed: string, champion: Champion): void {
 
   //TODO: let users cap min/max hero levels...
   let profileRoll1 = getRandomIntInclusive(1, 100, `${seed}-profileRoll1`);
   console.log(`rolled ${profileRoll1} for profile`);
-  switch (race) {
+
+  switch (champion.race) {
     case Race.WereMan:
     case Race.Human: {
+      champion.profile = HUMAN_PROFILES[0];
       for (var i = 0; i < HUMAN_PROFILES.length; i++) {
         if (profileRoll1 <= HUMAN_PROFILES[i].rollNumber) {
-          return HUMAN_PROFILES[i];
+          champion.profile.heroLevel = HUMAN_PROFILES[i].heroLevel;
+          champion.profile.wizardLevel = HUMAN_PROFILES[i].wizardLevel;
+          break;
         }
       }
-      return HUMAN_PROFILES[0];
+      break;
     }
     case Race.Dwarf: {
+      champion.profile = DWARF_PROFILES[0];
       for (var i = 0; i < DWARF_PROFILES.length; i++) {
         if (profileRoll1 <= DWARF_PROFILES[i].rollNumber) {
-          return DWARF_PROFILES[i];
+          champion.profile.heroLevel = DWARF_PROFILES[i].heroLevel;
+          champion.profile.wizardLevel = DWARF_PROFILES[i].wizardLevel;
+          break;
         }
       }
-      return DWARF_PROFILES[0];
+      break;
     }
     case Race.DarkElf: {
+      champion.profile = DARKELF_PROFILES[0];
       for (var i = 0; i < DARKELF_PROFILES.length; i++) {
         if (profileRoll1 <= DARKELF_PROFILES[i].rollNumber) {
-          return DARKELF_PROFILES[i];
+          champion.profile.heroLevel = DARKELF_PROFILES[i].heroLevel;
+          champion.profile.wizardLevel = DARKELF_PROFILES[i].wizardLevel;
+          break;
         }
       }
-      return DARKELF_PROFILES[0]
+      break;
     }
     case Race.Beastman: {
-      return OTHER_PROFILES[0];
+      champion.profile = OTHER_PROFILES[0];
+      break;
     }
     case Race.Centaur: {
-      return OTHER_PROFILES[1];
+      champion.profile = OTHER_PROFILES[1];
+      break;
     }
     case Race.Fimir_Fimmaur: {
-      return OTHER_PROFILES[2];
+      champion.profile = OTHER_PROFILES[2];
+      break;
     }
     case Race.Fimir_Shearl: {
-      return OTHER_PROFILES[3];
+      champion.profile = OTHER_PROFILES[3];
+      break;
     }
     case Race.Goblin: {
-      return OTHER_PROFILES[4];
+      champion.profile = OTHER_PROFILES[4];
+      break;
     }
     case Race.DragonOgre: {
-      return OTHER_PROFILES[5];
+      champion.profile = OTHER_PROFILES[5];
+      break;
     }
     case Race.Hobgoblin: {
-      return OTHER_PROFILES[6];
+      champion.profile = OTHER_PROFILES[6];
+      break;
     }
     case Race.Lizardman: {
-      return OTHER_PROFILES[7];
+      champion.profile = OTHER_PROFILES[7];
+      break;
     }
     case Race.Minotaur: {
-      return OTHER_PROFILES[8];
+      champion.profile = OTHER_PROFILES[8];
+      break;
     }
     case Race.Orc: {
-      return OTHER_PROFILES[9];
+      champion.profile = OTHER_PROFILES[9];
+      break;
     }
     case Race.Skaven: {
-      return OTHER_PROFILES[10];
+      champion.profile = OTHER_PROFILES[10];
+      break;
     }
     case Race.Slann: {
-      return OTHER_PROFILES[11];
+      champion.profile = OTHER_PROFILES[11];
+      break;
     }
     case Race.Zoat: {
-      return OTHER_PROFILES[12];
+      champion.profile = OTHER_PROFILES[12];
+      break;
     }
   }
+
+  let heroProfile = HERO_BONUS_PROFILES.filter(b => b.heroLevel === champion.profile.heroLevel || b.wizardLevel === champion.profile.wizardLevel);
+  champion.characterBonus = heroProfile.length < 1 ? null : heroProfile[0];
+
 }
 
 function getChaosAttribute(rollNumber: number): ChaosAttribute {
@@ -279,15 +300,14 @@ function getChaosAttribute(rollNumber: number): ChaosAttribute {
   return PERSONAL_ATTRIBUTES[PERSONAL_ATTRIBUTES.length - 1];
 }
 
-function getStandardReward(rollNumber:number): ChaosReward {
+function getStandardReward(rollNumber: number): ChaosReward {
   for (var i = 0; i < STANDARD_REWARDS.length; i++) {
     if (rollNumber <= STANDARD_REWARDS[i].rollNumber) {
       return STANDARD_REWARDS[i];
     }
   }
-  return STANDARD_REWARDS[STANDARD_REWARDS.length-1];
+  return STANDARD_REWARDS[STANDARD_REWARDS.length - 1];
 }
-
 
 export class CreateWarbandRequest {
   championName: string = "";
