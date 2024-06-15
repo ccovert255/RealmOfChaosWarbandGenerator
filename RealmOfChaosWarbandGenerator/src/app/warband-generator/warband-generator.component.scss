@@ -1,9 +1,44 @@
+
+.warbands-table {
+  width: 100%;
+}
+
+.warbands-list-button-container {
+  padding-bottom: 16px;
+}
+
+.mat-column-name {
+  width: 30%;
+}
+
+.mat-column-patron {
+  width: 10%;
+}
+
+.mat-column-profile {
+  width: 10%;
+}
+
+.mat-column-seed {
+  width: 50%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.dialog-cancel-button {
+  margin-right: 22px;
+}
+
+
 .warband-container {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
   grid-template-areas:
-    "header header" "profile profile" "equip armor" "followers followers";
+    "header header" "header header" "header header" "profile profile" "equip armor" "followers followers";
 }
 
 app-profile {
@@ -11,9 +46,9 @@ app-profile {
 }
 
 .warband-label {
-    font-size: 0.8rem;
-    display:block;
-    margin:0px;
+  font-size: 0.8rem;
+  display: block;
+  margin: 0px;
 }
 
 .warband-list-label {
@@ -25,25 +60,31 @@ app-profile {
 .warband-list-text {
   font-size: 0.8rem;
   white-space: break-spaces;
-  margin:0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 .warband-value {
   font-size: 1.5rem;
   padding: 4px 0 8px 0;
-  display:block;
+  display: block;
 }
 
 .warband-section {
-    margin:8px 8px 0px 8px;
+  margin: 8px 8px 0px 8px;
 }
 
+.warband-list-section {
+  padding: 0px 4px 4px 4px;
+  background-color: #e1e1e1;
+}
+
+
 .mat-icon {
-    margin-right:0px !important;
+  margin-right: 0px !important;
 }
 
 mat-form-field {
-    margin:8px;
+  margin: 8px;
 }
 
 mat-divider {
@@ -55,17 +96,34 @@ mat-divider {
 }
 
 button {
-    display:block;
+  display: block;
 }
 
 mat-list-item {
-    display:inline-block;
-    overflow:visible;
+  display: inline-block;
+  overflow: visible;
 }
 
 .mat-list-title {
   font-size: 1.5rem;
-display:inline-block;
-padding-top:8px;
+  display: inline-block;
+  padding-top: 8px;
 }
 
+.warband-label-section {
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+button.mdc-icon-button {
+  display: inline-block;
+  margin: -5px 0px 0px -5px;
+}
+
+.list-header-button {
+  display: inline-block;
+  padding-top: 6px;
+  vertical-align: top;
+  font-size: 1.2em;
+}

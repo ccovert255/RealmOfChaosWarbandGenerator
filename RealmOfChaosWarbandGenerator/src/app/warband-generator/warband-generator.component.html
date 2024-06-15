@@ -2,7 +2,7 @@
 
   <div mat-dialog-container class="warband-container">
 
-    <form class="example-form">
+    <div class="warband-section">
 
       <mat-form-field>
         <mat-label>Champion Name</mat-label>
@@ -29,92 +29,95 @@
         <mat-icon>bolt</mat-icon> Generate
       </button>
 
-    </form>
-
-    <mat-divider></mat-divider>
-
-    <div class="warband-container">
-
-      <div class="warband-section">
-        <div>
-          <span class="warband-label">Champion</span>
-          <span class="warband-value">{{warband?.champion?.name}}</span>
-        </div>
-        <div>
-          <span class="warband-label">Chaos Patron</span>
-          <span class="warband-value">{{ warband?.champion?.chaosPatronDisplayName() }}</span>
-        </div>
-        <div>
-          <span class="warband-label">Race</span>
-          <span class="warband-value">{{ warband?.champion?.raceDisplayName() }}</span>
-        </div>
-      </div>
-
-      <div class="warband-section">
-        <div>
-          <span class="warband-label">Rewards/Attributes</span>
-          <span class="warband-value">
-            {{warband?.champion?.rewardToAttributeRatio()}}
-          </span>
-        </div>
-        <div>
-          <span class="warband-label">Equipment Pts</span>
-          <span class="warband-value">{{warband?.champion?.equipmentPoints}}</span>
-        </div>
-        <div>
-          <span class="warband-label">Fear Pts</span>
-          <span class="warband-value">{{warband?.champion?.fearPoints()}}</span>
-        </div>
-      </div>
-
-      <app-profile class="warband-section" [champion]="warband?.champion"></app-profile>
-
-      <div class="warband-section">
-        <span class="warband-list-label">Rewards</span>
-        <mat-list class="mat-list-wrapping">
-          @for (reward of warband?.champion?.rewards; track reward.name) {
-          <mat-list-item>
-            <span class="mat-list-title">{{reward.name}}</span>
-            <p class="warband-list-text">{{reward.description}}</p>
-          </mat-list-item>
-          }
-        </mat-list>
-      </div>
-      <div class="warband-section">
-        <span class="warband-list-label">Attributes</span>
-        <mat-list>
-          @for (attribute of warband?.champion?.attributes; track attribute) {
-          <mat-list-item>
-            <span class="mat-list-title">{{attribute.name}} (<small>{{attribute.fearPoints}}fp</small>)</span>
-            <p class="warband-list-text">{{attribute.description}}</p>
-          </mat-list-item>
-          }
-        </mat-list>
-      </div>
-      <div class="warband-section">
-        <span class="warband-list-label">Weapons</span>
-        <mat-list>
-          @for (weapon of warband?.champion?.weapons; track weapon.name) {
-          <mat-list-item>
-            <span class="warband-value" matListItemTitle>{{weapon.name}}</span>
-          </mat-list-item>
-          }
-        </mat-list>
-      </div>
-      <div class="warband-section">
-        <span class="warband-list-label">Armor</span>
-        <mat-list>
-          @for (armor of warband?.champion?.armor; track armor.name) {
-          <mat-list-item>
-            <span class="warband-value" matListItemTitle>{{armor.name}}</span>
-          </mat-list-item>
-          }
-        </mat-list>
-      </div>
-
     </div>
 
+    <div class="warband-section">
+      <mat-divider></mat-divider>
     </div>
+
+    <div class="warband-section">
+      <div>
+        <span class="warband-label">Champion</span>
+        <span class="warband-value">{{warband?.champion?.name}}</span>
+      </div>
+      <div>
+        <span class="warband-label">Chaos Patron</span>
+        <span class="warband-value">{{ warband?.champion?.chaosPatronDisplayName() }}</span>
+      </div>
+      <div>
+        <span class="warband-label">Race</span>
+        <span class="warband-value">{{ warband?.champion?.raceDisplayName() }}</span>
+      </div>
+    </div>
+
+    <div class="warband-section">
+      <div>
+        <span class="warband-label">Rewards/Attributes</span>
+        <span class="warband-value">
+          {{warband?.champion?.rewardToAttributeRatio()}}
+        </span>
+      </div>
+      <div>
+        <span class="warband-label">Equipment Pts</span>
+        <span class="warband-value">{{warband?.champion?.equipmentPoints}}</span>
+      </div>
+      <div>
+        <span class="warband-label">Fear Pts</span>
+        <span class="warband-value">{{warband?.champion?.fearPoints()}}</span>
+      </div>
+    </div>
+
+    <app-profile class="warband-section" [champion]="warband?.champion"></app-profile>
+
+    <div class="warband-section">
+      <span class="warband-list-label">Rewards</span>
+      <mat-list class="mat-list-wrapping">
+        @for (reward of warband?.champion?.rewards; track reward.name) {
+        <mat-list-item>
+          <span class="mat-list-title">{{reward.name}}</span>
+          <p class="warband-list-text">{{reward.description}}</p>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+
+    <div class="warband-section">
+      <span class="warband-list-label">Attributes</span>
+      <mat-list>
+        @for (attribute of warband?.champion?.attributes; track attribute) {
+        <mat-list-item>
+          <span class="mat-list-title">{{attribute.name}} (<small>{{attribute.fearPoints}}fp</small>)</span>
+          <p class="warband-list-text">{{attribute.description}}</p>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+
+    <div class="warband-section">
+      <span class="warband-list-label">Weapons</span>
+      <mat-list>
+        @for (weapon of warband?.champion?.weapons; track weapon.name) {
+        <mat-list-item>
+          <span class="warband-value" matListItemTitle>{{weapon.name}}</span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+
+    <div class="warband-section">
+      <span class="warband-list-label">Armor</span>
+      <mat-list>
+        @for (armor of warband?.champion?.armor; track armor.name) {
+        <mat-list-item>
+          <span class="warband-value" matListItemTitle>{{armor.name}}</span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+
+
+  </div>
+
 </mat-dialog-content>
 <mat-divider></mat-divider>
 <mat-dialog-actions align="end">
