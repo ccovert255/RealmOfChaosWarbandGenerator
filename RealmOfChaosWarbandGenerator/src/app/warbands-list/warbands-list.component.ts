@@ -28,7 +28,7 @@ const WARBANDS_LIST_KEY: string = "warbands-list";
   styleUrl: './warbands-list.component.scss'
 })
 export class WarbandsListComponent {
-  displayedColumns: string[] = ['name', 'profile', 'patron', 'seed'];
+  displayedColumns: string[] = ['name', 'patron', 'race', 'seed'];
   warbandsList: Warband[] = [];
 
   @ViewChild(MatTable) table: MatTable<Warband> | undefined;

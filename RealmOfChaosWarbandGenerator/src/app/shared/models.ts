@@ -39,9 +39,11 @@ export class Champion {
   chaosPatronDisplayName() {
     return ChaosPatron[this.chaosPatron];
   }
+
   raceDisplayName() {
     return Race[this.race];
   }
+
   rewardToAttributeRatio() {
     return `${this.rewards.length}\\${this.attributes.length}`;
   }
@@ -222,7 +224,7 @@ export class Champion {
     });
 
     if (this.characterBonus != null) {
-      bonusProfile.description += this.characterBonus.description;
+      bonusProfile.description += " " + this.characterBonus.description;
       bonusProfile.movement += this.characterBonus.movement;
       bonusProfile.weaponSkill += this.characterBonus.weaponSkill;
       bonusProfile.ballisticSkill += this.characterBonus.ballisticSkill;
@@ -252,6 +254,7 @@ export class Champion {
     this.attributes = champion.attributes as ChaosAttribute[];
     this.rewards = champion.rewards as ChaosReward[]; 
     this.refusedRewards = champion.refusedRewards as ChaosReward[];
+    this.characterBonus = champion.characterBonus as Profile;
   }
 
 }

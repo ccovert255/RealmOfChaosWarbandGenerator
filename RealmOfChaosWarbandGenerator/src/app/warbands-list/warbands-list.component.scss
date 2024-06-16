@@ -11,17 +11,28 @@
 }
 
 .mat-column-name {
-  width: 30%;
+  width: 1%;
+  white-space: nowrap;
 }
 
 .mat-column-patron {
-  width: 10%;
+  width: 1%;
+  white-space: nowrap;
 }
 
-.mat-column-profile {
-  width: 10%;
+.mat-column-race {
+  width: 1%;
+  white-space: nowrap;
 }
 
 .mat-column-seed {
-    width:50%;
+  width: 97%;
+  white-space: nowrap;
+}
+
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+  display: inline-flex;
+  min-width: 100%;
 }

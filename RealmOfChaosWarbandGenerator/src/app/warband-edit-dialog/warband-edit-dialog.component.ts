@@ -57,10 +57,6 @@ export class WarbandEditDialogComponent {
   }
 
   onDelete(): void {
-    this.alertService.confirm("You sure Bro?", this.onConfirmedDelete, function () { });
-  }
-
-  onConfirmedDelete(): void {
     this.warbandsListService.deleteWarband(this.data.id);
     this.dialogRef.close();
   }
