@@ -411,7 +411,7 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
   { rollNumber: 945, name: "Vampire", fearPoints: 2, description: "Gains 4D6 Blood Points. Each turn on D6 roll of 3+ it must expend a blood point or remain immobile. If attacked while immobile, must spend 1 blood point to defend itself. Mutant dies if reduces to 0 blood points. Regains one blood point per wound it inflicts in hand-to-hand.", profileBonus: new ProfileBonus() },
   { rollNumber: 950, name: "Vividly Coloured Skin", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
   { rollNumber: 955, name: "Walking Head", fearPoints: 1, description: "Non-Chaos Armor must be discarded.", profileBonus: new ProfileBonus() },
-  { rollNumber: 960, name: "Warp Frenzy", fearPoints: 0, description: "Mutant is subject to frenzy. While frenzied mutant roll on Warp Frenzy chart for additional attributes. While frenzied add 5 Fear Points plus any caused by additional attributes.", profileBonus: new ProfileBonus() },
+  { rollNumber: 960, name: "Warp Frenzy", fearPoints: 0, description: "Mutant is subject to frenzy. While frenzied roll on Warp Frenzy chart for additional attributes, adding 5 Fear Points plus any caused by additional attributes.", profileBonus: new ProfileBonus() },
   { rollNumber: 965, name: "Warty Skin", fearPoints: 0, description: "+1 Armor Save", profileBonus: new ProfileBonus() },
   { rollNumber: 970, name: "Weapon Master", fearPoints: 0, description: "Increase either WS or BS by 6 (players choice) up to a maximum of 10.", profileBonus: new ProfileBonus() },
   { rollNumber: 975, name: "Wings", fearPoints: 1, description: "Roll D6 for wing type and flight stats.", profileBonus: new ProfileBonus() },
