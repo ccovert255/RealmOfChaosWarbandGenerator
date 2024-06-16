@@ -47,7 +47,7 @@ import { WarbandsListService } from '../warbands-list.service';
 })
 export class WarbandGeneratorComponent {
   createWarbandRequest: CreateWarbandRequest = new CreateWarbandRequest();
-  warband?: Warband;
+
   constructor(public dialogRef: MatDialogRef<WarbandGeneratorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Warband,
     public warbandsListService: WarbandsListService,
@@ -56,16 +56,15 @@ export class WarbandGeneratorComponent {
   }
 
   onCreateWarband(): void {
-    console.log(this.createWarbandRequest.championName);
-    this.warband = this.warbandService.createWarband(this.createWarbandRequest);
+    this.data = this.warbandService.createWarband(this.createWarbandRequest);
+    console.log(this.data);
   }
 
 
 
   onSave(): void {
-    console.log
-    if (this.warband?.champion?.profile == null) return;
-    this.warbandsListService.saveWarband(this.warband);
+    console.log(this.data);
+    this.warbandsListService.addWarband(this.data);
     this.dialogRef.close();
   }
 
