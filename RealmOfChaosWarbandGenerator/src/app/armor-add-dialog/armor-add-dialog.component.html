@@ -1,16 +1,22 @@
 <mat-dialog-content>
   <div mat-dialog-container class="warband-container">
 
-      <mat-form-field>
-        <mat-label>Armor</mat-label>
-        <mat-select required [(ngModel)]="armorList" name="armor">
-          <mat-option [value]="0">Light Armor</mat-option>
-          <mat-option [value]="1">Heavy Armor</mat-option>
-          <mat-option [value]="2">Chaos Armor</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Armor</mat-label>
+      <mat-select required [(ngModel)]="selectedArmor" name="selected-armor">
+        <mat-option *ngFor="let armor of armorList" [value]="armor">{{ armor.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      
+    <div class="armor-profile-container">
+      <div class="armor-profile-header">Armor Save</div>
+      <div class="armor-profile-header">Cost</div>
+      <div class="armor-profile-header">Hinders Movement</div>
+
+      <div class="armor-profile-row">{{selectedArmor?.armorSaveModifier}}</div>
+      <div class="armor-profile-row">{{selectedArmor?.cost}}</div>
+      <div class="armor-profile-row">{{selectedArmor?.reducesMovement}}</div>
+    </div>
 
   </div>   
 </mat-dialog-content>

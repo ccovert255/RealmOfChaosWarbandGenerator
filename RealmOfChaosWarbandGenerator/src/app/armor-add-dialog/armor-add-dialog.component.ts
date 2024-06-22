@@ -16,7 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
 import { WarbandsListService } from '../warbands-list.service';
 import { getRandomIntInclusive } from '../shared/functions';
-import { HERO_BONUS_PROFILES, PERSONAL_ATTRIBUTES, OTHER_PROFILES, HUMAN_PROFILES, DWARF_PROFILES, DARKELF_PROFILES } from '../shared/constants';
+import { HERO_BONUS_PROFILES, PERSONAL_ATTRIBUTES, OTHER_PROFILES, HUMAN_PROFILES, DWARF_PROFILES, DARKELF_PROFILES, ARMOR_TYPES } from '../shared/constants';
 import { ChaosPatron, Race } from '../shared/enums';
 import { ProfileComponent } from '../profile/profile.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -50,6 +50,7 @@ import { CommonModule } from '@angular/common';
 export class ArmorAddDialogComponent {
 
   armorList: Armor[] = [];
+  selectedArmor: Armor | null = null;
 
   constructor(public dialogRef: MatDialogRef<ArmorAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Warband,
@@ -57,8 +58,7 @@ export class ArmorAddDialogComponent {
     public alertService: AlertService) {
     dialogRef.disableClose = true;
 
-    //OTHER_PROFILES.forEach(r => this.raceProfiles.push(Object.assign({}, r)));
-
+    ARMOR_TYPES.forEach(a => this.armorList.push(Object.assign({}, a)));
   }
 
   onAdd(): void {
