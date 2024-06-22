@@ -421,43 +421,47 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
 
 export const HERO_BONUS_PROFILES: Profile[] = [
   {
-    rollNumber: 1, heroLevel: 5, wizardLevel: 0, description: "Lvl 5 Hero",
+    rollNumber: 0, heroLevel: 0, wizardLevel: 0, description: "",
+    movement: 0, weaponSkill: 0, ballisticSkill: 0, strength: 0, toughness: 0, wounds: 0, initiative: 0, attacks: 0, leadership: 0, intelligence: 0, cool: 0, willPower: 0,
+  },
+  {
+    rollNumber: 1, heroLevel: 1, wizardLevel: 0, description: "Lvl 5 Hero",
     movement: 0, weaponSkill: 1, ballisticSkill: 1, strength: 1, toughness: 0, wounds: 0, initiative: 1, attacks: 1, leadership: 0, intelligence: 0, cool: 0, willPower: 0,
   },
   {
-    rollNumber: 1, heroLevel: 10, wizardLevel: 0, description: "Lvl 10 Hero",
+    rollNumber: 2, heroLevel: 2, wizardLevel: 0, description: "Lvl 10 Hero",
     movement: 0, weaponSkill: 2, ballisticSkill: 1, strength: 1, toughness: 1, wounds: 1, initiative: 1, attacks: 2, leadership: 1, intelligence: 0, cool: 0, willPower: 0,
   },
   {
-    rollNumber: 1, heroLevel: 15, wizardLevel: 0, description: "Lvl 15 Hero",
+    rollNumber: 3, heroLevel: 3, wizardLevel: 0, description: "Lvl 15 Hero",
     movement: 0, weaponSkill: 2, ballisticSkill: 1, strength: 1, toughness: 1, wounds: 2, initiative: 2, attacks: 2, leadership: 2, intelligence: 0, cool: 1, willPower: 1,
   },
   {
-    rollNumber: 1, heroLevel: 20, wizardLevel: 0, description: "Lvl 20 Hero",
+    rollNumber: 4, heroLevel: 4, wizardLevel: 0, description: "Lvl 20 Hero",
     movement: 0, weaponSkill: 3, ballisticSkill: 1, strength: 1, toughness: 1, wounds: 3, initiative: 3, attacks: 3, leadership: 3, intelligence: 0, cool: 1, willPower: 1,
   },
   {
-    rollNumber: 1, heroLevel: 25, wizardLevel: 0, description: "Lvl 25 Hero",
+    rollNumber: 5, heroLevel: 5, wizardLevel: 0, description: "Lvl 25 Hero",
     movement: 0, weaponSkill: 3, ballisticSkill: 2, strength: 1, toughness: 1, wounds: 3, initiative: 3, attacks: 3, leadership: 3, intelligence: 2, cool: 2, willPower: 2,
   },
   {
-    rollNumber: 1, heroLevel: 0, wizardLevel: 5, description: "Lvl 5 Wizard",
+    rollNumber: 6, heroLevel: 0, wizardLevel: 1, description: "Lvl 5 Wizard",
     movement: 0, weaponSkill: 1, ballisticSkill: 0, strength: 1, toughness: 0, wounds: 0, initiative: 0, attacks: 0, leadership: 0, intelligence: 1, cool: 1, willPower: 1,
   },
   {
-    rollNumber: 1, heroLevel: 0, wizardLevel: 10, description: "Lvl 10 Wizard",
+    rollNumber: 7, heroLevel: 0, wizardLevel: 2, description: "Lvl 10 Wizard",
     movement: 0, weaponSkill: 1, ballisticSkill: 0, strength: 1, toughness: 0, wounds: 1, initiative: 1, attacks: 1, leadership: 1, intelligence: 2, cool: 1, willPower: 2,
   },
   {
-    rollNumber: 1, heroLevel: 0, wizardLevel: 15, description: "Lvl 15 Wizard",
+    rollNumber: 8, heroLevel: 0, wizardLevel: 3, description: "Lvl 15 Wizard",
     movement: 0, weaponSkill: 2, ballisticSkill: 0, strength: 1, toughness: 1, wounds: 2, initiative: 1, attacks: 1, leadership: 2, intelligence: 2, cool: 2, willPower: 2,
   },
   {
-    rollNumber: 1, heroLevel: 0, wizardLevel: 20, description: "Lvl 20 Wizard",
+    rollNumber: 9, heroLevel: 0, wizardLevel: 4, description: "Lvl 20 Wizard",
     movement: 0, weaponSkill: 2, ballisticSkill: 1, strength: 1, toughness: 1, wounds: 3, initiative: 2, attacks: 2, leadership: 2, intelligence: 3, cool: 2, willPower: 3,
   },
   {
-    rollNumber: 1, heroLevel: 0, wizardLevel: 25, description: "Lvl 25 Wizard",
+    rollNumber: 10, heroLevel: 0, wizardLevel: 5, description: "Lvl 25 Wizard",
     movement: 0, weaponSkill: 3, ballisticSkill: 2, strength: 1, toughness: 1, wounds: 3, initiative: 3, attacks: 3, leadership: 3, intelligence: 3, cool: 3, willPower: 3,
   },
 ];

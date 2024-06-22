@@ -26,6 +26,16 @@ import { MatListModule } from '@angular/material/list';
 import { CreateWarbandRequest, WarbandService } from '../warband.service';
 import { WarbandsListService } from '../warbands-list.service';
 
+
+
+import { AlertService } from '../alert.service';
+import { EnumSelectPipe } from '../enum.pipe'
+import { CommonModule } from '@angular/common';
+
+
+
+
+
 @Component({
   selector: 'app-warband-generator',
   standalone: true,
@@ -41,12 +51,16 @@ import { WarbandsListService } from '../warbands-list.service';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose],
+    MatDialogClose, CommonModule],
   templateUrl: './warband-generator.component.html',
   styleUrl: './warband-generator.component.scss'
 })
 export class WarbandGeneratorComponent {
   createWarbandRequest: CreateWarbandRequest = new CreateWarbandRequest();
+
+
+  patronTypes = Object.values(ChaosPatron).filter(r => typeof r === 'string').map((key, value) => { return { id: value, name: key }; });
+
 
   constructor(public dialogRef: MatDialogRef<WarbandGeneratorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Warband,

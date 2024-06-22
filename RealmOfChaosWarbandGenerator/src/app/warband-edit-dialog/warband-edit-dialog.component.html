@@ -10,37 +10,25 @@
 
       <mat-form-field>
         <mat-label>Chaos Patron</mat-label>
-        <select matNativeControl required [(ngModel)]="data.champion.chaosPatron" name="chaos-patron">
-          <option value="0">Undivided</option>
-          <option value="1">Khorne</option>
-          <option value="2">Slaanesh</option>
-          <option value="3">Nurgle</option>
-          <option value="4">Tzeentch</option>
-        </select>
+        <mat-select required [(ngModel)]="data.champion.chaosPatron" name="champion-patron">
+          <mat-option *ngFor="let patronType of patronTypes" [value]="patronType.id">{{ patronType.name }}</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Race</mat-label>
-        <select matNativeControl required [(ngModel)]="data.champion.race" name="champion-race">
-          <option value="0">Human</option>
-          <option value="1">Dwarf</option>
-          <option value="2">DarkElf</option>
-          <option value="3">Beastman</option>
-          <option value="4">Centaur</option>
-          <option value="5">Fimir_Fimmaur</option>
-          <option value="6">Fimir_Shearl</option>
-          <option value="7">Goblin</option>
-          <option value="8">DragonOgre</option>
-          <option value="9">Hobgoblin</option>
-          <option value="10">WereMan</option>
-          <option value="11">Lizardman</option>
-          <option value="12">Minotaur</option>
-          <option value="13">Orc</option>
-          <option value="14">Skaven</option>
-          <option value="15">Slann</option>
-          <option value="16">Zoat</option>
-        </select>
+        <mat-select required [(ngModel)]="data.champion.race" name="champion-race">
+          <mat-option *ngFor="let raceType of raceTypes" [value]="raceType.id">{{ raceType.name }}</mat-option>
+        </mat-select>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hero Level</mat-label>
+        <mat-select [(ngModel)]="data.champion.characterBonus" [compareWith]="compareProfiles" name="hero-level">
+          <mat-option *ngFor="let heroLevel of bonusLevels" [value]="heroLevel">{{ heroLevel.description }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
     </div>
 
     <div class="warband-section">

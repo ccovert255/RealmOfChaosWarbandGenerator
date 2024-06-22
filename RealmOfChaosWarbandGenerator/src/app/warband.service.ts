@@ -286,8 +286,25 @@ function applyStartingProfile(seed: string, champion: Champion): void {
     }
   }
 
-  let heroProfile = HERO_BONUS_PROFILES.filter(b => b.heroLevel === champion.profile.heroLevel || b.wizardLevel === champion.profile.wizardLevel);
-  champion.characterBonus = heroProfile.length < 1 ? null : heroProfile[0];
+  //TODO: fix broken filter here
+  champion.characterBonus = HERO_BONUS_PROFILES[0];
+  if (champion.profile.heroLevel > 0) {
+    let heroProfile = HERO_BONUS_PROFILES.filter(b => b.heroLevel === champion.profile.heroLevel);
+    console.log(`hero level: ${champion.profile.heroLevel}`);
+    console.log(heroProfile);
+    if (heroProfile.length > 0)
+      champion.characterBonus = heroProfile[0];
+  }
+
+  if (champion.profile.wizardLevel > 0) {
+    let wizardProfile = HERO_BONUS_PROFILES.filter(b => b.wizardLevel === champion.profile.wizardLevel);
+    console.log(`wizard level: ${champion.profile.heroLevel}`);
+    console.log(wizardProfile);
+    if (wizardProfile.length > 0)
+      champion.characterBonus = wizardProfile[0];
+  }
+
+
 
 }
 
