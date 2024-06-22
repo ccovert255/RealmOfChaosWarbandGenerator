@@ -298,15 +298,19 @@ export class Weapon {
   name: string = "Hand weapon";
   strengthBonus: number = 0;
   attackBonus: number = 0;
+  initiativeBonus: number = 0;
   armorSaveModifier: number = 0;
   range: number = 0;
   cost: number = 1;
+  specialRules: RuleDescription[] = [];
 }
 
 export class Armor {
-  name: string = "Hand weapon";
-  movementModifier: number = 0;
+  name: string = "Light Armor";
+  reducesMovement: boolean = true;
   armorSaveModifier: number = 0;
+  cost: number = 0;
+  specialRules: RuleDescription[] = [];
 }
 
 export class ChaosAttribute {

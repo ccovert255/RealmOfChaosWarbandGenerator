@@ -98,7 +98,7 @@ export class WarbandEditDialogComponent {
       return;
     }
 
-    const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: warband, width: "90vw", maxWidth: "90vw", maxHeight: "90vh", });
+    const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: warband });
     //armorDialogRef.afterClosed().subscribe(result => {
     //  this.warbandsList = this.warbandsListService.getWarbands();
     //});

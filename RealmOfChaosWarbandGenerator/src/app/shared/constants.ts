@@ -1,4 +1,4 @@
-import { ChaosAttribute, ChaosReward, Profile, ProfileBonus, RuleDescription } from "./models";
+import { ChaosAttribute, ChaosReward, Profile, ProfileBonus, RuleDescription, Armor, Weapon } from "./models";
 
 export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
   { rollNumber: 5, name: "Acid Excretion", fearPoints: 1, description: "Any create in combat with the mutant suffers one S5 hit every turn it fails to hit the mutant. Non-magical weapons are destroyed on the first wounding blow. Non-magical armor and shields are destroyed after first armor save. The mutant may not wear non-magical armor or use non-magical weapons.", profileBonus: new ProfileBonus() },
@@ -1013,5 +1013,36 @@ export const TZEENTCH_REWARDS: ChaosReward[] = [
   { rollNumber: 97, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 100, name: "Chaos Attributes", description: "Champion is given D3 Chaos Attributes", specialRules: [], profileBonus: new ProfileBonus() },
 ];
+
+export const CHAOS_ARMOR: Armor = {
+  name: "Chaos Armor", reducesMovement: false, armorSaveModifier: 3, cost: 50, specialRules: [SPECIAL_RULES[5]]
+}
+
+export const ARMOR_TYPES: Armor[] = [
+  { name: "Shield", reducesMovement: true, armorSaveModifier: 1, cost: 1, specialRules: []},
+  { name: "Light Armor", reducesMovement: true, armorSaveModifier: 1, cost: 2, specialRules: [] },
+  { name: "Heavy Armor", reducesMovement: true, armorSaveModifier: 2, cost: 3, specialRules: [] },
+  { name: "Riding Animal Barding", reducesMovement: true, armorSaveModifier: 1, cost: 4, specialRules: [] },
+  CHAOS_ARMOR
+]
+
+export const WEAPON_TYPES: Weapon[] = [
+  { name: "Hand Weapon", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 1, specialRules: [] },
+  { name: "Double-handed Weapon", strengthBonus: 1, attackBonus: 0, initiativeBonus: -1, range: 0, armorSaveModifier: -1, cost: 2, specialRules: [SPECIAL_RULES[0]] },
+  { name: "Flail", strengthBonus: 1, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 2, specialRules: [SPECIAL_RULES[0], SPECIAL_RULES[1]] },
+  { name: "Halberd", strengthBonus: 1, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 2, specialRules: [SPECIAL_RULES[0], SPECIAL_RULES[2], SPECIAL_RULES[3]] },
+  { name: "Lance", strengthBonus: 2, attackBonus: 0, initiativeBonus: 2, range: 0, armorSaveModifier: -1, cost: 2, specialRules: [] },
+  { name: "Spear", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 1, specialRules: [SPECIAL_RULES[2], SPECIAL_RULES[3], SPECIAL_RULES[4]] },
+  { name: "Bow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 24, armorSaveModifier: 0, cost: 2, specialRules: [] },
+  { name: "Short Bow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 1, specialRules: [] },
+  { name: "Long Bow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 3, specialRules: [] },
+  { name: "Crossbow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 3, specialRules: [] },
+  { name: "Javelin", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 8, armorSaveModifier: 0, cost: 1, specialRules: [] },
+  { name: "Throwing Knife", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 6, armorSaveModifier: 0, cost: 1, specialRules: [] },
+  { name: "Repeating Crossbow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 16, armorSaveModifier: 0, cost: 4, specialRules: [] },
+  { name: "Random Magic Item", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 6, specialRules: [] },
+]
+
+
 
 
