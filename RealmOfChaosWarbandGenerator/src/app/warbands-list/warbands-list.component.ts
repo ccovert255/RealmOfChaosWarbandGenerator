@@ -5,7 +5,6 @@ import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../sh
 import { MatIconModule } from '@angular/material/icon';
 import { WarbandEditDialogComponent } from '../warband-edit-dialog/warband-edit-dialog.component';
 import { WarbandsListService } from '../warbands-list.service';
-import { Guid } from 'guid-typescript';
 import {
   MatDialog,
   MAT_DIALOG_DATA,

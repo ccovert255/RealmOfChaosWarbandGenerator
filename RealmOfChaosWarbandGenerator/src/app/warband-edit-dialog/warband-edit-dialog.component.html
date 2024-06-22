@@ -85,7 +85,7 @@
       </mat-list>
     </div>
     <div class="warband-section warband-list-section">
-      <div><div class="list-header-button">Armor</div><button mat-icon-button color="primary"><mat-icon>add_circle</mat-icon></button></div>
+      <div><div class="list-header-button">Armor</div><button mat-icon-button (click)="addArmor()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
       <mat-list>
         @for (armor of data.champion.armor; track armor.name) {
         <mat-list-item>

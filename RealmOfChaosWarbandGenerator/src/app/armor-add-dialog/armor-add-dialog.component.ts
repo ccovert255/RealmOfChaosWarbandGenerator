@@ -7,6 +7,7 @@ import {
   MatDialogContent,
   MatDialogActions,
   MatDialogClose,
+  MatDialogConfig,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -26,12 +27,10 @@ import { CreateWarbandRequest, WarbandService } from '../warband.service';
 import { AlertService } from '../alert.service';
 import { EnumSelectPipe } from '../enum.pipe'
 import { CommonModule } from '@angular/common';
-import { ArmorAddDialogComponent } from '../armor-add-dialog/armor-add-dialog.component';
 
 @Component({
-  selector: 'app-warband-edit-dialog',
+  selector: 'app-armor-add-dialog',
   standalone: true,
-  providers: [AlertService],
   imports: [MatFormFieldModule,
     MatInputModule,
     FormsModule,
@@ -45,66 +44,26 @@ import { ArmorAddDialogComponent } from '../armor-add-dialog/armor-add-dialog.co
     MatSelectModule,
     MatDividerModule,
     MatListModule, EnumSelectPipe, CommonModule],
-  templateUrl: './warband-edit-dialog.component.html',
-  styleUrl: './warband-edit-dialog.component.scss'
+  templateUrl: './armor-add-dialog.component.html',
+  styleUrl: './armor-add-dialog.component.scss'
 })
-export class WarbandEditDialogComponent {
+export class ArmorAddDialogComponent {
 
-  bonusLevels: Profile[] = HERO_BONUS_PROFILES;
+  armorList: Armor[] = [];
 
-  raceProfiles: Profile[] = [
-    HUMAN_PROFILES[0],
-    DWARF_PROFILES[0],
-    DARKELF_PROFILES[0],
-  ];
-
-  raceTypes = Object.values(Race).filter(r => typeof r === 'string').map((key, value) => { return { id: value, name: key }; });
-
-  patronTypes = Object.values(ChaosPatron).filter(r => typeof r === 'string').map((key, value) => { return { id: value, name: key }; });
-
-  public compareProfiles = function (option: Profile, value: Profile): boolean {
-    return option.rollNumber === value.rollNumber;
-  }
-
-  constructor(public dialogRef: MatDialogRef<WarbandEditDialogComponent>,
-    public dialogAddArmorRef: MatDialog,
+  constructor(public dialogRef: MatDialogRef<ArmorAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Warband,
     public warbandsListService: WarbandsListService,
-    public alertService: AlertService)
-  {
+    public alertService: AlertService) {
     dialogRef.disableClose = true;
 
-    OTHER_PROFILES.forEach(r => this.raceProfiles.push(Object.assign({}, r)));
+    //OTHER_PROFILES.forEach(r => this.raceProfiles.push(Object.assign({}, r)));
 
   }
 
-  onDelete(): void {
-    this.warbandsListService.deleteWarband(this.data.id);
-    this.dialogRef.close();
-  }
-
-  onSave(): void {
+  onAdd(): void {
     this.warbandsListService.saveWarband(this.data);
     this.dialogRef.close();
   }
 
-  addArmor(): void {
-
-    let warband = this.warbandsListService.getWarband(this.data.id);
-
-    console.log(warband);
-    if (warband == null) {
-      //TODO: show 404 popup
-      return;
-    }
-
-    const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: warband, width: "90vw", maxWidth: "90vw", maxHeight: "90vh", });
-    //armorDialogRef.afterClosed().subscribe(result => {
-    //  this.warbandsList = this.warbandsListService.getWarbands();
-    //});
-
-  }
 }
-
-
-
