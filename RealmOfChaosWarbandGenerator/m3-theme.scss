@@ -137,7 +137,7 @@ $_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
 
 $dark-theme: mat.define-theme((
   color: (
-    theme-type: dark,
+    theme-type: light,
     primary: $_primary,
     tertiary: $_tertiary,
   ),
