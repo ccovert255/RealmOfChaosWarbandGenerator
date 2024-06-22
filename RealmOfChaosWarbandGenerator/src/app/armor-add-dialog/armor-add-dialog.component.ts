@@ -27,6 +27,7 @@ import { CreateWarbandRequest, WarbandService } from '../warband.service';
 import { AlertService } from '../alert.service';
 import { EnumSelectPipe } from '../enum.pipe'
 import { CommonModule } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-armor-add-dialog',
@@ -43,7 +44,7 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatSelectModule,
     MatDividerModule,
-    MatListModule, EnumSelectPipe, CommonModule],
+    MatListModule, EnumSelectPipe, CommonModule, MatCheckbox],
   templateUrl: './armor-add-dialog.component.html',
   styleUrl: './armor-add-dialog.component.scss'
 })
@@ -51,6 +52,10 @@ export class ArmorAddDialogComponent {
 
   armorList: Armor[] = [];
   selectedArmor: Armor | null = null;
+  armorSaveDisplay(): string {
+    if (this.selectedArmor == null) return '';
+    return `+${this.selectedArmor.armorSaveModifier}`;
+  }
 
   constructor(public dialogRef: MatDialogRef<ArmorAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Warband,

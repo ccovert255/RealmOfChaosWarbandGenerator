@@ -13,10 +13,12 @@
   background-color: whitesmoke;
 }
 
-.profile-row {
+.profile-row
+{
   border: 1px solid black;
   text-align: center;
   padding: 4px;
+  min-height: 20px;
 }
 
 .bonus-stat {
