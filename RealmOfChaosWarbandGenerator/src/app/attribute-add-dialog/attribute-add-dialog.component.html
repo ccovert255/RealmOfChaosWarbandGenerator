@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Add Chaos Attribute</h2>
+<mat-dialog-content>
+  <div mat-dialog-container class="item-container">
+
+    <mat-form-field>
+      <mat-label>Attribute</mat-label>
+      <mat-select required [(ngModel)]="selectedAttribute" name="selected-attribute">
+        <mat-option *ngFor="let attr of attributesList" [value]="attr">{{ attr.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <span class="attribute-description">{{selectedAttribute?.description}}</span>
+
+    <div *ngIf="attributeAffectsProfile()" class="profile-container">
+      <div class="profile-header">M</div>
+      <div class="profile-header">WS</div>
+      <div class="profile-header">BS</div>
+      <div class="profile-header">S</div>
+      <div class="profile-header">T</div>
+      <div class="profile-header">W</div>
+      <div class="profile-header">I</div>
+      <div class="profile-header">A</div>
+      <div class="profile-header">Ld</div>
+      <div class="profile-header">Int</div>
+      <div class="profile-header">Cl</div>
+      <div class="profile-header">Wp</div>
+
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.movement)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.weaponSkill)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.ballisticSkill)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.strength)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.toughness)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.wounds)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.initiative)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.attacks)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.leadership)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.cool)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.intelligence)}}</div>
+      <div class="profile-row">{{profileStatDisplay(selectedAttribute?.profileBonus?.willPower)}}</div>
+    </div>
+
+    <ul class="item-rules">
+      <li *ngFor="let rule of selectedAttribute?.specialRules">{{rule.description}}</li>
+    </ul>
+
+  </div>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-button class="dialog-cancel-button" [mat-dialog-close]="0" cdkFocusInitial>Cancel</button>
+  <button mat-flat-button color="primary" [disabled]='selectedAttribute == null' (click)="onAdd()"><mat-icon>done</mat-icon> Add</button>
+</mat-dialog-actions>

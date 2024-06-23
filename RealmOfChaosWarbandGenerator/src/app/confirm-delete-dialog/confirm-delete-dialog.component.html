@@ -1,1 +1,16 @@
-<p>confirm-delete-dialog works!</p>
+<h2 mat-dialog-title>Confirm Delete</h2>
+<mat-dialog-content>
+  <div mat-dialog-container class="item-container">
+
+    <mat-form-field>
+      <mat-label>Are you sure you want to permanently delete this record?</mat-label>
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-button class="dialog-cancel-button" [mat-dialog-close]="0" cdkFocusInitial>Cancel</button>
+  <button mat-flat-button color="primary" (click)="onConfirm()"><mat-icon>done</mat-icon> Add</button>
+</mat-dialog-actions>

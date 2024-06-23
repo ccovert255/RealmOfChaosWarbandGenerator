@@ -28,6 +28,7 @@ import { EnumSelectPipe } from '../enum.pipe'
 import { CommonModule } from '@angular/common';
 import { ArmorAddDialogComponent } from '../armor-add-dialog/armor-add-dialog.component';
 import { WeaponAddDialogComponent } from '../weapon-add-dialog/weapon-add-dialog.component';
+import { AttributeAddDialogComponent } from '../attribute-add-dialog/attribute-add-dialog.component';
 
 @Component({
   selector: 'app-warband-edit-dialog',
@@ -115,7 +116,16 @@ export class WarbandEditDialogComponent {
     }
   }
 
+  addAttribute(): void {
+    this.dialogAddItemRef.open(AttributeAddDialogComponent, { data: this.data, width: "50vw", maxWidth: "90vw", height: "40vw", maxHeight: "90vh", });
+  }
 
+  deleteAttribute(attribute: ChaosAttribute): void {
+    let index = this.data.champion.attributes.indexOf(attribute);
+    if (index !== -1) {
+      this.data.champion.attributes.splice(index, 1);
+    }
+  }
 
 }
 

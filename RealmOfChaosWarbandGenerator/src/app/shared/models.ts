@@ -303,6 +303,7 @@ export class ChaosAttribute {
   description: string = "";
   fearPoints: number = 0;
   profileBonus: ProfileBonus = new ProfileBonus();
+  specialRules: RuleDescription[] = [];
 }
 
 export class ChaosReward {

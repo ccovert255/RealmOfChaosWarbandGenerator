@@ -64,12 +64,14 @@
       </mat-list>
     </div>
     <div class="warband-section warband-list-section">
-      <span class="warband-list-label">Attributes</span>
-      <mat-list>
+      <div><div class="list-header-button">Chaos Attributes</div><button mat-icon-button (click)="addAttribute()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
+      <mat-list class="warband-items-list">
         @for (attribute of data.champion.attributes; track attribute) {
         <mat-list-item>
-          <span class="mat-list-title">{{attribute.name}} (<small>{{attribute.fearPoints}}fp</small>)</span>
-          <p class="warband-list-text">{{attribute.description}}</p>
+          <span class="mat-list-title" matListItemTitle>{{attribute.name}}
+            <button class="warband-items-delete-button" mat-button (click)="deleteAttribute(attribute)"><mat-icon>delete_forever</mat-icon></button>
+          </span>
+          <span class="warband-list-text">{{attribute.description}}</span>
         </mat-list-item>
         }
       </mat-list>
@@ -79,8 +81,7 @@
       <mat-list class="warband-items-list">
         @for (weapon of data.champion.weapons; track weapon.name) {
         <mat-list-item>
-          <span class="mat-list-title" matListItemTitle>
-            {{weapon.name}}
+          <span class="mat-list-title" matListItemTitle>{{weapon.name}}
             <button class="warband-items-delete-button" mat-button (click)="deleteWeapon(weapon)"><mat-icon>delete_forever</mat-icon></button>
           </span>
           <span class="warband-list-text">{{displaySpecialRuleNames(weapon.specialRules)}}</span>
