@@ -87,7 +87,7 @@ export class AttributeAddDialogComponent {
     public alertService: AlertService) {
     dialogRef.disableClose = true;
 
-    PERSONAL_ATTRIBUTES.forEach(w => this.attributesList.push(Object.assign({}, w)));
+    PERSONAL_ATTRIBUTES.forEach(attr => this.attributesList.push(Object.assign({}, attr)));
   }
 
   onAdd(): void {

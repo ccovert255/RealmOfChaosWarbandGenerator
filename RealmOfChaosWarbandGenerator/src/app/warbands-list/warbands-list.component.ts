@@ -52,7 +52,7 @@ export class WarbandsListComponent {
       return;
     }
 
-    const dialogRef = this.dialog.open(WarbandEditDialogComponent, { data: warband, width: "90vw", maxWidth: "90vw", maxHeight: "90vh", });
+    const dialogRef = this.dialog.open(WarbandEditDialogComponent, { data: warband, minWidth: "90vw", height:"90vh"});
     dialogRef.afterClosed().subscribe(result => {
       this.warbandsList = this.warbandsListService.getWarbands();
     });

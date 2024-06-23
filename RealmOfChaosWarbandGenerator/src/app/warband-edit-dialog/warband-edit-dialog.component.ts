@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute, RuleDescription } from '../shared/models';
+import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute, RuleDescription, ChaosReward } from '../shared/models';
 import { WarbandsListService } from '../warbands-list.service';
 import { getRandomIntInclusive } from '../shared/functions';
 import { HERO_BONUS_PROFILES, PERSONAL_ATTRIBUTES, OTHER_PROFILES, HUMAN_PROFILES, DWARF_PROFILES, DARKELF_PROFILES } from '../shared/constants';
@@ -29,6 +29,7 @@ import { CommonModule } from '@angular/common';
 import { ArmorAddDialogComponent } from '../armor-add-dialog/armor-add-dialog.component';
 import { WeaponAddDialogComponent } from '../weapon-add-dialog/weapon-add-dialog.component';
 import { AttributeAddDialogComponent } from '../attribute-add-dialog/attribute-add-dialog.component';
+import { RewardAddDialogComponent } from '../reward-add-dialog/reward-add-dialog.component';
 
 @Component({
   selector: 'app-warband-edit-dialog',
@@ -124,6 +125,17 @@ export class WarbandEditDialogComponent {
     let index = this.data.champion.attributes.indexOf(attribute);
     if (index !== -1) {
       this.data.champion.attributes.splice(index, 1);
+    }
+  }
+
+  addReward(): void {
+    this.dialogAddItemRef.open(RewardAddDialogComponent, { data: this.data, width: "50vw", maxWidth: "90vw", height: "40vw", maxHeight: "90vh", });
+  }
+
+  deleteReward(reward: ChaosReward): void {
+    let index = this.data.champion.rewards.indexOf(reward);
+    if (index !== -1) {
+      this.data.champion.rewards.splice(index, 1);
     }
   }
 

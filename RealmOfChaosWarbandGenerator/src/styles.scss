@@ -28,11 +28,13 @@
 // @include mat.color-variants-backwards-compatibility($RealmOfChaosWarbandGenerator-theme);
 
 
-
-
-
+.mat-mdc-dialog-content
+{
+  max-height: 75vh !important;
+}
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
-html {
+html
+{
   height: 100%;
 }
 
