@@ -673,7 +673,9 @@ export const SPECIAL_RULES: RuleDescription[] = [
   { id: 7, name: "No Fear Effect", description: "The mutant does not cause fear."},
   { id: 8, name: "Causes Fear", description: "The mutant causes fear in all living creatures. The mutant itself is immune to fear, except when cauased by Demons or deities." },
   { id: 9, name: "Causes Terror", description: `The mutant causes fear 6"+1/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Demons or deities.`},
-  { id: 10, name: "Causes Terror", description: `The mutant causes fear 6"+2/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Greater Demons or deities.`},
+  { id: 10, name: "Causes Terror", description: `The mutant causes fear 6"+2/terror in all living creatures. The mutant itself is immune to such effects, except when cauased by Greater Demons or deities.` },
+  { id: 11, name: "Hinders Movement", description: `Reduces movement by 1/2" per 'pip' of armor save below 6+. Armor with a save of 5+ = M-0.5", 4+ = M-1", 3+ = M-1.5", etc.` },
+  { id: 12, name: "Hinders Spellcasting", description: `Wizards may not regain magic by resting. Spells cost +1 magic point per 'pip' of armor save` },
 ];
 
 export const MARK_OF_KHORNE: ChaosReward = { name: "Mark of Khorne", description: "Chaos Armor, Lose 1 magic level", rollNumber: 0, specialRules: [], profileBonus: new ProfileBonus() };
@@ -1019,10 +1021,10 @@ export const CHAOS_ARMOR: Armor = {
 }
 
 export const ARMOR_TYPES: Armor[] = [
-  { name: "Shield", reducesMovement: true, armorSaveModifier: 1, cost: 1, specialRules: []},
-  { name: "Light Armor", reducesMovement: true, armorSaveModifier: 1, cost: 2, specialRules: [] },
-  { name: "Heavy Armor", reducesMovement: true, armorSaveModifier: 2, cost: 3, specialRules: [] },
-  { name: "Riding Animal Barding", reducesMovement: true, armorSaveModifier: 1, cost: 4, specialRules: [] },
+  { name: "Shield", reducesMovement: true, armorSaveModifier: 1, cost: 1, specialRules: [SPECIAL_RULES[11],SPECIAL_RULES[12]]},
+  { name: "Light Armor", reducesMovement: true, armorSaveModifier: 1, cost: 2, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
+  { name: "Heavy Armor", reducesMovement: true, armorSaveModifier: 2, cost: 3, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
+  { name: "Riding Animal Barding", reducesMovement: true, armorSaveModifier: 1, cost: 4, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
   CHAOS_ARMOR
 ]
 

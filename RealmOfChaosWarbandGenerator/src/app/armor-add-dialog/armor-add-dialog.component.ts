@@ -67,8 +67,12 @@ export class ArmorAddDialogComponent {
   }
 
   onAdd(): void {
-    this.warbandsListService.saveWarband(this.data);
-    this.dialogRef.close();
+
+    if (this.selectedArmor != null) {
+      this.data.champion.armor.push(this.selectedArmor); 
+      this.dialogRef.close();
+    }
+
   }
 
 }

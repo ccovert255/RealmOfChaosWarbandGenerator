@@ -1,14 +1,13 @@
 <h2 mat-dialog-title>Add Armor</h2>
 <mat-dialog-content>
-  <div mat-dialog-container class="warband-container">
-    <div class="armor-container">
+  <div mat-dialog-container class="armor-container">
+
       <mat-form-field>
         <mat-label>Armor</mat-label>
         <mat-select required [(ngModel)]="selectedArmor" name="selected-armor">
           <mat-option *ngFor="let armor of armorList" [value]="armor">{{ armor.name }}</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
 
     <div class="armor-profile-container">
       <div class="armor-profile-header">Armor Save</div>
@@ -18,12 +17,9 @@
       <div class="armor-profile-row">{{selectedArmor?.cost}}</div>
     </div>
 
-    <div class="armor-container">
-      <mat-checkbox class="example-margin" [checked]="selectedArmor?.reducesMovement" [disabled]="true">Hinders Movement</mat-checkbox>
-    </div>
-    <div class="armor-container">
-      <mat-checkbox class="example-margin" [checked]="selectedArmor?.reducesMovement" [disabled]="true">Hinders Spellcasting</mat-checkbox>
-    </div>
+    <ul class="armor-rules">
+      <li *ngFor="let rule of selectedArmor?.specialRules">{{rule.description}}</li>
+    </ul>
 
   </div>
 </mat-dialog-content>
@@ -31,5 +27,5 @@
 <mat-divider></mat-divider>
 <mat-dialog-actions align="end">
   <button mat-button class="dialog-cancel-button" [mat-dialog-close]="0" cdkFocusInitial>Cancel</button>
-  <button mat-flat-button color="primary" (click)="onAdd()"><mat-icon>done</mat-icon> Add</button>
+  <button mat-flat-button color="primary" [disabled]='selectedArmor == null'  (click)="onAdd()"><mat-icon>done</mat-icon> Add</button>
 </mat-dialog-actions>

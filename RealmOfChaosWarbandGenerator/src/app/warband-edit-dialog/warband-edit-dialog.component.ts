@@ -89,20 +89,7 @@ export class WarbandEditDialogComponent {
   }
 
   addArmor(): void {
-
-    let warband = this.warbandsListService.getWarband(this.data.id);
-
-    console.log(warband);
-    if (warband == null) {
-      //TODO: show 404 popup
-      return;
-    }
-
-    const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: warband });
-    //armorDialogRef.afterClosed().subscribe(result => {
-    //  this.warbandsList = this.warbandsListService.getWarbands();
-    //});
-
+    const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: this.data });
   }
 }
 
