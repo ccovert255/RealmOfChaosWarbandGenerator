@@ -12,6 +12,36 @@ import { Warband, Profile, Weapon, Armor, ChaosAttribute, Champion } from '../sh
 export class ProfileComponent {
   @Input() champion?: Champion;
 
+  armorSaveDisplay(): string {
+
+    if (this.champion == null)
+      return '';
+
+    let armorSave = 0;
+
+    this.champion.armor.forEach(a => {
+      armorSave += a.armorSave ?? 0;
+    });
+
+    this.champion.attributes.forEach(a => {
+      armorSave += a.profileBonus.armorSave ?? 0;
+    });
+
+    this.champion.rewards.forEach(r => {
+      armorSave += r.profileBonus.armorSave ?? 0;
+    });
+
+    if (armorSave === 0)
+      return '';
+
+    let saveRoll = 7 - armorSave;
+
+    if (saveRoll < 2)
+      saveRoll = 2;
+
+    return `${saveRoll}+`;
+  }
+
   leadershipStatDisplay(): string {
     if (this.champion?.characterBonus == null) return '';
 

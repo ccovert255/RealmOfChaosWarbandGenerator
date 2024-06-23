@@ -45,7 +45,7 @@ export class Champion {
   }
 
   rewardToAttributeRatio() {
-    return `${this.rewards.length}\\${this.attributes.length}`;
+    return `${this.rewards.length}/${this.attributes.length}`;
   }
 
   fearPoints() {
@@ -333,6 +333,7 @@ export class ProfileBonus {
   intelligence: number = 0;
   cool: number = 0;
   willPower: number = 0;
+  armorSave: number = 0;
 }
 
 export class WizardProfile {

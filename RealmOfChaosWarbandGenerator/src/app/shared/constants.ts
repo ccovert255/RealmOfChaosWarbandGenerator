@@ -16,7 +16,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     }
   },
   {
@@ -32,7 +33,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   {
     specialRules: [], rollNumber: 25, name: "Alcoholism", fearPoints: 0, description: "Reduce M by -1. Roll a D6 each full game turn, on a 6 the mutant is drunk. Each player rolls D6 at the start of their turn: 1: Mutant staggers in random direction. 2-4: Mutant stands still in drunken haze. 5/6: That player controls the mutant this turn.", profileBonus: {
@@ -47,7 +49,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 30, name: "Atrophy", fearPoints: 0, description: "Roll D6 to determin how many parts are attrified: 1-3 = One, 4-5 = Two, 6 = Three. Reduce I and T by -0.5 per affected area. Roll D6 to determine area: 1 = Head (Int -2, Stupidity), 2-4 = Arm (A-1), 5-6 = Leg (M-2)", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 40, name: "Beaked", fearPoints: 1, description: "+1 Bite Attack", profileBonus: new ProfileBonus() },
@@ -64,7 +67,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 180, name: "Beweaponed Extremities", fearPoints: 1, description: "Mutants without arms also suffer 'Quadruped/Biped' effects. Roll D6 to determine type: 1-3: Blades, 4-6 Maces. S+1, I-1, AP-1 for attacks with these weapons. Mutant cannot use other weapon types.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 185, name: "Big Ears", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
@@ -81,7 +85,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     }
 },
   { specialRules: [], rollNumber: 195, name: "Black Skin", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
@@ -98,7 +103,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 210, name: "Blood Substitution", fearPoints: 0, description: "Roll D6 to determine blood type: 1-2: Leeches or Maggots, 3: Acid, 4: Protoplasm, 5: Molten Metal, 6: Electricity. Once wounded add 3 to mutant's Fear Points.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 215, name: "Breathes Fire", fearPoints: 1, description: `The mutant can Breathe Fire once per turn, but cannot make bite attacks in the same turn. All hits use the mutant's Strength. Number of hits and size of template vary based on mutant's size: Larger than man-sized = 12"x4", 3 hits, Man-sized = 6"x3", 2 hits, Smaller = 3"x1", 1 hit`, profileBonus: new ProfileBonus() },
@@ -117,7 +123,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     }
 },
   { specialRules: [], rollNumber: 240, name: "Chaos Lord", fearPoints: 0, description: "The mutant gets 2 rolls on the Retinue Table. Roll a D6 for these items, on a 4+ the mutant receives the item: 1: Chaos Armor, 2: One Magic Level (Khorne followers receive Collar of Khorne and a Fleshhound), 3: D6 Chaos Attributes, 4: Demon Weapon, 5: Stat Upgrades (WS+D4, BS+D4, S+2, T+1, W+D3, I+D4, A+D3, LD+D3, Int+D3, Cl+D3, Wp+D3) )", profileBonus: new ProfileBonus() },
@@ -146,7 +153,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 345, name: "Enormous Noise", fearPoints: 0, description: `Each turn a D6 roll of 6 means the mutant has produced it's distinctive sound. Enemy units within 6" are startled suffer -1 (or +1 where appropriate) to dice rolls.`, profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 355, name: "Evil Eye", fearPoints: 1, description: `Enemy creatures within 4" must take an I test to avoid it's gaze or suffer -1 (or +1 where appropriate) to all dice rolls.`, profileBonus: new ProfileBonus() },
@@ -167,7 +175,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 400, name: "Fear of Blood", fearPoints: 0, description: `If a wound is caused within 6" the mutant must pass a Wp test or it does nothing this turn.`, profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 405, name: "Feathered Hide", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
@@ -208,7 +217,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 570, name: "Long Neck", fearPoints: 0, description: "Mutant may ignore line-of-sight effects of walls and hedges.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 575, name: "Long Nose", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
@@ -233,7 +243,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 2,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 630, name: "Mechanoid", fearPoints: 2, description: "Roll D6 to determine extent of changes: 1-3 = Completely Mechanical (WS+1,S+4,T+2,A+1), 4-6 = Partially Mechanical (D10: 1=Head(A+1 Bite), 2=Body(T+2), 3-5=Arms(S+2, WS+1), 6-7=Hands(S+2), 8-0=Legs(See Chart)...", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 635, name: "Mercreature", fearPoints: 1, description: "Mutant can breath under water and swim full Move value. Movement on land is reduced to 1.", profileBonus: new ProfileBonus() },
@@ -252,7 +263,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: -2,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 665, name: "Multiple Arms", fearPoints: 0, description: "A+1, T+0.5 per arm. Roll D6: 1=One Arm, 2-4=Two Arms, 5=Three Arms, 6=Four Arms. Arms can carry shield or weapons, but no mutant may carry more than 2 shields.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 675, name: "Multiple Heads", fearPoints: 1, description: "Roll D6 to determine extra heads: 1-5=One Head, 6=Two Heads. Mutant always has at least as many attacks as it has heads.", profileBonus: new ProfileBonus() },
@@ -272,7 +284,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: -2,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 715, name: "Plague Bearer", fearPoints: 1, description: "Followers of Nurgel gain Nurgle's Rot. Others roll D6: 1=The Shakes (WS-1, A-1), 2=Eye Rot(BS-1), 3=Creeping Buboes(M-1, I-1), 4=Bone Ague(S-1, T-1), 5=Grey Fever (Ld-1,Int-1,Cl-1,Wp-1), 6=Green Pox(W*0.2). No stat can drop below 1 as a result of plague. Opponents that land a hit must take T test or get infected.", profileBonus: new ProfileBonus() },
   {
@@ -288,7 +301,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: -1,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     }
 },
   { specialRules: [], rollNumber: 725, name: "Poisonous Bite", fearPoints: 0, description: "Mutant gains Bite Attack if it doesn't already have one. Bite Attack is made with S+1", profileBonus: new ProfileBonus() },
@@ -311,7 +325,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 770, name: "Rearranged Face", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 775, name: "Regeneration", fearPoints: 0, description: "Mutant may regenerate at end of turn - even if dead. Roll D6, on 4+ all lost wounds are recovered. If roll fails, mutant cannot regenerate those wounds this battle.", profileBonus: new ProfileBonus() },
@@ -328,10 +343,27 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 790, name: "Rotting Flesh", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
-  { specialRules: [], rollNumber: 795, name: "Scaly Skin", fearPoints: 1, description: "+1 Armor Save", profileBonus: new ProfileBonus() },
+  {
+    specialRules: [], rollNumber: 795, name: "Scaly Skin", fearPoints: 1, description: "+1 Armor Save", profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks:0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0,
+      armorSave: 1,
+    }
+},
   {
     specialRules: [], rollNumber: 805, name: "Scorpion Tail", fearPoints: 1, description: "A+1. Roll D6: 1-2 = Non-poisonous, attack to front and sides only, 4-6: Poisonous, attack S+1 to front only.", profileBonus: {
       movement: 0,
@@ -345,7 +377,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 810, name: "Short Legs", fearPoints: 0, description: "Divide movement by two, rounding down.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 820, name: "Shrink", fearPoints: -1, description: "Roll D6 to determin extent of shrink.", profileBonus: new ProfileBonus() },
@@ -364,7 +397,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 840, name: "Skull Face", fearPoints: 1, description: "", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 845, name: "Snake Tail", fearPoints: 1, description: "+1 Attack to front, sides, and rear with S1. On a D6 froll of 4+ the bite is poisonous and hits automatically.", profileBonus: new ProfileBonus() },
@@ -382,7 +416,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 860, name: "Suckers", fearPoints: 1, description: "Mutant can attach itself to opponent by making a normal to-hit roll. No other attacks can be made when attaching. While attached, increase WS by 2 and reduce opponent's WS by 2. Any wound suffered by mutant will cause it to let go.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 865, name: "Tail", fearPoints: 0, description: "Cosmetic tail does not affect profile.", profileBonus: new ProfileBonus() },
@@ -399,7 +434,8 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
       leadership: 0,
       intelligence: 2,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { specialRules: [], rollNumber: 885, name: "Telekinesis", fearPoints: 0, description: "Mutant can manipulate inanimate objects. Must pass a WP test (per use, not per turn) and can do nothing else at the same time.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 890, name: "Teleport", fearPoints: 0, description: `Roll D6: 1-5:Mutant can teleport self, 6: Mutant can teleport anybody. Can teleport one creature per turn up to D6xD6". Roll for distance each attempt. Must be within 2" of creature being teleported. Creatures not wishing to be teleports can cancel by passing a WP test. Must pass Int test or target scatters D12".`, profileBonus: new ProfileBonus() },
@@ -412,7 +448,22 @@ export const PERSONAL_ATTRIBUTES: ChaosAttribute[] = [
   { specialRules: [], rollNumber: 950, name: "Vividly Coloured Skin", fearPoints: 0, description: "", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 955, name: "Walking Head", fearPoints: 1, description: "Non-Chaos Armor must be discarded.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 960, name: "Warp Frenzy", fearPoints: 0, description: "Mutant is subject to frenzy. While frenzied roll on Warp Frenzy chart for additional attributes, adding 5 Fear Points plus any caused by additional attributes.", profileBonus: new ProfileBonus() },
-  { specialRules: [], rollNumber: 965, name: "Warty Skin", fearPoints: 0, description: "+1 Armor Save", profileBonus: new ProfileBonus() },
+  {
+    specialRules: [], rollNumber: 965, name: "Warty Skin", fearPoints: 0, description: "+1 Armor Save", profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0,
+      armorSave: 1,
+    } },
   { specialRules: [], rollNumber: 970, name: "Weapon Master", fearPoints: 0, description: "Increase either WS or BS by 6 (players choice) up to a maximum of 10.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 975, name: "Wings", fearPoints: 1, description: "Roll D6 for wing type and flight stats.", profileBonus: new ProfileBonus() },
   { specialRules: [], rollNumber: 985, name: "Zoological Mutation", fearPoints: 0, description: "Roll D100 to determine body parts that change. Roll D100 to determine 'donor' species. FP+1 for each body part changed.", profileBonus: new ProfileBonus() },
@@ -692,7 +743,8 @@ export const MARK_OF_SLAANESH: ChaosReward = {
     leadership: 0,
     intelligence: 0,
     cool: 0,
-    willPower:  1
+    willPower: 1,
+    armorSave: 0,
   }};
 export const MARK_OF_NURGLE: ChaosReward = {
   name: "Mark of Nurgle", description: "+1 Toughness", rollNumber: 0, specialRules: [], profileBonus: {
@@ -707,7 +759,8 @@ export const MARK_OF_NURGLE: ChaosReward = {
     leadership: 0,
     intelligence: 0,
     cool: 0,
-    willPower: 0
+    willPower: 0,
+    armorSave: 0,
   }
 };
 export const MARK_OF_TZEENTCH: ChaosReward = { name: "Mark of Tzeentch", description: "D3 Attributes, Magic Item", rollNumber: 0, specialRules: [], profileBonus: new ProfileBonus() };
@@ -715,7 +768,22 @@ export const MARK_OF_TZEENTCH: ChaosReward = { name: "Mark of Tzeentch", descrip
 export const STANDARD_REWARDS: ChaosReward[] = [
   { rollNumber: 43, name: "Frenzy", description: "Champion and all current members of his Warband becom subject to frenzy. Subsequent gifts of frenzy reduce cool by -1 to a minimum of 2", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 48, name: "Demon Weapon", description: "Champion is gifted with a deamon weapon. A Champion can be gifted up two demon weapons, but if he receives a 3rd then the two he already has merge into a single mighty blade. Unless the Champion is a follower of Khorne, he may forsake the Demon Weapon in favor of a randomly generated magic item.", specialRules: [], profileBonus: new ProfileBonus() },
-  { rollNumber: 53, name: "Chaos Armor", description: "Champion is gifted with Chaos Armor 4+. Chaos Armor is effective against magical attacks and can be worn by a wizard without affecting his abilities in any way. If the Champion already has Chaos Armor it's saving throw is increased by +1. On a D6 roll of 4+ it fuses with the Champion's body increasing his toughness by +1.", specialRules: [], profileBonus: new ProfileBonus() },
+  {
+    rollNumber: 53, name: "Chaos Armor", description: "Champion is gifted with Chaos Armor 4+. Chaos Armor is effective against magical attacks and can be worn by a wizard without affecting his abilities in any way. If the Champion already has Chaos Armor it's saving throw is increased by +1. On a D6 roll of 4+ it fuses with the Champion's body increasing his toughness by +1.", specialRules: [], profileBonus: {
+      movement: 0,
+      weaponSkill: 0,
+      ballisticSkill: 0,
+      strength: 0,
+      toughness: 0,
+      wounds: 0,
+      initiative: 0,
+      attacks: 0,
+      leadership: 0,
+      intelligence: 0,
+      cool: 0,
+      willPower: 0,
+      armorSave: 3,
+    } },
   { rollNumber: 58, name: "Demonic Steed", description: "Champton recieves a Demonic Steed.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 63, name: "Chaos Spawn", description: "Champion is gifted with D6 Chaos Spawn to use in whatever manner he chooses, for example as mounts, fighters, or pull chariots.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 69, name: "Strength", description: "Champion is gifted with great strength. Add +3 to strength up to a maximum of 10.", specialRules: [], profileBonus: {
@@ -730,7 +798,9 @@ export const STANDARD_REWARDS: ChaosReward[] = [
     leadership: 0,
     intelligence: 0,
     cool: 0,
-    willPower: 0}
+    willPower: 0,
+    armorSave: 0,
+  }
   },
   { rollNumber: 85, name: "Gift of the Gods", description: "Roll from the Champion's Patron Gift Table. If the Champion has no Patron this result must be re-rolled. If same result is rolled a second time the champion is rewarded with a Chaos Attribute instead.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 90, name: "Demonic Creatures", description: "Champion is gifted with D6 Chaos Hounds. If the Champion has a Patron he can choose a single 'beast' creature of his Patron instead. (Fleshhound/Fiend/Beast of Nurgle/Flamer)", specialRules: [], profileBonus: new ProfileBonus() },
@@ -753,7 +823,8 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   {
     rollNumber: 15, name: "Face of a Fleshhound", description: "Gains a poinsonous bite attack.", specialRules: [], profileBonus: {
@@ -768,7 +839,8 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   {
     rollNumber: 20, name: "Face of a Juggernaught", description: "Can make a Gore Attack. Gains 1 Attack.", specialRules: [], profileBonus: {
@@ -783,7 +855,8 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { rollNumber: 25, name: "Skin of Khorne", description: "Roll D6: 1-3=Red, 4-5=Black, 6=Brass(T+1). T bonus is lost if skin changes color again.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 28, name: "Collar of Khorne", description: "Subsequent Collars of Khorne can received as Bloodstones or given to followers.", specialRules: [], profileBonus: new ProfileBonus() },
@@ -802,7 +875,8 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 2,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { rollNumber: 40, name: "Poisonous Bite", description: "Champion can use a poisonous bite in place of another attack.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 45, name: "Regeneration", description: "Champion may regenerate at end of turn - even if dead. Roll D6, on 4+ all lost wounds are recovered. If roll fails, mutant cannot regenerate those wounds this battle.", specialRules: [], profileBonus: new ProfileBonus() },
@@ -821,7 +895,8 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: -2,
       cool: -2,
-      willPower: -2
+      willPower: -2,
+      armorSave: 0,
     } },
   {
     rollNumber: 90, name: "Aggression Bonus", description: "", specialRules: [], profileBonus: {
@@ -836,7 +911,8 @@ export const KHORNE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: -2,
       cool: -2,
-      willPower: -2
+      willPower: -2,
+      armorSave: 0,
     } },
   { rollNumber: 97, name: "Weapon Hand", description: "One attack is always made with bonded weapon hand. Subsequent rolls grant I+1.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 99, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
@@ -858,7 +934,8 @@ export const SLAANESH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     }
 },
   { rollNumber: 14, name: "Face of a Demonette", description: "", specialRules: [], profileBonus: new ProfileBonus() },
@@ -875,7 +952,8 @@ export const SLAANESH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   {
     rollNumber: 25, name: "Face of a Mount of Slaanesh", description: "Gains Mount of Slaanesh 'Ensnaring' attack. Can be combined with Fiend's 'Lick' attack. Subsequent rewards are applied to followers.", specialRules: [], profileBonus: {
@@ -890,7 +968,8 @@ export const SLAANESH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { rollNumber: 35, name: "Crablike Claw", description: "Champion must make Claw attacks with crab hands. Subsequent gifts apply to other limbs.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 50, name: "Hermaphrodite", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
@@ -908,7 +987,8 @@ export const SLAANESH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 1
+      willPower: 1,
+      armorSave: 0,
     } },
   { rollNumber: 73, name: "Familiar", description: "Champion is granted a permanent chaos familiar. May have up to two familiars if gifted by Slaanesh. Familiars can be given up to 3 Chaos Attributes.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 81, name: "Crossbreed", description: "Merge champion's profile with a Mount of Slaanesh. (Add stats together and divide by 2, rounding to nearest whole/half number). Also apply 'Face of Mount of Slaanesh' to champion", specialRules: [], profileBonus: new ProfileBonus() },
@@ -925,7 +1005,8 @@ export const SLAANESH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { rollNumber: 91, name: "Musk", description: `Enemy models within 4" must take WP test or move adjacent to champion. Victims are unable to do anything other than stand still, and only one victim can be influenced at a time. Subsequent rewards increase the reant by 1".`, specialRules: [], profileBonus: new ProfileBonus() },
   {
@@ -941,7 +1022,8 @@ export const SLAANESH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { rollNumber: 97, name: "Mark of Slaanesh", description: "Subsequent rewards are applied to followers.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 98, name: "Demonic Name", description: "Subsequent rewards make the name longer.", specialRules: [], profileBonus: new ProfileBonus() },
@@ -966,7 +1048,8 @@ export const NURGLE_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     } },
   { rollNumber: 38, name: "Nurgles Rot", description: "Can pass Nurgle's Rot to others in hand-to-hand. Subsequent rewards are passed on to followers. Unlike champions, followers are affected by the disease.", specialRules: [], profileBonus: new ProfileBonus() },
   { rollNumber: 44, name: "Horns of Nurgle", description: "", specialRules: [], profileBonus: new ProfileBonus() },
@@ -996,7 +1079,8 @@ export const TZEENTCH_REWARDS: ChaosReward[] = [
       leadership: 0,
       intelligence: 0,
       cool: 0,
-      willPower: 0
+      willPower: 0,
+      armorSave: 0,
     }
 },
   { rollNumber: 22, name: "Face of a Horror", description: "", specialRules: [], profileBonus: new ProfileBonus() },

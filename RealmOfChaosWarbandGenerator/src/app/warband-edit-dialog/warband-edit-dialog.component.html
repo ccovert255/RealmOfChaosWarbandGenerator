@@ -7,7 +7,8 @@
 
   <div mat-dialog-container class="warband-container">
 
-    <div class="warband-section">
+    <div class="header-area">
+
       <mat-form-field>
         <mat-label>Champion Name</mat-label>
         <input matInput [(ngModel)]="data.champion.name">
@@ -34,13 +35,14 @@
         </mat-select>
       </mat-form-field>
 
-    </div>
-
-    <div class="warband-section">
       <mat-form-field>
         <mat-label>Equipment Pts</mat-label>
         <input matInput [(ngModel)]="data.champion.equipmentPoints">
       </mat-form-field>
+
+    </div>
+
+    <div class="sub-header-area">
 
       <div class="warband-label-section">
         <span class="warband-label">Rewards/Attributes</span>
@@ -49,21 +51,23 @@
         </span>
       </div>
 
+
       <div class="warband-label-section">
         <span class="warband-label">Fear Pts</span>
         <span class="warband-value">{{data.champion.fearPoints()}}</span>
       </div>
+
+
     </div>
 
-    <app-profile class="warband-section" [champion]="data.champion"></app-profile>
+    <app-profile class="profile-area" [champion]="data.champion"></app-profile>
 
-    <div class="warband-section warband-list-section">
+    <div class="warband-section warband-list-section rewards-area">
       <div><div class="list-header-button">Chaos Rewards</div><button mat-icon-button (click)="addReward()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
-      <mat-list class="mwarband-items-list">
+      <mat-list class="warband-items-list">
         @for (reward of data.champion.rewards; track reward.name) {
         <mat-list-item>
-          <span class="mat-list-title" matListItemTitle>
-            {{reward.name}}
+          <span class="mat-list-title" matListItemTitle>{{reward.name}}
             <button class="warband-items-delete-button" mat-button (click)="deleteReward(reward)"><mat-icon>delete_forever</mat-icon></button>
           </span>
           <span class="warband-list-text">{{reward.description}}</span>
@@ -71,13 +75,12 @@
         }
       </mat-list>
     </div>
-    <div class="warband-section warband-list-section">
+    <div class="warband-section warband-list-section attributes-area">
       <div><div class="list-header-button">Chaos Attributes</div><button mat-icon-button (click)="addAttribute()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
       <mat-list class="warband-items-list">
         @for (attribute of data.champion.attributes; track attribute) {
         <mat-list-item>
-          <span class="mat-list-title" matListItemTitle>
-            {{attribute.name}}
+          <span class="mat-list-title" matListItemTitle>{{attribute.name}}
             <button class="warband-items-delete-button" mat-button (click)="deleteAttribute(attribute)"><mat-icon>delete_forever</mat-icon></button>
           </span>
           <span class="warband-list-text">{{attribute.description}}</span>
@@ -85,13 +88,12 @@
         }
       </mat-list>
     </div>
-    <div class="warband-section warband-list-section">
+    <div class="warband-section warband-list-section weapons-area">
       <div><div class="list-header-button">Weapons</div><button mat-icon-button (click)="addWeapon()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
       <mat-list class="warband-items-list">
         @for (weapon of data.champion.weapons; track weapon.name) {
         <mat-list-item>
-          <span class="mat-list-title" matListItemTitle>
-            {{weapon.name}}
+          <span class="mat-list-title" matListItemTitle>{{weapon.name}}
             <button class="warband-items-delete-button" mat-button (click)="deleteWeapon(weapon)"><mat-icon>delete_forever</mat-icon></button>
           </span>
           <span class="warband-list-text">{{displaySpecialRuleNames(weapon.specialRules)}}</span>
@@ -100,13 +102,12 @@
         }
       </mat-list>
     </div>
-    <div class="warband-section warband-list-section">
+    <div class="warband-section warband-list-section armor-area">
       <div><div class="list-header-button">Armor</div><button mat-icon-button (click)="addArmor()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
       <mat-list class="warband-items-list">
         @for (armor of data.champion.armor; track armor.name) {
         <mat-list-item>
-          <span class="mat-list-title" matListItemTitle>
-            {{armor.name}}
+          <span class="mat-list-title" matListItemTitle>{{armor.name}}
             <button class="warband-items-delete-button" mat-button (click)="deleteArmor(armor)"><mat-icon>delete_forever</mat-icon></button>
           </span>
           <span class="warband-list-text">{{displaySpecialRuleNames(armor.specialRules)}}</span>

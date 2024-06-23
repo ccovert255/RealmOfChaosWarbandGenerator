@@ -12,6 +12,7 @@
   <div class="profile-header">Int</div>
   <div class="profile-header">Cl</div>
   <div class="profile-header">Wp</div>
+  <div class="profile-header">Sv</div>
 
   <div class="profile-row">{{champion?.profileWithBonuses()?.description}}</div>
   <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('M')}">{{champion?.profileWithBonuses()?.movement}}</div>
@@ -26,4 +27,5 @@
   <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Int')}">{{intelligenceStatDisplay()}}</div>
   <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Cl')}">{{coolStatDisplay()}}</div>
   <div [ngClass]="{'profile-row':true, 'bonus-stat': champion?.profileStatHasBonus('Wp')}">{{willpowerStatDisplay()}}</div>
+  <div class="profile-row">{{armorSaveDisplay()}}</div>
 </div>
