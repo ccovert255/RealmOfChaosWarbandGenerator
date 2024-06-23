@@ -27,6 +27,7 @@ import { AlertService } from '../alert.service';
 import { EnumSelectPipe } from '../enum.pipe'
 import { CommonModule } from '@angular/common';
 import { ArmorAddDialogComponent } from '../armor-add-dialog/armor-add-dialog.component';
+import { WeaponAddDialogComponent } from '../weapon-add-dialog/weapon-add-dialog.component';
 
 @Component({
   selector: 'app-warband-edit-dialog',
@@ -71,7 +72,7 @@ export class WarbandEditDialogComponent {
   }
 
   constructor(public dialogRef: MatDialogRef<WarbandEditDialogComponent>,
-    public dialogAddArmorRef: MatDialog,
+    public dialogAddItemRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Warband,
     public warbandsListService: WarbandsListService,
     public alertService: AlertService)
@@ -93,7 +94,7 @@ export class WarbandEditDialogComponent {
   }
 
   addArmor(): void {
-    const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: this.data });
+    this.dialogAddItemRef.open(ArmorAddDialogComponent, { data: this.data });
   }
 
   deleteArmor(armor: Armor): void {
@@ -102,6 +103,20 @@ export class WarbandEditDialogComponent {
       this.data.champion.armor.splice(index, 1);
     }
   }
+
+  addWeapon(): void {
+    this.dialogAddItemRef.open(WeaponAddDialogComponent, { data: this.data, width: "50vw", maxWidth: "90vw", height: "40vw", maxHeight: "90vh", });
+  }
+
+  deleteWeapon(weapon: Weapon): void {
+    let index = this.data.champion.weapons.indexOf(weapon);
+    if (index !== -1) {
+      this.data.champion.weapons.splice(index, 1);
+    }
+  }
+
+
+
 }
 
 

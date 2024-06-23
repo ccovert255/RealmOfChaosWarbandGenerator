@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Add Weapon</h2>
+<mat-dialog-content>
+  <div mat-dialog-container class="item-container">
+
+    <mat-form-field>
+      <mat-label>Weapon</mat-label>
+      <mat-select required [(ngModel)]="selectedWeapon" name="selected-weapon">
+        <mat-option *ngFor="let weapon of weaponList" [value]="weapon">{{ weapon.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="item-profile-container">
+      <div class="item-profile-header">S</div>
+      <div class="item-profile-header">A</div>
+      <div class="item-profile-header">I</div>
+      <div class="item-profile-header">Sv</div>
+      <div class="item-profile-header">Range</div>
+      <div class="item-profile-header">Cost</div>
+
+      <div class="item-profile-row">{{strengthDisplay()}}</div>
+      <div class="item-profile-row">{{selectedWeapon?.attackBonus}}</div>
+      <div class="item-profile-row">{{selectedWeapon?.initiativeBonus}}</div>
+      <div class="item-profile-row">{{selectedWeapon?.armorPenetration}}</div>
+      <div class="item-profile-row">{{rangeDisplay()}}</div>
+      <div class="item-profile-row">{{selectedWeapon?.cost}}</div>
+    </div>
+
+    <ul class="item-rules">
+      <li *ngFor="let rule of selectedWeapon?.specialRules">{{rule.description}}</li>
+    </ul>
+
+  </div>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-button class="dialog-cancel-button" [mat-dialog-close]="0" cdkFocusInitial>Cancel</button>
+  <button mat-flat-button color="primary" [disabled]='selectedWeapon == null' (click)="onAdd()"><mat-icon>done</mat-icon> Add</button>
+</mat-dialog-actions>

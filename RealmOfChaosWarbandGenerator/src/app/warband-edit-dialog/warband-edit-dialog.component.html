@@ -75,11 +75,16 @@
       </mat-list>
     </div>
     <div class="warband-section warband-list-section">
-      <span class="warband-list-label">Weapons</span>
-      <mat-list>
+      <div><div class="list-header-button">Weapons</div><button mat-icon-button (click)="addWeapon()" color="primary"><mat-icon>add_circle</mat-icon></button></div>
+      <mat-list class="warband-items-list">
         @for (weapon of data.champion.weapons; track weapon.name) {
         <mat-list-item>
-          <span class="warband-value" matListItemTitle>{{weapon.name}}</span>
+          <span class="mat-list-title" matListItemTitle>
+            {{weapon.name}}
+            <button class="warband-items-delete-button" mat-button (click)="deleteWeapon(weapon)"><mat-icon>delete_forever</mat-icon></button>
+          </span>
+          <span class="warband-list-text">{{displaySpecialRuleNames(weapon.specialRules)}}</span>
+
         </mat-list-item>
         }
       </mat-list>
