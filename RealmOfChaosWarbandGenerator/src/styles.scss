@@ -56,3 +56,48 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+
+
+
+/*@media screen
+{
+  #printable
+  {
+    display: none;
+  }
+}*/
+
+
+@media print
+{
+  body *
+  {
+    visibility: hidden;
+  }
+
+  body
+  {
+    height: 100% !important;
+    width: 100% !important;
+    display: inline !important;
+  }
+
+  .mat-mdc-dialog-content, .mat-mdc-dialog-content *
+  {
+    visibility: visible;
+  }
+
+  .mat-mdc-dialog-content
+  {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+    display: inline !important;
+  }
+
+
+}

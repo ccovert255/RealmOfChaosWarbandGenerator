@@ -95,6 +95,10 @@ export class WarbandEditDialogComponent {
     this.dialogRef.close();
   }
 
+  onPrint(): void {
+    window.print();
+  }
+
   addArmor(): void {
     this.dialogAddItemRef.open(ArmorAddDialogComponent, { data: this.data });
   }

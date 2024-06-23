@@ -142,3 +142,24 @@ button.mdc-icon-button {
   vertical-align: top;
   font-size:1.2em;
 }
+
+.dialog-print-button
+{
+  float: right;
+  display: inline-block;
+  vertical-align: sub;
+}
+
+.dialog-print-button mat-icon
+{
+  vertical-align: sub;
+}
+
+.mat-mdc-dialog-title h4
+{
+    margin:0px;
+    display:inline-block;
+}
+
+
+
