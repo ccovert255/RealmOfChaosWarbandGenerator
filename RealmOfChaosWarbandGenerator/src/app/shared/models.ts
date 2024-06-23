@@ -276,30 +276,15 @@ export class Profile {
   intelligence: number = 7;
   cool: number = 7;
   willPower: number = 7;
-
-  //public copyValues(profile: Profile) {
-  //  this.description = profile.description;
-  //  this.movement = profile.movement;
-  //  this.weaponSkill = profile.weaponSkill;
-  //  this.ballisticSkill = profile.ballisticSkill;
-  //  this.strength = profile.strength;
-  //  this.toughness = profile.toughness;
-  //  this.wounds = profile.wounds;
-  //  this.initiative = profile.initiative;
-  //  this.attacks = profile.attacks;
-  //  this.leadership = profile.leadership;
-  //  this.cool = profile.cool;
-  //  this.intelligence = profile.intelligence;
-  //  this.willPower = profile.willPower;
-  //}
 }
 
 export class Weapon {
   name: string = "Hand weapon";
+  strength: number | null = null;
   strengthBonus: number = 0;
   attackBonus: number = 0;
   initiativeBonus: number = 0;
-  armorSaveModifier: number = 0;
+  armorPenetration: number = 0;
   range: number = 0;
   cost: number = 1;
   specialRules: RuleDescription[] = [];
@@ -307,8 +292,7 @@ export class Weapon {
 
 export class Armor {
   name: string = "Light Armor";
-  reducesMovement: boolean = true;
-  armorSaveModifier: number = 0;
+  armorSave: number = 0;
   cost: number = 0;
   specialRules: RuleDescription[] = [];
 }

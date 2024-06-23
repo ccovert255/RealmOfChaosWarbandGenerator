@@ -1017,32 +1017,32 @@ export const TZEENTCH_REWARDS: ChaosReward[] = [
 ];
 
 export const CHAOS_ARMOR: Armor = {
-  name: "Chaos Armor", reducesMovement: false, armorSaveModifier: 3, cost: 50, specialRules: [SPECIAL_RULES[5]]
+  name: "Chaos Armor", armorSave: 3, cost: 50, specialRules: [SPECIAL_RULES[5]]
 }
 
 export const ARMOR_TYPES: Armor[] = [
-  { name: "Shield", reducesMovement: true, armorSaveModifier: 1, cost: 1, specialRules: [SPECIAL_RULES[11],SPECIAL_RULES[12]]},
-  { name: "Light Armor", reducesMovement: true, armorSaveModifier: 1, cost: 2, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
-  { name: "Heavy Armor", reducesMovement: true, armorSaveModifier: 2, cost: 3, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
-  { name: "Riding Animal Barding", reducesMovement: true, armorSaveModifier: 1, cost: 4, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
+  { name: "Shield", armorSave: 1, cost: 1, specialRules: [SPECIAL_RULES[11],SPECIAL_RULES[12]]},
+  { name: "Light Armor", armorSave: 1, cost: 2, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
+  { name: "Heavy Armor", armorSave: 2, cost: 3, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
+  { name: "Riding Animal Barding", armorSave: 1, cost: 4, specialRules: [SPECIAL_RULES[11], SPECIAL_RULES[12]] },
   CHAOS_ARMOR
 ]
 
 export const WEAPON_TYPES: Weapon[] = [
-  { name: "Hand Weapon", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 1, specialRules: [] },
-  { name: "Double-handed Weapon", strengthBonus: 1, attackBonus: 0, initiativeBonus: -1, range: 0, armorSaveModifier: -1, cost: 2, specialRules: [SPECIAL_RULES[0]] },
-  { name: "Flail", strengthBonus: 1, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 2, specialRules: [SPECIAL_RULES[0], SPECIAL_RULES[1]] },
-  { name: "Halberd", strengthBonus: 1, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 2, specialRules: [SPECIAL_RULES[0], SPECIAL_RULES[2], SPECIAL_RULES[3]] },
-  { name: "Lance", strengthBonus: 2, attackBonus: 0, initiativeBonus: 2, range: 0, armorSaveModifier: -1, cost: 2, specialRules: [] },
-  { name: "Spear", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 1, specialRules: [SPECIAL_RULES[2], SPECIAL_RULES[3], SPECIAL_RULES[4]] },
-  { name: "Bow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 24, armorSaveModifier: 0, cost: 2, specialRules: [] },
-  { name: "Short Bow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 1, specialRules: [] },
-  { name: "Long Bow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 3, specialRules: [] },
-  { name: "Crossbow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 3, specialRules: [] },
-  { name: "Javelin", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 8, armorSaveModifier: 0, cost: 1, specialRules: [] },
-  { name: "Throwing Knife", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 6, armorSaveModifier: 0, cost: 1, specialRules: [] },
-  { name: "Repeating Crossbow", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 16, armorSaveModifier: 0, cost: 4, specialRules: [] },
-  { name: "Random Magic Item", strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorSaveModifier: 0, cost: 6, specialRules: [] },
+  { name: "Hand Weapon", strength:null, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 1, specialRules: [] },
+  { name: "Double-handed Weapon", strength: null, strengthBonus: 1, attackBonus: 0, initiativeBonus: -1, range: 0, armorPenetration: -1, cost: 2, specialRules: [SPECIAL_RULES[0]] },
+  { name: "Flail", strength: null, strengthBonus: 1, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 2, specialRules: [SPECIAL_RULES[0], SPECIAL_RULES[1]] },
+  { name: "Halberd", strength: null, strengthBonus: 1, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 2, specialRules: [SPECIAL_RULES[0], SPECIAL_RULES[2], SPECIAL_RULES[3]] },
+  { name: "Lance", strength: null, strengthBonus: 2, attackBonus: 0, initiativeBonus: 2, range: 0, armorPenetration: -1, cost: 2, specialRules: [] },
+  { name: "Spear", strength: null, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 1, specialRules: [SPECIAL_RULES[2], SPECIAL_RULES[3], SPECIAL_RULES[4]] },
+  { name: "Bow", strength: 3, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 24, armorPenetration: 0, cost: 2, specialRules: [] },
+  { name: "Short Bow", strength: 3, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 1, specialRules: [] },
+  { name: "Long Bow", strength: 3, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 3, specialRules: [] },
+  { name: "Crossbow", strength: 4, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 3, specialRules: [] },
+  { name: "Javelin", strength: null, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 8, armorPenetration: 0, cost: 1, specialRules: [] },
+  { name: "Throwing Knife", strength: null, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 6, armorPenetration: 0, cost: 1, specialRules: [] },
+  { name: "Repeating Crossbow", strength: 3, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 16, armorPenetration: 0, cost: 4, specialRules: [] },
+  { name: "Random Magic Item", strength: null, strengthBonus: 0, attackBonus: 0, initiativeBonus: 0, range: 0, armorPenetration: 0, cost: 6, specialRules: [] },
 ]
 
 

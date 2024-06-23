@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute } from '../shared/models';
+import { Warband, Champion, Profile, Weapon, Armor, ChaosAttribute, RuleDescription } from '../shared/models';
 import { WarbandsListService } from '../warbands-list.service';
 import { getRandomIntInclusive } from '../shared/functions';
 import { HERO_BONUS_PROFILES, PERSONAL_ATTRIBUTES, OTHER_PROFILES, HUMAN_PROFILES, DWARF_PROFILES, DARKELF_PROFILES } from '../shared/constants';
@@ -66,6 +66,10 @@ export class WarbandEditDialogComponent {
     return option.rollNumber === value.rollNumber;
   }
 
+  public displaySpecialRuleNames = function (rules : RuleDescription[]) : string {
+    return rules.map(r => r.name).join(', ');
+  }
+
   constructor(public dialogRef: MatDialogRef<WarbandEditDialogComponent>,
     public dialogAddArmorRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Warband,
@@ -90,6 +94,13 @@ export class WarbandEditDialogComponent {
 
   addArmor(): void {
     const armorDialogRef = this.dialogAddArmorRef.open(ArmorAddDialogComponent, { data: this.data });
+  }
+
+  deleteArmor(armor: Armor): void {
+    let index = this.data.champion.armor.indexOf(armor);
+    if (index !== -1) {
+      this.data.champion.armor.splice(index, 1);
+    }
   }
 }
 

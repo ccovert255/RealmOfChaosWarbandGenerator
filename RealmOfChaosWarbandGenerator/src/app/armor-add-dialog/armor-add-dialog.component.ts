@@ -54,7 +54,7 @@ export class ArmorAddDialogComponent {
   selectedArmor: Armor | null = null;
   armorSaveDisplay(): string {
     if (this.selectedArmor == null) return '';
-    return `+${this.selectedArmor.armorSaveModifier}`;
+    return `+${this.selectedArmor.armorSave}`;
   }
 
   constructor(public dialogRef: MatDialogRef<ArmorAddDialogComponent>,
